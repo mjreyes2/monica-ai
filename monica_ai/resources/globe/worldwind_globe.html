@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+    Monica AI - NASA WorldWind Globe
+    A beautiful 3D globe powered by NASA's WorldWind library
+    Integrates with Monica's Rest Countries API for country information
+-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Monica AI - Globe View</title>
+    
+    <!-- Dark theme styling -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: #1a1a2e;
+            color: #00ffaa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+        }
+        
+        #globe-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+        }
+        
+        #canvasOne {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, #0a0a1a 0%, #1a1a3e 50%, #0a0a1a 100%);
+        }
+        
+        /* Control Panel */
+        #control-panel {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            background: rgba(26, 26, 46, 0.95);
+            border: 1px solid #00ffaa;
+            border-radius: 10px;
+            padding: 15px;
+            z-index: 1000;
+            min-width: 250px;
+            box-shadow: 0 0 20px rgba(0, 255, 170, 0.3);
+        }
+        
+        #control-panel h2 {
+            color: #00ffaa;
+            font-size: 18px;
+            margin-bottom: 15px;
+            text-align: center;
+            text-shadow: 0 0 10px rgba(0, 255, 170, 0.5);
+        }
+        
+        .control-group {
+            margin-bottom: 10px;
+        }
+        
+        .control-group label {
+            display: block;
+            color: #88ffcc;
+            font-size: 12px;
+            margin-bottom: 5px;
+        }
+        
+        .control-group input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            background: #0a0a1a;
+            border: 1px solid #00ffaa;
+            border-radius: 5px;
+            color: #00ffaa;
+            font-size: 14px;
+        }
+        
+        .control-group input[type="text"]:focus {
+            outline: none;
+            box-shadow: 0 0 10px rgba(0, 255, 170, 0.5);
+        }
+        
+        .btn {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            background: linear-gradient(135deg, #00ffaa 0%, #00aa77 100%);
+            border: none;
+            border-radius: 5px;
+            color: #0a0a1a;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 15px rgba(0, 255, 170, 0.5);
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(135deg, #4a4a6a 0%, #2a2a4a 100%);
+            color: #00ffaa;
+            border: 1px solid #00ffaa;
+        }
+        
+        /* Layer toggles */
+        .layer-toggle {
+            display: flex;
+            align-items: center;
+            padding: 5px 0;
+            cursor: pointer;
+        }
+        
+        .layer-toggle input {
+            margin-right: 10px;
+            accent-color: #00ffaa;
+        }
+        
+        .layer-toggle span {
+            color: #aaffdd;
+            font-size: 13px;
+        }
+        
+        /* Info Panel */
+        #info-panel {
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            background: rgba(26, 26, 46, 0.95);
+            border: 1px solid #00ffaa;
+            border-radius: 10px;
+            padding: 15px;
+            z-index: 1000;
+            min-width: 300px;
+            max-width: 400px;
+            display: none;
+        }
+        
+        #info-panel h3 {
+            color: #00ffaa;
+            margin-bottom: 10px;
+        }
+        
+        #info-panel .info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+            border-bottom: 1px solid rgba(0, 255, 170, 0.2);
+        }
+        
+        #info-panel .info-label {
+            color: #88ffcc;
+        }
+        
+        #info-panel .info-value {
+            color: #ffffff;
+        }
+        
+        /* Coordinates display */
+        #coords-display {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(26, 26, 46, 0.9);
+            border: 1px solid #00ffaa;
+            border-radius: 5px;
+            padding: 10px 15px;
+            color: #00ffaa;
+            font-family: monospace;
+            font-size: 12px;
+        }
+        
+        /* Monica branding */
+        #monica-brand {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            color: #00ffaa;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 0 0 20px rgba(0, 255, 170, 0.5);
+        }
+        
+        /* Quick location buttons */
+        .quick-locations {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5px;
+            margin-top: 10px;
+        }
+        
+        .quick-btn {
+            padding: 8px;
+            font-size: 11px;
+            background: #2a2a4a;
+            border: 1px solid #00ffaa;
+            border-radius: 5px;
+            color: #00ffaa;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .quick-btn:hover {
+            background: #00ffaa;
+            color: #0a0a1a;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Globe Canvas -->
+    <div id="globe-container">
+        <canvas id="canvasOne">
+            Your browser does not support HTML5 Canvas.
+        </canvas>
+    </div>
+    
+    <!-- Monica Branding -->
+    <div id="monica-brand">🌍 Monica Globe</div>
+    
+    <!-- Control Panel -->
+    <div id="control-panel">
+        <h2>🌐 Globe Controls</h2>
+        
+        <!-- Search -->
+        <div class="control-group">
+            <label>Search Location</label>
+            <input type="text" id="searchInput" placeholder="Enter city or country..." onkeypress="handleSearchKey(event)">
+            <button class="btn" onclick="performSearch()">🔍 Go To</button>
+        </div>
+        
+        <!-- Quick Locations -->
+        <div class="control-group">
+            <label>Quick Locations</label>
+            <div class="quick-locations">
+                <button class="quick-btn" onclick="goToLocation(35.6762, 139.6503, 'Tokyo')">🇯🇵 Tokyo</button>
+                <button class="quick-btn" onclick="goToLocation(48.8566, 2.3522, 'Paris')">🇫🇷 Paris</button>
+                <button class="quick-btn" onclick="goToLocation(40.7128, -74.0060, 'New York')">🇺🇸 New York</button>
+                <button class="quick-btn" onclick="goToLocation(51.5074, -0.1278, 'London')">🇬🇧 London</button>
+                <button class="quick-btn" onclick="goToLocation(-33.8688, 151.2093, 'Sydney')">🇦🇺 Sydney</button>
+                <button class="quick-btn" onclick="goToLocation(55.7558, 37.6173, 'Moscow')">🇷🇺 Moscow</button>
+                <button class="quick-btn" onclick="goToLocation(-22.9068, -43.1729, 'Rio')">🇧🇷 Rio</button>
+                <button class="quick-btn" onclick="goToLocation(1.3521, 103.8198, 'Singapore')">🇸🇬 Singapore</button>
+            </div>
+        </div>
+        
+        <!-- Layers -->
+        <div class="control-group">
+            <label>Map Layers</label>
+            <div class="layer-toggle">
+                <input type="checkbox" id="layerSatellite" checked onchange="toggleLayer('satellite')">
+                <span>🛰️ Satellite Imagery</span>
+            </div>
+            <div class="layer-toggle">
+                <input type="checkbox" id="layerLabels" checked onchange="toggleLayer('labels')">
+                <span>🏷️ Place Labels</span>
+            </div>
+            <div class="layer-toggle">
+                <input type="checkbox" id="layerAtmosphere" checked onchange="toggleLayer('atmosphere')">
+                <span>🌫️ Atmosphere</span>
+            </div>
+            <div class="layer-toggle">
+                <input type="checkbox" id="layerStars" checked onchange="toggleLayer('stars')">
+                <span>⭐ Stars</span>
+            </div>
+        </div>
+        
+        <!-- View Controls -->
+        <div class="control-group">
+            <button class="btn btn-secondary" onclick="resetView()">🔄 Reset View</button>
+        </div>
+    </div>
+    
+    <!-- Country Info Panel -->
+    <div id="info-panel">
+        <h3 id="country-name">Country Info</h3>
+        <div class="info-row">
+            <span class="info-label">Capital:</span>
+            <span class="info-value" id="info-capital">-</span>
+        </div>
+        <div class="info-row">
+            <span class="info-label">Population:</span>
+            <span class="info-value" id="info-population">-</span>
+        </div>
+        <div class="info-row">
+            <span class="info-label">Region:</span>
+            <span class="info-value" id="info-region">-</span>
+        </div>
+        <div class="info-row">
+            <span class="info-label">Languages:</span>
+            <span class="info-value" id="info-languages">-</span>
+        </div>
+    </div>
+    
+    <!-- Coordinates Display -->
+    <div id="coords-display">
+        <span id="lat-display">Lat: 0.00°</span> | 
+        <span id="lon-display">Lon: 0.00°</span> |
+        <span id="alt-display">Alt: 0 km</span>
+    </div>
+    
+    <!-- Libraries -->
+    <script src="https://files.worldwind.arc.nasa.gov/artifactory/web/0.9.0/worldwind.min.js"></script>
+    
+    <script>
+        // Initialize WorldWind
+        WorldWind.Logger.setLoggingLevel(WorldWind.Logger.LEVEL_WARNING);
+        
+        // Create the WorldWindow
+        var wwd = new WorldWind.WorldWindow("canvasOne");
+        
+        // Layer references
+        var layers = {
+            satellite: null,
+            labels: null,
+            atmosphere: null,
+            stars: null
+        };
+        
+        // Add layers
+        function setupLayers() {
+            // Blue Marble layer (base)
+            var bmngLayer = new WorldWind.BMNGLayer();
+            wwd.addLayer(bmngLayer);
+            
+            // Blue Marble + Landsat (satellite)
+            layers.satellite = new WorldWind.BMNGLandsatLayer();
+            layers.satellite.enabled = true;
+            wwd.addLayer(layers.satellite);
+            
+            // Bing Aerial with Labels
+            layers.labels = new WorldWind.BingAerialWithLabelsLayer();
+            layers.labels.enabled = true;
+            wwd.addLayer(layers.labels);
+            
+            // Atmosphere
+            layers.atmosphere = new WorldWind.AtmosphereLayer();
+            layers.atmosphere.enabled = true;
+            wwd.addLayer(layers.atmosphere);
+            
+            // Star field
+            layers.stars = new WorldWind.StarFieldLayer();
+            layers.stars.enabled = true;
+            wwd.addLayer(layers.stars);
+            
+            // Compass
+            var compassLayer = new WorldWind.CompassLayer();
+            wwd.addLayer(compassLayer);
+            
+            // View controls
+            var viewControlsLayer = new WorldWind.ViewControlsLayer(wwd);
+            viewControlsLayer.placement = new WorldWind.Offset(
+                WorldWind.OFFSET_FRACTION, 0.98,
+                WorldWind.OFFSET_FRACTION, 0.5
+            );
+            wwd.addLayer(viewControlsLayer);
+            
+            // Coordinates display layer
+            var coordsLayer = new WorldWind.CoordinatesDisplayLayer(wwd);
+            coordsLayer.enabled = false; // We have our own
+            wwd.addLayer(coordsLayer);
+        }
+        
+        setupLayers();
+        
+        // Geocoder and animator
+        var geocoder = new WorldWind.NominatimGeocoder();
+        var goToAnimator = new WorldWind.GoToAnimator(wwd);
+        
+        // Go to a specific location
+        function goToLocation(lat, lon, name) {
+            goToAnimator.goTo(new WorldWind.Position(lat, lon, 1000000));
+            if (name) {
+                fetchCountryInfo(name);
+            }
+        }
+        
+        // Search function
+        function performSearch() {
+            var query = document.getElementById('searchInput').value;
+            if (!query) return;
+            
+            // Check if it's coordinates
+            if (query.match(/^-?\d+\.?\d*,\s*-?\d+\.?\d*$/)) {
+                var parts = query.split(',');
+                var lat = parseFloat(parts[0].trim());
+                var lon = parseFloat(parts[1].trim());
+                goToLocation(lat, lon);
+            } else {
+                // Use geocoder
+                geocoder.lookup(query, function(geocoder, result) {
+                    if (result.length > 0) {
+                        var lat = parseFloat(result[0].lat);
+                        var lon = parseFloat(result[0].lon);
+                        goToLocation(lat, lon, query);
+                    } else {
+                        alert('Location not found: ' + query);
+                    }
+                });
+            }
+        }
+        
+        function handleSearchKey(event) {
+            if (event.keyCode === 13) {
+                performSearch();
+            }
+        }
+        
+        // Toggle layers
+        function toggleLayer(layerName) {
+            if (layers[layerName]) {
+                layers[layerName].enabled = !layers[layerName].enabled;
+                wwd.redraw();
+            }
+        }
+        
+        // Reset view
+        function resetView() {
+            wwd.navigator.lookAtLocation.latitude = 0;
+            wwd.navigator.lookAtLocation.longitude = 0;
+            wwd.navigator.range = 20000000;
+            wwd.redraw();
+        }
+        
+        // Fetch country info from Rest Countries API
+        async function fetchCountryInfo(countryName) {
+            try {
+                const response = await fetch(`https://restcountries.com/v3.1/name/${encodeURIComponent(countryName)}`);
+                if (response.ok) {
+                    const data = await response.json();
+                    if (data && data.length > 0) {
+                        displayCountryInfo(data[0]);
+                    }
+                }
+            } catch (e) {
+                console.log('Could not fetch country info:', e);
+            }
+        }
+        
+        // Display country info
+        function displayCountryInfo(country) {
+            document.getElementById('info-panel').style.display = 'block';
+            document.getElementById('country-name').textContent = 
+                (country.flag || '') + ' ' + (country.name.common || 'Unknown');
+            document.getElementById('info-capital').textContent = 
+                country.capital ? country.capital[0] : 'N/A';
+            document.getElementById('info-population').textContent = 
+                country.population ? (country.population / 1000000).toFixed(1) + ' million' : 'N/A';
+            document.getElementById('info-region').textContent = 
+                (country.region || '') + (country.subregion ? ' / ' + country.subregion : '');
+            document.getElementById('info-languages').textContent = 
+                country.languages ? Object.values(country.languages).slice(0, 3).join(', ') : 'N/A';
+        }
+        
+        // Update coordinates display
+        function updateCoordsDisplay() {
+            var lat = wwd.navigator.lookAtLocation.latitude.toFixed(2);
+            var lon = wwd.navigator.lookAtLocation.longitude.toFixed(2);
+            var alt = (wwd.navigator.range / 1000).toFixed(0);
+            
+            document.getElementById('lat-display').textContent = 'Lat: ' + lat + '°';
+            document.getElementById('lon-display').textContent = 'Lon: ' + lon + '°';
+            document.getElementById('alt-display').textContent = 'Alt: ' + alt + ' km';
+        }
+        
+        // Update coords on navigation
+        wwd.addEventListener('mousemove', updateCoordsDisplay);
+        wwd.redrawCallbacks.push(updateCoordsDisplay);
+        
+        // Check for URL parameters (for Monica integration)
+        function checkUrlParams() {
+            const params = new URLSearchParams(window.location.search);
+            const lat = params.get('lat');
+            const lon = params.get('lon');
+            const country = params.get('country');
+            
+            if (lat && lon) {
+                setTimeout(() => {
+                    goToLocation(parseFloat(lat), parseFloat(lon), country);
+                }, 1000);
+            } else if (country) {
+                setTimeout(() => {
+                    document.getElementById('searchInput').value = country;
+                    performSearch();
+                }, 1000);
+            }
+        }
+        
+        checkUrlParams();
+        
+        // Initial view - show Earth from space
+        wwd.navigator.range = 20000000;
+        
+        console.log('Monica Globe initialized with NASA WorldWind');
+    </script>
+</body>
+</html>

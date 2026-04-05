@@ -1,0 +1,40 @@
+{
+  "version": "1.0",
+  "last_updated": "2025-12-22",
+  "description": "User's preferred Monica configuration - DO NOT CHANGE without explicit permission",
+  
+  "initialization": {
+    "tts_engine": "piper",
+    "apply_scifi_echo": true,
+    "phrases": [
+      "Initializing Monica",
+      "Neural lattice forming",
+      "Quantum sync established", 
+      "Voice matrix calibrated",
+      "MJP, I'm fully operational and ready to assist you."
+    ],
+    "effects": {
+      "orb_animation": true,
+      "spaceship_alarm": true,
+      "energy_sounds": true
+    }
+  },
+  
+  "conversation": {
+    "tts_engine": "monica_xtts",
+    "fallback_engine": "piper",
+    "xtts_parameters": {
+      "temperature": 0.3,
+      "repetition_penalty": 10.0,
+      "speed": 1.0,
+      "top_k": 50,
+      "top_p": 0.85,
+      "language": "en",
+      "enable_text_splitting": true
+    },
+    "preferred_checkpoint": "accent_tune",
+    "apply_neural_lattice_effects": true
+  },
+  
+  "notes": "User explicitly approved this configuration on 2025-12-22. Startup uses Piper for speed/reliability. Regular conversation uses trained XTTS (AccentTune) with low temperature to prevent garbled/Chinese-sounding output."
+}

@@ -1,0 +1,37 @@
+{
+  "title": "African Cultures",
+  "description": "Diverse cultural traditions across the African continent",
+  "regions": [
+    {
+      "region": "North Africa",
+      "cultures": "Arab, Berber, Tuareg"
+    },
+    {
+      "region": "West Africa",
+      "cultures": "Yoruba, Igbo, Hausa, Akan, Wolof"
+    },
+    {
+      "region": "East Africa",
+      "cultures": "Swahili, Maasai, Amhara, Oromo"
+    },
+    {
+      "region": "Central Africa",
+      "cultures": "Bantu, Pygmy, Kongo"
+    },
+    {
+      "region": "Southern Africa",
+      "cultures": "Zulu, Xhosa, San, Sotho"
+    }
+  ],
+  "cultural_elements": [
+    "Music and Dance",
+    "Oral Traditions",
+    "Art and Sculpture",
+    "Religious Practices",
+    "Family Systems"
+  ],
+  "topic": "african_cultures",
+  "category": "humanities",
+  "domain": "african_studies",
+  "last_updated": "2025-12-05T06:12:10.984249"
+}

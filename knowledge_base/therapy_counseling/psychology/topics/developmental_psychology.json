@@ -1,0 +1,53 @@
+{
+  "title": "Developmental Psychology",
+  "description": "Study of psychological changes throughout the lifespan",
+  "key_concepts": [
+    "Piaget's Stages of Cognitive Development",
+    "Erikson's Psychosocial Stages",
+    "Attachment Theory",
+    "Nature vs Nurture",
+    "Critical Periods",
+    "Moral Development"
+  ],
+  "stages": [
+    {
+      "stage": "Infancy",
+      "age": "0-2 years",
+      "key_tasks": "Trust, attachment, sensorimotor development"
+    },
+    {
+      "stage": "Early Childhood",
+      "age": "2-6 years",
+      "key_tasks": "Language, autonomy, preoperational thought"
+    },
+    {
+      "stage": "Middle Childhood",
+      "age": "6-12 years",
+      "key_tasks": "Industry, concrete operations, peer relationships"
+    },
+    {
+      "stage": "Adolescence",
+      "age": "12-18 years",
+      "key_tasks": "Identity, formal operations, independence"
+    },
+    {
+      "stage": "Early Adulthood",
+      "age": "18-40 years",
+      "key_tasks": "Intimacy, career, family"
+    },
+    {
+      "stage": "Middle Adulthood",
+      "age": "40-65 years",
+      "key_tasks": "Generativity, career peak, mentoring"
+    },
+    {
+      "stage": "Late Adulthood",
+      "age": "65+ years",
+      "key_tasks": "Integrity, wisdom, life review"
+    }
+  ],
+  "topic": "developmental_psychology",
+  "category": "therapy_counseling",
+  "domain": "psychology",
+  "last_updated": "2025-12-05T06:12:10.976026"
+}

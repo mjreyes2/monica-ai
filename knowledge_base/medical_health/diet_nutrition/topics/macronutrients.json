@@ -1,0 +1,60 @@
+{
+  "title": "Macronutrients",
+  "description": "Nutrients needed in large amounts for energy and body functions",
+  "types": [
+    {
+      "name": "Carbohydrates",
+      "calories_per_gram": 4,
+      "functions": [
+        "Primary energy source",
+        "Brain fuel",
+        "Fiber for digestion"
+      ],
+      "sources": [
+        "Grains",
+        "Fruits",
+        "Vegetables",
+        "Legumes"
+      ],
+      "recommended": "45-65% of daily calories"
+    },
+    {
+      "name": "Proteins",
+      "calories_per_gram": 4,
+      "functions": [
+        "Muscle building",
+        "Enzyme production",
+        "Immune function"
+      ],
+      "sources": [
+        "Meat",
+        "Fish",
+        "Eggs",
+        "Dairy",
+        "Legumes",
+        "Nuts"
+      ],
+      "recommended": "10-35% of daily calories"
+    },
+    {
+      "name": "Fats",
+      "calories_per_gram": 9,
+      "functions": [
+        "Energy storage",
+        "Hormone production",
+        "Nutrient absorption"
+      ],
+      "sources": [
+        "Oils",
+        "Nuts",
+        "Avocado",
+        "Fatty fish"
+      ],
+      "recommended": "20-35% of daily calories"
+    }
+  ],
+  "topic": "macronutrients",
+  "category": "medical_health",
+  "domain": "diet_nutrition",
+  "last_updated": "2025-12-05T06:13:34.225724"
+}

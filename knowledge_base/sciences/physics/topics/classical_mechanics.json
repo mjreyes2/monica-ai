@@ -1,0 +1,49 @@
+{
+  "title": "Classical Mechanics",
+  "description": "Study of motion of macroscopic objects",
+  "key_concepts": [
+    "Newton's Laws of Motion",
+    "Conservation of Energy",
+    "Conservation of Momentum",
+    "Work and Energy",
+    "Rotational Motion",
+    "Gravitation"
+  ],
+  "formulas": [
+    {
+      "name": "Force",
+      "formula": "F = ma",
+      "description": "Newton's Second Law"
+    },
+    {
+      "name": "Kinetic Energy",
+      "formula": "KE = ½mv²",
+      "description": "Energy of motion"
+    },
+    {
+      "name": "Potential Energy",
+      "formula": "PE = mgh",
+      "description": "Gravitational potential energy"
+    },
+    {
+      "name": "Momentum",
+      "formula": "p = mv",
+      "description": "Linear momentum"
+    },
+    {
+      "name": "Work",
+      "formula": "W = Fd cos(θ)",
+      "description": "Work done by force"
+    }
+  ],
+  "applications": [
+    "Engineering",
+    "Astronomy",
+    "Sports Science",
+    "Vehicle Design"
+  ],
+  "topic": "classical_mechanics",
+  "category": "sciences",
+  "domain": "physics",
+  "last_updated": "2025-12-05T06:12:10.973444"
+}

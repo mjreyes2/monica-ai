@@ -1,0 +1,76 @@
+{
+  "facts": [
+    {
+      "fact": "[USER_MEMORY: User's name: MJP\nIMPORTANT: Always call the user 'MJP', never use any other name.\nThings you know about this user:\n  - Date of birth: April 20th, 1985\n  - I don't watch sports] Monica I need you to remember that I don't watch sports",
+      "category": "user_taught",
+      "source": "user",
+      "timestamp": "2025-12-07T11:52:35.175910"
+    },
+    {
+      "fact": "[USER_MEMORY: User's name: MJP\nIMPORTANT: Always call the user 'MJP', never use any other name.\nThings you know about this user:\n  - Date of birth: April 20th, 1985\n  - I don't watch sports\n  - I don't have a] Monica I need you to remember that I don't have a",
+      "category": "user_taught",
+      "source": "user",
+      "timestamp": "2025-12-07T11:53:11.430138"
+    },
+    {
+      "fact": "remember this you were born twenty five.",
+      "category": "user_taught",
+      "source": "user",
+      "timestamp": "2025-12-25T13:34:02.380219"
+    }
+  ],
+  "corrections": [
+    {
+      "wrong": "Previous incorrect information",
+      "correct": "Mama, no, no, no, no, no.",
+      "source": "user_correction",
+      "timestamp": "2025-12-08T05:53:27.828031"
+    },
+    {
+      "wrong": "Previous incorrect information",
+      "correct": "[USER_MEMORY: User's name: MJP\nIMPORTANT: Always call the user 'MJP', never use any other name.\nThings you know about this user:\n  - Date of birth: April 20th, 1985\n  - I don't watch sports\n  - I don't have a\nUser preferences:\n  - favorites: bird] Pin, no, cute.",
+      "source": "user_correction",
+      "timestamp": "2025-12-08T06:08:52.266458"
+    },
+    {
+      "wrong": "Previous incorrect information",
+      "correct": "[USER_MEMORY: User's name: MJP\nIMPORTANT: Always call the user 'MJP', never use any other name.\nThings you know about this user:\n  - Date of birth: April 20th, 1985\n  - I don't watch sports\n  - I don't have a\nUser preferences:\n  - favorites: bird] No, you're alone.",
+      "source": "user_correction",
+      "timestamp": "2025-12-08T12:59:18.836756"
+    },
+    {
+      "wrong": "Previous incorrect information",
+      "correct": "[USER_MEMORY: User's name: MJP\nIMPORTANT: Always call the user 'MJP', never use any other name.\nThings you know about this user:\n  - Date of birth: April 20th, 1985\n  - I don't watch sports\n  - I don't have a\nUser preferences:\n  - favorites: bird] No, no way.",
+      "source": "user_correction",
+      "timestamp": "2025-12-08T19:06:15.304288"
+    },
+    {
+      "wrong": "Previous incorrect information",
+      "correct": "[USER_MEMORY: User's name: MJP\nIMPORTANT: Always call the user 'MJP', never use any other name.\nThings you know about this user:\n  - Date of birth: April 20th, 1985\n  - I don't watch sports\n  - I don't have a\nUser preferences:\n  - favorites: bird] No, no, no.",
+      "source": "user_correction",
+      "timestamp": "2025-12-08T19:06:31.221519"
+    },
+    {
+      "wrong": "Previous incorrect information",
+      "correct": "[USER_MEMORY: User's name: MJP\nIMPORTANT: Always call the user 'MJP', never use any other name.\nThings you know about this user:\n  - Date of birth: April 20th, 1985\n  - I don't watch sports\n  - I don't have a\nUser preferences:\n  - favorites: bird\n  - avoids: said anything] No, no.",
+      "source": "user_correction",
+      "timestamp": "2025-12-08T19:09:36.924463"
+    },
+    {
+      "wrong": "Previous incorrect information",
+      "correct": "[USER_MEMORY: User's name: MJP\nIMPORTANT: Always call the user 'MJP', never use any other name.\nThings you know about this user:\n  - Date of birth: April 20th, 1985\n  - I don't watch sports\n  - I don't have a\nUser preferences:\n  - favorites: bird\n  - avoids: said anything] No, no.",
+      "source": "user_correction",
+      "timestamp": "2025-12-08T21:46:10.052386"
+    },
+    {
+      "wrong": "Previous incorrect information",
+      "correct": "No, I would like for you to be able to self diagnosis and help me fix you and make you fully operational.",
+      "source": "user_correction",
+      "timestamp": "2025-12-24T02:58:24.608907"
+    }
+  ],
+  "user_preferences": {},
+  "important_dates": [],
+  "people": {},
+  "current_events": []
+}

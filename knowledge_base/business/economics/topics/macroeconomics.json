@@ -1,0 +1,30 @@
+{
+  "title": "Macroeconomics",
+  "description": "Study of economy-wide phenomena",
+  "indicators": [
+    {
+      "name": "GDP",
+      "description": "Total value of goods and services produced"
+    },
+    {
+      "name": "Inflation",
+      "description": "Rate of price increase"
+    },
+    {
+      "name": "Unemployment",
+      "description": "Percentage of labor force without jobs"
+    },
+    {
+      "name": "Interest Rates",
+      "description": "Cost of borrowing money"
+    }
+  ],
+  "policies": {
+    "fiscal": "Government spending and taxation",
+    "monetary": "Central bank control of money supply and interest rates"
+  },
+  "topic": "macroeconomics",
+  "category": "business",
+  "domain": "economics",
+  "last_updated": "2025-12-05T06:13:34.231352"
+}

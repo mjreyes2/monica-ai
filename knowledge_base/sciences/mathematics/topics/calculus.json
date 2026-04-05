@@ -1,0 +1,37 @@
+{
+  "title": "Calculus",
+  "description": "Mathematical study of continuous change",
+  "branches": [
+    "Differential Calculus",
+    "Integral Calculus",
+    "Multivariable Calculus"
+  ],
+  "key_concepts": [
+    "Limits",
+    "Derivatives",
+    "Integrals",
+    "Fundamental Theorem of Calculus",
+    "Chain Rule",
+    "Product Rule",
+    "Quotient Rule",
+    "Integration by Parts"
+  ],
+  "key_formulas": [
+    {
+      "name": "Power Rule",
+      "formula": "d/dx[xⁿ] = nxⁿ⁻¹"
+    },
+    {
+      "name": "Chain Rule",
+      "formula": "d/dx[f(g(x))] = f'(g(x)) · g'(x)"
+    },
+    {
+      "name": "Integration Power Rule",
+      "formula": "∫xⁿdx = xⁿ⁺¹/(n+1) + C"
+    }
+  ],
+  "topic": "calculus",
+  "category": "sciences",
+  "domain": "mathematics",
+  "last_updated": "2025-12-05T06:13:34.217162"
+}

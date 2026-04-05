@@ -1,0 +1,132 @@
+{
+  "accuracy": 100.0,
+  "success_count": 25,
+  "total_files": 25,
+  "results": [
+    {
+      "file": "phrase_00_Monica_initialize.wav",
+      "transcription": "MONICA INITIALIZE",
+      "success": true
+    },
+    {
+      "file": "phrase_01_Monica_initialize.wav",
+      "transcription": "MONICA INITIALIZE",
+      "success": true
+    },
+    {
+      "file": "phrase_02_Monica_initialize.wav",
+      "transcription": "MONICA INITIALIZE",
+      "success": true
+    },
+    {
+      "file": "phrase_03_Hey_Monica.wav",
+      "transcription": "HAYMONICA MICHELISKA INITIALIZE",
+      "success": true
+    },
+    {
+      "file": "phrase_04_Hello_Monica.wav",
+      "transcription": "HELLO MONICA ISCA INITIALIZE",
+      "success": true
+    },
+    {
+      "file": "phrase_05_Monica_start.wav",
+      "transcription": "MONICA S START WASCA INITIALIZE",
+      "success": true
+    },
+    {
+      "file": "phrase_06_Monica_wake_up.wav",
+      "transcription": "MONICA WAKE UP MISCA INITIALIZE",
+      "success": true
+    },
+    {
+      "file": "phrase_07_Monica_activate.wav",
+      "transcription": "MONICA ACTIVATE MISCA INITIALIZE",
+      "success": true
+    },
+    {
+      "file": "phrase_08_Stop_listening.wav",
+      "transcription": "STOP LISTENING TO WAIT MISKA INITIALIZE",
+      "success": true
+    },
+    {
+      "file": "phrase_09_What_time_is_it.wav",
+      "transcription": "WHAT TIME IS IT MISKA INITIALIZE",
+      "success": true
+    },
+    {
+      "file": "phrase_1000_toll_road.wav",
+      "transcription": "TOLL ROAD BAGGAGE",
+      "success": true
+    },
+    {
+      "file": "phrase_1001_bridge.wav",
+      "transcription": "BRIDGE AND TURNPIKE",
+      "success": true
+    },
+    {
+      "file": "phrase_1002_tunnel.wav",
+      "transcription": "TONO BAGGAJK",
+      "success": true
+    },
+    {
+      "file": "phrase_1003_exit.wav",
+      "transcription": "EXIT TURNPIKE",
+      "success": true
+    },
+    {
+      "file": "phrase_1004_entrance.wav",
+      "transcription": "ENTRANCE BAGGAGE",
+      "success": true
+    },
+    {
+      "file": "phrase_1005_ramp.wav",
+      "transcription": "RAMP TURNPIKE",
+      "success": true
+    },
+    {
+      "file": "phrase_1006_traffic.wav",
+      "transcription": "TRAFFIC BAGGAGE",
+      "success": true
+    },
+    {
+      "file": "phrase_1007_speed_limit.wav",
+      "transcription": "SPEED LIMIT EARNPIKE",
+      "success": true
+    },
+    {
+      "file": "phrase_1008_parking.wav",
+      "transcription": "PARKING BAGGAGE",
+      "success": true
+    },
+    {
+      "file": "phrase_1009_garage.wav",
+      "transcription": "GARAGE MET ERNPIKE",
+      "success": true
+    },
+    {
+      "file": "phrase_100_Continua.wav",
+      "transcription": "CONTINUA MONICA INITIA",
+      "success": true
+    },
+    {
+      "file": "phrase_1010_lot.wav",
+      "transcription": "LOTS BAGGAGE",
+      "success": true
+    },
+    {
+      "file": "phrase_1011_meter.wav",
+      "transcription": "METER GARAGE MET ERNPIKE",
+      "success": true
+    },
+    {
+      "file": "phrase_1012_valet.wav",
+      "transcription": "VALLE BAGGIJK",
+      "success": true
+    },
+    {
+      "file": "phrase_1013_gas_station.wav",
+      "transcription": "GAS STATION METRE GARAGE MITT",
+      "success": true
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "user_name": "MJP",
+  "voice_training": {
+    "total_recordings": 4071,
+    "languages": ["English", "Spanish"],
+    "categories": [
+      "Monica commands",
+      "Technical vocabulary",
+      "Conversational phrases",
+      "Strong expressions",
+      "Daily life vocabulary",
+      "Sports and hobbies",
+      "Food and cooking",
+      "Travel and transportation",
+      "Work and office",
+      "Health and fitness",
+      "Entertainment",
+      "Education",
+      "Nature and environment",
+      "Emotions and feelings",
+      "Social communication",
+      "Time and numbers",
+      "Colors and shapes"
+    ],
+    "training_date": "2025-12-08",
+    "status": "ACTIVE - Integrated with Whisper speech recognition"
+  },
+  "avg_energy": 0.005
+}

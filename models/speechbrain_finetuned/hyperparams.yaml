@@ -1,0 +1,28 @@
+
+# Training parameters
+number_of_epochs: 25
+batch_size: 4
+lr: 0.0001
+sorting: ascending
+
+# Feature extraction
+sample_rate: 16000
+n_fft: 400
+n_mels: 80
+
+# Data files
+data_folder: C:/Users/mxz/monica_project/voice_training/recordings/MJP
+train_annotation: C:/Users/mxz/monica_project/voice_training/recordings/MJP/train.csv
+valid_annotation: C:/Users/mxz/monica_project/voice_training/recordings/MJP/val.csv
+skip_prep: True
+
+# Output
+output_folder: C:/Users/mxz/monica_project/models/speechbrain_finetuned
+save_folder: !ref <output_folder>/save
+train_log: !ref <output_folder>/train_log.txt
+
+# Model (we'll use the pretrained encoder)
+pretrained_path: models/speechbrain_pretrained
+
+# Training won't work without full model setup, so this demonstrates the config
+# For actual training, need to use SpeechBrain recipes or build custom Brain class

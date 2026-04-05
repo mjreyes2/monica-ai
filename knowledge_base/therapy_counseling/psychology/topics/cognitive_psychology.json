@@ -1,0 +1,37 @@
+{
+  "title": "Cognitive Psychology",
+  "description": "Study of mental processes including attention, memory, perception, and problem-solving",
+  "key_concepts": [
+    "Working Memory",
+    "Long-term Memory",
+    "Attention",
+    "Perception",
+    "Language Processing",
+    "Decision Making",
+    "Problem Solving"
+  ],
+  "theories": [
+    {
+      "name": "Information Processing Theory",
+      "description": "Mind as information processor"
+    },
+    {
+      "name": "Schema Theory",
+      "description": "Mental frameworks for organizing knowledge"
+    },
+    {
+      "name": "Dual Process Theory",
+      "description": "System 1 (fast) and System 2 (slow) thinking"
+    }
+  ],
+  "applications": [
+    "Education",
+    "User Experience Design",
+    "Therapy",
+    "AI Development"
+  ],
+  "topic": "cognitive_psychology",
+  "category": "therapy_counseling",
+  "domain": "psychology",
+  "last_updated": "2025-12-05T06:12:10.975512"
+}

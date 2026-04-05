@@ -1,0 +1,222 @@
+# ################################
+# Model: wav2vec2 + DNN + CTC for Monica Voice Fine-tuning
+# Based on SpeechBrain LibriSpeech CTC Recipe
+# Adapted for small custom dataset
+# ################################
+
+# Seed needs to be set at top of yaml, before objects with parameters are made
+seed: 1986
+__set_seed: !apply:speechbrain.utils.seed_everything [!ref <seed>]
+output_folder: !ref models/monica_finetuned/<seed>
+output_wer_folder: !ref <output_folder>/
+save_folder: !ref <output_folder>/save
+train_log: !ref <output_folder>/train_log.txt
+
+# URL for wav2vec2-base model (95M params, fits in 8GB GPU)
+# Changed from wav2vec2-large (317M params) which caused CUDA OOM
+wav2vec2_hub: facebook/wav2vec2-base-960h
+wav2vec2_folder: !ref <save_folder>/wav2vec2_checkpoint
+
+# Data files - pointing to Monica's recordings
+data_folder: voice_training/recordings/MJP
+train_splits: []  # Not used for custom data
+dev_splits: []    # Not used for custom data
+test_splits: []   # Not used for custom data
+skip_prep: True   # We already have our CSVs ready
+ckpt_interval_minutes: 10  # save checkpoint every 10 min
+
+# CSV files for training
+train_csv: voice_training/recordings/MJP/train.csv
+valid_csv: voice_training/recordings/MJP/val.csv
+test_csv:
+   - voice_training/recordings/MJP/val.csv
+
+####################### Training Parameters ####################################
+
+# Reduced epochs for initial training run - will adjust based on WER plateau
+number_of_epochs: 22
+
+# Early stopping - stops training if validation WER doesn't improve
+early_stopping_enabled: True
+early_stopping_patience: 5  # Stop if no improvement for 5 epochs
+early_stopping_metric: WER  # Monitor WER (Word Error Rate)
+early_stopping_min_delta: 0.001  # Minimum improvement to count as better
+freeze_warmup_epochs: 4  # Freeze wav2vec encoder for warmup to avoid blank collapse
+
+lr: 0.001  # FIXED: Much lower learning rate for classifier (was 0.5 - way too high!)
+lr_wav2vec: 0.000003  # Further reduced LR to prevent blank collapse
+sorting: ascending
+precision: fp16  # fp16 mixed precision to save memory
+sample_rate: 16000
+
+# Reduced batch size for 8GB VRAM GPU memory constraints (further reduced due to OOM)
+batch_size: 1
+test_batch_size: 1
+
+# Gradient accumulation: simulate batch_size=4 without memory overhead
+grad_accumulation_factor: 4
+
+# Gradient clipping to prevent exploding gradients
+grad_clip: 5.0
+
+# Dataloader options
+train_dataloader_opts:
+   batch_size: !ref <batch_size>
+   num_workers: 0  # Windows compatibility
+
+valid_dataloader_opts:
+   batch_size: !ref <batch_size>
+   num_workers: 0
+
+test_dataloader_opts:
+   batch_size: !ref <test_batch_size>
+   num_workers: 0
+
+####################### Model Parameters #######################################
+activation: !name:torch.nn.LeakyReLU
+dnn_layers: 2
+dnn_neurons: 512  # Reduced from 1024 to save GPU memory
+freeze_wav2vec: False  # Unfreeze for fine-tuning on custom voice
+freeze_feature_extractor: True  # FIXED: Freeze CNN feature extractor (doesn't need fine-tuning)
+
+# Outputs - Character-level CTC (28 characters: a-z + space + blank)
+# This MUST match the CTCTextEncoder vocabulary size!
+output_neurons: 28  # Character vocabulary: 26 letters + space + blank
+blank_index: 0
+
+#
+# Functions and classes
+#
+
+# Using CTCTextEncoder for character-level CTC (no SentencePiece needed)
+# The encoder will automatically create vocabulary from training data
+# Expected vocabulary: 26 letters (a-z) + space + blank = 28 tokens
+
+epoch_counter: !new:speechbrain.utils.epoch_loop.EpochCounter
+   limit: !ref <number_of_epochs>
+
+enc: !new:speechbrain.lobes.models.VanillaNN.VanillaNN
+   input_shape: [null, null, 768]  # Changed from 1024 (wav2vec2-large) to 768 (wav2vec2-base)
+   activation: !ref <activation>
+   dnn_blocks: !ref <dnn_layers>
+   dnn_neurons: !ref <dnn_neurons>
+
+wav2vec2: !new:speechbrain.lobes.models.huggingface_transformers.Wav2Vec2
+   source: !ref <wav2vec2_hub>
+   output_norm: True
+   freeze: !ref <freeze_wav2vec>
+   save_path: !ref <wav2vec2_folder>
+   apply_spec_augment: False
+   freeze_feature_extractor: !ref <freeze_feature_extractor>
+
+ctc_lin: !new:speechbrain.nnet.linear.Linear
+   input_size: !ref <dnn_neurons>
+   n_neurons: !ref <output_neurons>
+
+log_softmax: !new:speechbrain.nnet.activations.Softmax
+   apply_log: True
+
+ctc_cost: !name:speechbrain.nnet.losses.ctc_loss
+   blank_index: !ref <blank_index>
+
+modules:
+   wav2vec2: !ref <wav2vec2>
+   enc: !ref <enc>
+   ctc_lin: !ref <ctc_lin>
+
+model: !new:torch.nn.ModuleList
+   - [!ref <enc>, !ref <ctc_lin>]
+
+model_opt_class: !name:torch.optim.Adadelta
+   lr: !ref <lr>
+   rho: 0.95
+   eps: 1.e-8
+
+wav2vec_opt_class: !name:torch.optim.Adam
+   lr: !ref <lr_wav2vec>
+
+lr_annealing_model: !new:speechbrain.nnet.schedulers.NewBobScheduler
+   initial_value: !ref <lr>
+   improvement_threshold: 0.0025
+   annealing_factor: 0.8
+   patient: 0
+
+lr_annealing_wav2vec: !new:speechbrain.nnet.schedulers.NewBobScheduler
+   initial_value: !ref <lr_wav2vec>
+   improvement_threshold: 0.0025
+   annealing_factor: 0.9
+   patient: 0
+
+############################## Augmentations ###################################
+
+# Disable augmentations for small dataset to avoid overfitting
+# Speed perturbation
+#speed_perturb: !new:speechbrain.augment.time_domain.SpeedPerturb
+#   orig_freq: !ref <sample_rate>
+#   speeds: [95, 100, 105]
+
+# Frequency drop: randomly drops a number of frequency bands to zero.
+#drop_freq: !new:speechbrain.augment.time_domain.DropFreq
+#   drop_freq_low: 0
+#   drop_freq_high: 1
+#   drop_freq_count_low: 1
+#   drop_freq_count_high: 3
+#   drop_freq_width: 0.05
+
+# Time drop: randomly drops a number of temporal chunks.
+#drop_chunk: !new:speechbrain.augment.time_domain.DropChunk
+#   drop_length_low: 1000
+#   drop_length_high: 2000
+#   drop_count_low: 1
+#   drop_count_high: 5
+
+# Augmenter: Combines previously defined augmentations to perform data augmentation
+#wav_augment: !new:speechbrain.augment.augmenter.Augmenter
+#   concat_original: True
+#   min_augmentations: 4
+#   max_augmentations: 4
+#   augment_prob: 1.0
+#   augmentations: [
+#      !ref <speed_perturb>,
+#      !ref <drop_freq>,
+#      !ref <drop_chunk>]
+
+############################## Decoding ########################################
+
+# Decoding parameters
+test_beam_search:
+   beam_size: 30
+   topk: 1
+   blank_index: !ref <blank_index>
+   space_token: ' ' # make sure this is the same as the one used in the tokenizer
+   beam_prune_logp: -12.0
+   token_prune_min_logp: -1.2
+   prune_history: True
+   alpha: 0.8
+   beta: 1.2
+   # can be downloaded from here https://www.openslr.org/11/ or trained with kenLM
+   # It can either be a .bin or .arpa ; note: .arpa is much slower at loading
+   # If you don't want to use an LM, comment it out or set it to null
+   kenlm_model_path: null
+
+############################## Logging and Pretrainer ##########################
+
+checkpointer: !new:speechbrain.utils.checkpoints.Checkpointer
+   checkpoints_dir: !ref <save_folder>
+   recoverables:
+      wav2vec2: !ref <wav2vec2>
+      model: !ref <model>
+      scheduler_model: !ref <lr_annealing_model>
+      scheduler_wav2vec: !ref <lr_annealing_wav2vec>
+      counter: !ref <epoch_counter>
+      # tokenizer: !ref <tokenizer>  # REMOVED: SentencePiece saves itself, checkpointer can't handle it
+
+train_logger: !new:speechbrain.utils.train_logger.FileTrainLogger
+   save_file: !ref <train_log>
+
+error_rate_computer: !name:speechbrain.utils.metric_stats.ErrorRateStats
+
+cer_computer: !name:speechbrain.utils.metric_stats.ErrorRateStats
+   split_tokens: True
+
+test_wer_file: !ref <output_wer_folder>/wer_test.txt

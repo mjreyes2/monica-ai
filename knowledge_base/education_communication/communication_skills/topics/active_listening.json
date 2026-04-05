@@ -1,0 +1,40 @@
+{
+  "title": "Active Listening",
+  "description": "Fully concentrating on what is being said rather than passively hearing",
+  "components": [
+    {
+      "name": "Attending",
+      "description": "Giving physical and psychological attention"
+    },
+    {
+      "name": "Following",
+      "description": "Encouraging the speaker to continue"
+    },
+    {
+      "name": "Reflecting",
+      "description": "Mirroring content and feelings"
+    },
+    {
+      "name": "Summarizing",
+      "description": "Condensing key points"
+    }
+  ],
+  "barriers": [
+    "Prejudging",
+    "Rehearsing response",
+    "Filtering",
+    "Advising",
+    "Sparring",
+    "Being right"
+  ],
+  "benefits": [
+    "Builds trust",
+    "Reduces conflict",
+    "Improves understanding",
+    "Enhances relationships"
+  ],
+  "topic": "active_listening",
+  "category": "education_communication",
+  "domain": "communication_skills",
+  "last_updated": "2025-12-05T06:12:10.981211"
+}

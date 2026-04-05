@@ -1,0 +1,564 @@
+{
+  "version": "1.0",
+  "created": "2025-12-05T06:12:02.801244",
+  "updated": "2025-12-05T06:12:02.801244",
+  "domains": {
+    "sciences": {
+      "physics": {
+        "topics": [
+          "classical_mechanics",
+          "quantum_physics",
+          "thermodynamics",
+          "electromagnetism",
+          "optics",
+          "nuclear_physics",
+          "particle_physics"
+        ],
+        "datasets": [
+          "physics_formulas.json",
+          "physics_constants.json",
+          "physics_problems.json"
+        ]
+      },
+      "chemistry": {
+        "topics": [
+          "organic_chemistry",
+          "inorganic_chemistry",
+          "biochemistry",
+          "analytical_chemistry",
+          "physical_chemistry",
+          "electrochemistry"
+        ],
+        "datasets": [
+          "periodic_table.json",
+          "chemical_reactions.json",
+          "molecular_structures.json"
+        ]
+      },
+      "biology": {
+        "topics": [
+          "cell_biology",
+          "genetics",
+          "evolution",
+          "ecology",
+          "microbiology",
+          "botany",
+          "zoology",
+          "neuroscience"
+        ],
+        "datasets": [
+          "species_database.json",
+          "genetic_codes.json",
+          "biological_processes.json"
+        ]
+      },
+      "mathematics": {
+        "topics": [
+          "algebra",
+          "calculus",
+          "geometry",
+          "trigonometry",
+          "statistics",
+          "probability",
+          "linear_algebra",
+          "differential_equations",
+          "number_theory"
+        ],
+        "datasets": [
+          "math_formulas.json",
+          "theorems.json",
+          "problem_sets.json"
+        ]
+      },
+      "statistics": {
+        "topics": [
+          "descriptive_statistics",
+          "inferential_statistics",
+          "regression",
+          "hypothesis_testing",
+          "bayesian_statistics",
+          "multivariate_analysis"
+        ],
+        "datasets": [
+          "statistical_tables.json",
+          "distributions.json",
+          "statistical_tests.json"
+        ]
+      },
+      "astrophysics": {
+        "topics": [
+          "cosmology",
+          "stellar_evolution",
+          "planetary_science",
+          "black_holes",
+          "dark_matter",
+          "gravitational_waves",
+          "exoplanets"
+        ],
+        "datasets": [
+          "star_catalog.json",
+          "galaxy_data.json",
+          "astronomical_constants.json"
+        ]
+      }
+    },
+    "engineering": {
+      "mechanical_engineering": {
+        "topics": [
+          "statics",
+          "dynamics",
+          "fluid_mechanics",
+          "heat_transfer",
+          "machine_design",
+          "manufacturing"
+        ],
+        "datasets": [
+          "engineering_materials.json",
+          "mechanical_formulas.json"
+        ]
+      },
+      "electrical_engineering": {
+        "topics": [
+          "circuit_analysis",
+          "electronics",
+          "power_systems",
+          "control_systems",
+          "signal_processing"
+        ],
+        "datasets": [
+          "circuit_components.json",
+          "electrical_formulas.json"
+        ]
+      },
+      "civil_engineering": {
+        "topics": [
+          "structural_analysis",
+          "geotechnical",
+          "transportation",
+          "environmental_engineering",
+          "construction"
+        ],
+        "datasets": [
+          "building_codes.json",
+          "material_properties.json"
+        ]
+      },
+      "computer_science": {
+        "topics": [
+          "algorithms",
+          "data_structures",
+          "operating_systems",
+          "databases",
+          "networking",
+          "ai_ml",
+          "cybersecurity",
+          "software_engineering"
+        ],
+        "datasets": [
+          "programming_concepts.json",
+          "algorithm_complexity.json",
+          "design_patterns.json"
+        ]
+      }
+    },
+    "medical_health": {
+      "medical_science": {
+        "topics": [
+          "anatomy",
+          "pathology",
+          "pharmacology",
+          "immunology",
+          "cardiology",
+          "neurology",
+          "oncology",
+          "pediatrics",
+          "geriatrics"
+        ],
+        "datasets": [
+          "diseases_database.json",
+          "medications.json",
+          "medical_procedures.json",
+          "icd_codes.json"
+        ]
+      },
+      "human_physiology": {
+        "topics": [
+          "cardiovascular_system",
+          "respiratory_system",
+          "nervous_system",
+          "digestive_system",
+          "endocrine_system",
+          "musculoskeletal_system",
+          "reproductive_system"
+        ],
+        "datasets": [
+          "organ_systems.json",
+          "physiological_values.json",
+          "homeostasis.json"
+        ]
+      },
+      "physical_health": {
+        "topics": [
+          "exercise_science",
+          "nutrition",
+          "sleep_health",
+          "preventive_care",
+          "chronic_disease_management",
+          "rehabilitation"
+        ],
+        "datasets": [
+          "exercise_guidelines.json",
+          "health_metrics.json",
+          "fitness_programs.json"
+        ]
+      },
+      "mental_health": {
+        "topics": [
+          "depression",
+          "anxiety",
+          "ptsd",
+          "bipolar_disorder",
+          "schizophrenia",
+          "personality_disorders",
+          "addiction",
+          "eating_disorders"
+        ],
+        "datasets": [
+          "dsm5_criteria.json",
+          "mental_health_assessments.json",
+          "treatment_protocols.json"
+        ]
+      },
+      "diet_nutrition": {
+        "topics": [
+          "macronutrients",
+          "micronutrients",
+          "dietary_guidelines",
+          "meal_planning",
+          "special_diets",
+          "food_allergies",
+          "sports_nutrition"
+        ],
+        "datasets": [
+          "food_database.json",
+          "nutritional_values.json",
+          "diet_plans.json"
+        ]
+      }
+    },
+    "therapy_counseling": {
+      "psychology": {
+        "topics": [
+          "cognitive_psychology",
+          "developmental_psychology",
+          "social_psychology",
+          "clinical_psychology",
+          "neuropsychology",
+          "positive_psychology"
+        ],
+        "datasets": [
+          "psychological_theories.json",
+          "assessment_tools.json",
+          "research_findings.json"
+        ]
+      },
+      "counseling_modalities": {
+        "topics": [
+          "cbt",
+          "dbt",
+          "psychodynamic",
+          "humanistic",
+          "gestalt",
+          "emdr",
+          "act",
+          "motivational_interviewing",
+          "solution_focused",
+          "narrative_therapy",
+          "family_systems",
+          "group_therapy"
+        ],
+        "datasets": [
+          "therapy_techniques.json",
+          "intervention_protocols.json",
+          "case_formulations.json"
+        ]
+      },
+      "speech_therapy": {
+        "topics": [
+          "articulation",
+          "fluency",
+          "voice_disorders",
+          "language_disorders",
+          "swallowing_disorders",
+          "aphasia",
+          "apraxia",
+          "autism_communication"
+        ],
+        "datasets": [
+          "speech_assessments.json",
+          "therapy_exercises.json",
+          "communication_aids.json"
+        ]
+      },
+      "physical_therapy": {
+        "topics": [
+          "orthopedic_pt",
+          "neurological_pt",
+          "cardiovascular_pt",
+          "pediatric_pt",
+          "geriatric_pt",
+          "sports_pt",
+          "manual_therapy"
+        ],
+        "datasets": [
+          "exercise_protocols.json",
+          "rehabilitation_programs.json",
+          "assessment_tools.json"
+        ]
+      },
+      "human_sexuality": {
+        "topics": [
+          "sexual_health",
+          "gender_identity",
+          "sexual_orientation",
+          "relationship_dynamics",
+          "sex_education",
+          "sexual_dysfunction",
+          "intimacy"
+        ],
+        "datasets": [
+          "sexuality_education.json",
+          "relationship_guidance.json",
+          "health_resources.json"
+        ]
+      }
+    },
+    "education_communication": {
+      "teaching_methods": {
+        "topics": [
+          "pedagogy",
+          "andragogy",
+          "differentiated_instruction",
+          "project_based_learning",
+          "inquiry_based_learning",
+          "flipped_classroom",
+          "montessori",
+          "waldorf"
+        ],
+        "datasets": [
+          "teaching_strategies.json",
+          "lesson_plans.json",
+          "assessment_methods.json"
+        ]
+      },
+      "education": {
+        "topics": [
+          "curriculum_design",
+          "educational_psychology",
+          "special_education",
+          "early_childhood",
+          "higher_education",
+          "online_learning",
+          "educational_technology"
+        ],
+        "datasets": [
+          "learning_theories.json",
+          "educational_standards.json",
+          "instructional_design.json"
+        ]
+      },
+      "communication_skills": {
+        "topics": [
+          "public_speaking",
+          "interpersonal_communication",
+          "nonverbal_communication",
+          "active_listening",
+          "conflict_resolution",
+          "negotiation",
+          "presentation_skills"
+        ],
+        "datasets": [
+          "communication_techniques.json",
+          "speech_templates.json",
+          "feedback_methods.json"
+        ]
+      },
+      "research_methods": {
+        "topics": [
+          "quantitative_research",
+          "qualitative_research",
+          "mixed_methods",
+          "experimental_design",
+          "survey_research",
+          "case_studies",
+          "meta_analysis",
+          "literature_review"
+        ],
+        "datasets": [
+          "research_designs.json",
+          "statistical_methods.json",
+          "ethical_guidelines.json"
+        ]
+      }
+    },
+    "business": {
+      "business_administration": {
+        "topics": [
+          "management",
+          "marketing",
+          "finance",
+          "accounting",
+          "operations",
+          "human_resources",
+          "strategic_planning",
+          "entrepreneurship"
+        ],
+        "datasets": [
+          "business_models.json",
+          "financial_formulas.json",
+          "management_frameworks.json"
+        ]
+      },
+      "economics": {
+        "topics": [
+          "microeconomics",
+          "macroeconomics",
+          "international_economics",
+          "behavioral_economics",
+          "development_economics"
+        ],
+        "datasets": [
+          "economic_indicators.json",
+          "economic_theories.json",
+          "market_data.json"
+        ]
+      }
+    },
+    "humanities": {
+      "history": {
+        "topics": [
+          "ancient_history",
+          "medieval_history",
+          "modern_history",
+          "world_wars",
+          "american_history",
+          "european_history",
+          "asian_history",
+          "african_history"
+        ],
+        "datasets": [
+          "historical_events.json",
+          "historical_figures.json",
+          "timelines.json"
+        ]
+      },
+      "african_studies": {
+        "topics": [
+          "african_history",
+          "african_cultures",
+          "african_languages",
+          "african_politics",
+          "african_economics",
+          "african_art",
+          "diaspora_studies"
+        ],
+        "datasets": [
+          "african_nations.json",
+          "cultural_practices.json",
+          "historical_movements.json"
+        ]
+      },
+      "cultural_religions": {
+        "topics": [
+          "christianity",
+          "islam",
+          "judaism",
+          "hinduism",
+          "buddhism",
+          "sikhism",
+          "indigenous_religions",
+          "comparative_religion",
+          "philosophy_of_religion"
+        ],
+        "datasets": [
+          "world_religions.json",
+          "religious_texts.json",
+          "cultural_practices.json"
+        ]
+      }
+    },
+    "languages": {
+      "world_languages": {
+        "topics": [
+          "english",
+          "spanish",
+          "mandarin",
+          "hindi",
+          "arabic",
+          "portuguese",
+          "bengali",
+          "russian",
+          "japanese",
+          "german",
+          "french",
+          "italian",
+          "korean",
+          "turkish",
+          "vietnamese",
+          "polish",
+          "ukrainian",
+          "dutch",
+          "thai",
+          "greek",
+          "swahili",
+          "hausa",
+          "yoruba",
+          "igbo",
+          "amharic",
+          "zulu",
+          "xhosa",
+          "afrikaans",
+          "somali",
+          "oromo",
+          "indonesian",
+          "malay",
+          "tagalog",
+          "tamil",
+          "telugu",
+          "marathi",
+          "gujarati",
+          "kannada",
+          "punjabi",
+          "urdu",
+          "swedish",
+          "norwegian",
+          "danish",
+          "finnish",
+          "czech",
+          "hungarian",
+          "romanian",
+          "bulgarian",
+          "serbian",
+          "croatian",
+          "persian",
+          "hebrew",
+          "kurdish",
+          "pashto",
+          "dari",
+          "navajo",
+          "cherokee",
+          "quechua",
+          "guarani",
+          "maori",
+          "hawaiian"
+        ],
+        "datasets": [
+          "vocabulary.json",
+          "grammar_rules.json",
+          "phrases.json",
+          "pronunciation.json"
+        ]
+      }
+    }
+  }
+}

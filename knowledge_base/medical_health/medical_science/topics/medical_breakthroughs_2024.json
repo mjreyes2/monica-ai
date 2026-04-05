@@ -1,0 +1,43 @@
+{
+  "title": "Medical Breakthroughs (2024)",
+  "description": "Latest medical advances and treatments",
+  "breakthroughs": [
+    {
+      "area": "Gene Therapy",
+      "developments": [
+        "CRISPR treatments for sickle cell disease (FDA approved)",
+        "Gene therapy for inherited blindness",
+        "CAR-T cell therapy for blood cancers"
+      ]
+    },
+    {
+      "area": "AI in Medicine",
+      "developments": [
+        "AI diagnosis matching/exceeding specialists in radiology",
+        "Predictive models for disease onset",
+        "Drug discovery acceleration (AlphaFold protein structures)"
+      ]
+    },
+    {
+      "area": "Immunotherapy",
+      "developments": [
+        "Checkpoint inhibitors for multiple cancers",
+        "mRNA vaccines beyond COVID (cancer vaccines in trials)",
+        "Bispecific antibodies"
+      ]
+    },
+    {
+      "area": "Regenerative Medicine",
+      "developments": [
+        "Lab-grown organs (bladders, skin)",
+        "Stem cell therapies for heart disease",
+        "3D bioprinting of tissues"
+      ]
+    }
+  ],
+  "updated": "2024",
+  "topic": "medical_breakthroughs_2024",
+  "category": "medical_health",
+  "domain": "medical_science",
+  "last_updated": "2025-12-05T06:45:12.997047"
+}

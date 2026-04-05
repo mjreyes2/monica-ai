@@ -1,0 +1,8 @@
+﻿{
+  "vocab_size": 1000,
+  "model_type": "unigram",
+  "num_training_samples": 1001,
+  "model_path": "C:\\Users\\Marvi\\monica_project\\models\\monica_tokenizer\\monica_1000.model",
+  "vocab_path": "C:\\Users\\Marvi\\monica_project\\models\\monica_tokenizer\\monica_1000.vocab",
+  "created": "1765602141.2976453"
+}

@@ -1,0 +1,222 @@
+"""
+Test the Enhanced STT Pipeline with sample audio
+"""
+
+import sys
+import os
+import torch
+import torchaudio
+import numpy as np
+from enhanced_stt_pipeline import EnhancedSTTPipeline
+
+def create_test_audio(output_path="test_audio.wav", duration=3, sample_rate=16000):
+    """
+    Create a simple test audio file (sine wave).
+    For real testing, use actual speech audio.
+    """
+    print(f"[MUSIC] Creating test audio: {output_path}")
+    
+    # Generate a simple sine wave (440 Hz - A note)
+    t = torch.linspace(0, duration, int(sample_rate * duration))
+    waveform = torch.sin(2 * np.pi * 440 * t).unsqueeze(0)
+    
+    # Save as WAV file
+    torchaudio.save(output_path, waveform, sample_rate)
+    print(f"[OK] Test audio created: {output_path}")
+    
+    return output_path
+
+def download_sample_audio():
+    """
+    Download a sample audio file from LibriSpeech for testing.
+    """
+    print(" Downloading sample audio from LibriSpeech...")
+    
+    try:
+        from datasets import load_dataset
+        
+        # Load a single sample from LibriSpeech
+        dataset = load_dataset("librispeech_asr", "clean", split="test", streaming=True)
+        sample = next(iter(dataset))
+        
+        # Save audio
+        audio_path = "sample_speech.wav"
+        audio_array = sample["audio"]["array"]
+        sample_rate = sample["audio"]["sampling_rate"]
+        
+        # Convert to tensor and save
+        waveform = torch.tensor(audio_array).unsqueeze(0)
+        torchaudio.save(audio_path, waveform, sample_rate)
+        
+        print(f"[OK] Sample audio downloaded: {audio_path}")
+        print(f"   Reference text: {sample['text']}")
+        
+        return audio_path, sample['text']
+        
+    except Exception as e:
+        print(f"[WARN]  Could not download sample: {e}")
+        return None, None
+
+def test_pipeline_basic():
+    """
+    Test basic pipeline functionality.
+    """
+    print("\n" + "="*80)
+    print("TEST 1: BASIC PIPELINE (No LM, No Correction)")
+    print("="*80 + "\n")
+    
+    # Initialize pipeline without LM or correction
+    pipeline = EnhancedSTTPipeline(
+        kenlm_model_path=None,
+        use_llama_correction=False
+    )
+    
+    # Try to get real audio sample
+    audio_path, reference_text = download_sample_audio()
+    
+    if not audio_path:
+        print("Using synthetic test audio instead...")
+        audio_path = create_test_audio()
+        reference_text = None
+    
+    # Transcribe
+    result = pipeline.transcribe_audio(audio_path, use_lm=False, use_correction=False)
+    
+    print("\n[CHART] Results:")
+    print(f"   Transcription: {result['raw']}")
+    if reference_text:
+        print(f"   Reference: {reference_text}")
+    
+    return result
+
+def test_pipeline_with_lm(model_path):
+    """
+    Test pipeline with KenLM language model.
+    """
+    print("\n" + "="*80)
+    print("TEST 2: PIPELINE WITH KENLM")
+    print("="*80 + "\n")
+    
+    # Initialize pipeline with LM
+    pipeline = EnhancedSTTPipeline(
+        kenlm_model_path=model_path,
+        use_llama_correction=False
+    )
+    
+    # Get audio
+    audio_path, reference_text = download_sample_audio()
+    if not audio_path:
+        audio_path = create_test_audio()
+        reference_text = None
+    
+    # Transcribe with LM
+    result = pipeline.transcribe_audio(audio_path, use_lm=True, use_correction=False)
+    
+    print("\n[CHART] Results:")
+    print(f"   Raw: {result['raw']}")
+    print(f"   LM-Enhanced: {result['lm_enhanced']}")
+    if reference_text:
+        print(f"   Reference: {reference_text}")
+    
+    return result
+
+def test_pipeline_with_llama():
+    """
+    Test pipeline with Llama-3 correction.
+    """
+    print("\n" + "="*80)
+    print("TEST 3: PIPELINE WITH LLAMA-3 CORRECTION")
+    print("="*80 + "\n")
+    
+    # Initialize pipeline with Llama correction
+    pipeline = EnhancedSTTPipeline(
+        kenlm_model_path=None,
+        use_llama_correction=True
+    )
+    
+    # Test with intentionally "messy" transcription
+    test_text = "the qwick brown fox jumps ovr the lasy dog and it was realy fast"
+    
+    print(f"Input text (with errors): {test_text}")
+    
+    # Apply correction
+    corrected = pipeline._apply_llama_correction(test_text)
+    
+    print(f"Corrected text: {corrected}")
+    
+    return corrected
+
+def test_full_pipeline(model_path=None):
+    """
+    Test complete pipeline with all features.
+    """
+    print("\n" + "="*80)
+    print("TEST 4: FULL PIPELINE (wav2vec2 + KenLM + Llama-3)")
+    print("="*80 + "\n")
+    
+    # Initialize full pipeline
+    pipeline = EnhancedSTTPipeline(
+        kenlm_model_path=model_path,
+        use_llama_correction=True
+    )
+    
+    # Get audio
+    audio_path, reference_text = download_sample_audio()
+    if not audio_path:
+        audio_path = create_test_audio()
+        reference_text = None
+    
+    # Use comparison method to see all versions
+    pipeline.compare_methods(audio_path)
+    
+    if reference_text:
+        print(f"[NOTE] Reference text: {reference_text}\n")
+
+def main():
+    """
+    Run all tests.
+    """
+    print("\n" + "="*80)
+    print("ENHANCED STT PIPELINE - TEST SUITE")
+    print("="*80 + "\n")
+    
+    # Check if language model exists
+    lm_path = "english_5gram.bin"
+    if not os.path.exists(lm_path):
+        lm_path = "english_5gram.arpa"
+        if not os.path.exists(lm_path):
+            print("[WARN]  No language model found.")
+            print("   Run train_language_model.py first to create one.")
+            lm_path = None
+    
+    if lm_path:
+        print(f"[OK] Found language model: {lm_path}\n")
+    
+    # Run tests
+    try:
+        # Test 1: Basic pipeline
+        test_pipeline_basic()
+        
+        # Test 2: With KenLM (if available)
+        if lm_path:
+            test_pipeline_with_lm(lm_path)
+        
+        # Test 3: With Llama-3 correction
+        test_pipeline_with_llama()
+        
+        # Test 4: Full pipeline
+        test_full_pipeline(lm_path)
+        
+        print("\n" + "="*80)
+        print("[OK] ALL TESTS COMPLETED")
+        print("="*80 + "\n")
+        
+    except KeyboardInterrupt:
+        print("\n\n[WARN]  Tests interrupted by user")
+    except Exception as e:
+        print(f"\n[X] Error during testing: {e}")
+        import traceback
+        traceback.print_exc()
+
+if __name__ == "__main__":
+    main()

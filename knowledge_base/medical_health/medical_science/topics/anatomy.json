@@ -1,0 +1,65 @@
+{
+  "title": "Human Anatomy",
+  "description": "Study of the structure of the human body",
+  "systems": [
+    {
+      "name": "Skeletal System",
+      "components": "206 bones, joints, cartilage",
+      "function": "Support, protection, movement"
+    },
+    {
+      "name": "Muscular System",
+      "components": "600+ muscles",
+      "function": "Movement, posture, heat production"
+    },
+    {
+      "name": "Cardiovascular System",
+      "components": "Heart, blood vessels, blood",
+      "function": "Transport of nutrients and oxygen"
+    },
+    {
+      "name": "Respiratory System",
+      "components": "Lungs, airways, diaphragm",
+      "function": "Gas exchange"
+    },
+    {
+      "name": "Nervous System",
+      "components": "Brain, spinal cord, nerves",
+      "function": "Control and coordination"
+    },
+    {
+      "name": "Digestive System",
+      "components": "GI tract, liver, pancreas",
+      "function": "Nutrient processing"
+    },
+    {
+      "name": "Endocrine System",
+      "components": "Glands, hormones",
+      "function": "Chemical regulation"
+    },
+    {
+      "name": "Immune System",
+      "components": "Lymph nodes, white blood cells",
+      "function": "Defense against pathogens"
+    },
+    {
+      "name": "Integumentary System",
+      "components": "Skin, hair, nails",
+      "function": "Protection, temperature regulation"
+    },
+    {
+      "name": "Urinary System",
+      "components": "Kidneys, bladder, ureters",
+      "function": "Waste elimination, fluid balance"
+    },
+    {
+      "name": "Reproductive System",
+      "components": "Gonads, reproductive organs",
+      "function": "Reproduction"
+    }
+  ],
+  "topic": "anatomy",
+  "category": "medical_health",
+  "domain": "medical_science",
+  "last_updated": "2025-12-05T06:12:10.979687"
+}

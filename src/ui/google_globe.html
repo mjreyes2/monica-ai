@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monica Holographic Globe - Google Maps 3D</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: transparent;
+            overflow: hidden;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        #map-container {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+        }
+        #map {
+            width: 100%;
+            height: 100%;
+        }
+        /* Holographic overlay effect */
+        .hologram-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            background: linear-gradient(
+                135deg,
+                rgba(0, 255, 255, 0.05) 0%,
+                transparent 50%,
+                rgba(0, 200, 255, 0.05) 100%
+            );
+            mix-blend-mode: screen;
+        }
+        .scanline {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: rgba(0, 255, 255, 0.3);
+            animation: scan 3s linear infinite;
+            pointer-events: none;
+        }
+        @keyframes scan {
+            0% { top: 0; }
+            100% { top: 100%; }
+        }
+        #controls {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .control-btn {
+            width: 50px;
+            height: 50px;
+            border: 2px solid #00ffff;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.7);
+            color: #00ffff;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            backdrop-filter: blur(5px);
+        }
+        .control-btn:hover {
+            background: #00ffff;
+            color: #000;
+        }
+        #info-panel {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid #00ffff;
+            border-radius: 10px;
+            padding: 15px;
+            color: #fff;
+            max-width: 300px;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+        #info-panel h3 {
+            color: #00ffff;
+            margin-bottom: 10px;
+        }
+        #location-name {
+            font-size: 18px;
+            color: #ffff00;
+            margin-bottom: 5px;
+        }
+        #location-coords {
+            font-size: 12px;
+            color: #888;
+        }
+        /* Corner brackets for holographic frame */
+        .corner {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border-color: #00ffff;
+            border-style: solid;
+            pointer-events: none;
+            z-index: 50;
+        }
+        .corner-tl { top: 10px; left: 10px; border-width: 3px 0 0 3px; }
+        .corner-tr { top: 10px; right: 10px; border-width: 3px 3px 0 0; }
+        .corner-bl { bottom: 10px; left: 10px; border-width: 0 0 3px 3px; }
+        .corner-br { bottom: 10px; right: 10px; border-width: 0 3px 3px 0; }
+        
+        #title {
+            position: absolute;
+            top: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #00ffff;
+            font-size: 14px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            z-index: 100;
+        }
+    </style>
+</head>
+<body>
+    <div id="map-container">
+        <div id="map"></div>
+        <div class="hologram-overlay"></div>
+        <div class="scanline"></div>
+        
+        <!-- Holographic frame corners -->
+        <div class="corner corner-tl"></div>
+        <div class="corner corner-tr"></div>
+        <div class="corner corner-bl"></div>
+        <div class="corner corner-br"></div>
+        
+        <div id="title">HOLOGRAPHIC GLOBE</div>
+        
+        <div id="controls">
+            <button class="control-btn" id="zoom-in" title="Zoom In">+</button>
+            <button class="control-btn" id="zoom-out" title="Zoom Out">−</button>
+            <button class="control-btn" id="tilt-up" title="Tilt Up">↑</button>
+            <button class="control-btn" id="tilt-down" title="Tilt Down">↓</button>
+            <button class="control-btn" id="reset" title="Reset View">⟲</button>
+        </div>
+        
+        <div id="info-panel">
+            <h3>🌍 Monica Globe</h3>
+            <div id="location-name">Earth</div>
+            <div id="location-coords">Ready for commands</div>
+        </div>
+    </div>
+
+    <!-- Google Maps JavaScript API -->
+    <!-- NOTE: Replace YOUR_API_KEY with actual Google Maps API key -->
+    <script>
+        // Configuration
+        let map;
+        let currentMarker = null;
+        const defaultCenter = { lat: 20, lng: 0 };
+        const defaultZoom = 2;
+        const defaultTilt = 45;
+        const defaultHeading = 0;
+
+        // City database
+        const cities = {
+            "new york": { lat: 40.7128, lng: -74.006, name: "New York City", country: "USA" },
+            "london": { lat: 51.5072, lng: -0.1276, name: "London", country: "UK" },
+            "tokyo": { lat: 35.6762, lng: 139.6503, name: "Tokyo", country: "Japan" },
+            "paris": { lat: 48.8566, lng: 2.3522, name: "Paris", country: "France" },
+            "sydney": { lat: -33.8688, lng: 151.2093, name: "Sydney", country: "Australia" },
+            "dubai": { lat: 25.2048, lng: 55.2708, name: "Dubai", country: "UAE" },
+            "singapore": { lat: 1.3521, lng: 103.8198, name: "Singapore", country: "Singapore" },
+            "hong kong": { lat: 22.3193, lng: 114.1694, name: "Hong Kong", country: "China" },
+            "los angeles": { lat: 34.0522, lng: -118.2437, name: "Los Angeles", country: "USA" },
+            "chicago": { lat: 41.8781, lng: -87.6298, name: "Chicago", country: "USA" },
+            "san francisco": { lat: 37.7749, lng: -122.4194, name: "San Francisco", country: "USA" },
+            "berlin": { lat: 52.52, lng: 13.405, name: "Berlin", country: "Germany" },
+            "rome": { lat: 41.9028, lng: 12.4964, name: "Rome", country: "Italy" },
+            "moscow": { lat: 55.7558, lng: 37.6173, name: "Moscow", country: "Russia" },
+            "beijing": { lat: 39.9042, lng: 116.4074, name: "Beijing", country: "China" },
+            "mumbai": { lat: 19.076, lng: 72.8777, name: "Mumbai", country: "India" },
+            "cairo": { lat: 30.0444, lng: 31.2357, name: "Cairo", country: "Egypt" },
+            "istanbul": { lat: 41.0082, lng: 28.9784, name: "Istanbul", country: "Turkey" },
+        };
+
+        // Initialize map
+        function initMap() {
+            // Create map with satellite/hybrid view for 3D buildings
+            map = new google.maps.Map(document.getElementById("map"), {
+                center: defaultCenter,
+                zoom: defaultZoom,
+                tilt: defaultTilt,
+                heading: defaultHeading,
+                mapTypeId: "hybrid",  // Satellite with labels
+                mapTypeControl: false,
+                streetViewControl: false,
+                fullscreenControl: false,
+                zoomControl: false,
+                rotateControl: false,
+                // Enable 3D buildings
+                styles: [
+                    {
+                        featureType: "all",
+                        elementType: "labels",
+                        stylers: [{ visibility: "on" }]
+                    }
+                ]
+            });
+
+            // Set up controls
+            setupControls();
+            
+            // Listen for messages from Monica
+            window.addEventListener('message', handleMonicaMessage);
+            
+            console.log("Monica Globe initialized");
+        }
+
+        function setupControls() {
+            document.getElementById('zoom-in').addEventListener('click', () => {
+                map.setZoom(map.getZoom() + 2);
+            });
+            
+            document.getElementById('zoom-out').addEventListener('click', () => {
+                map.setZoom(Math.max(1, map.getZoom() - 2));
+            });
+            
+            document.getElementById('tilt-up').addEventListener('click', () => {
+                map.setTilt(Math.min(67.5, map.getTilt() + 15));
+            });
+            
+            document.getElementById('tilt-down').addEventListener('click', () => {
+                map.setTilt(Math.max(0, map.getTilt() - 15));
+            });
+            
+            document.getElementById('reset').addEventListener('click', () => {
+                resetView();
+            });
+        }
+
+        function resetView() {
+            map.setCenter(defaultCenter);
+            map.setZoom(defaultZoom);
+            map.setTilt(defaultTilt);
+            map.setHeading(defaultHeading);
+            if (currentMarker) {
+                currentMarker.setMap(null);
+                currentMarker = null;
+            }
+            updateInfoPanel("Earth", "Ready for commands");
+        }
+
+        function handleMonicaMessage(event) {
+            const data = event.data;
+            if (!data) return;
+
+            if (data.type === 'search' || data.type === 'highlight') {
+                searchLocation(data.query);
+            } else if (data.type === 'zoom_in') {
+                map.setZoom(map.getZoom() + 3);
+            } else if (data.type === 'zoom_out') {
+                map.setZoom(Math.max(1, map.getZoom() - 3));
+            } else if (data.type === 'reset') {
+                resetView();
+            } else if (data.type === 'street_view') {
+                enterStreetView();
+            }
+        }
+
+        function searchLocation(query) {
+            const queryLower = query.toLowerCase().trim();
+            
+            // Check city database first
+            for (const [key, city] of Object.entries(cities)) {
+                if (queryLower.includes(key) || key.includes(queryLower)) {
+                    flyToLocation(city.lat, city.lng, city.name, city.country);
+                    return;
+                }
+            }
+            
+            // Use Geocoding API for unknown locations
+            geocodeLocation(query);
+        }
+
+        async function geocodeLocation(query) {
+            try {
+                const geocoder = new google.maps.Geocoder();
+                const result = await geocoder.geocode({ address: query });
+                
+                if (result.results && result.results.length > 0) {
+                    const location = result.results[0].geometry.location;
+                    const name = result.results[0].formatted_address.split(',')[0];
+                    const country = result.results[0].formatted_address.split(',').pop().trim();
+                    
+                    flyToLocation(location.lat(), location.lng(), name, country);
+                } else {
+                    updateInfoPanel("Not Found", `Could not find: ${query}`);
+                }
+            } catch (error) {
+                console.error("Geocoding error:", error);
+                updateInfoPanel("Error", "Location search failed");
+            }
+        }
+
+        function flyToLocation(lat, lng, name, country) {
+            // Animate to location
+            map.panTo({ lat, lng });
+            
+            // Zoom in with animation
+            setTimeout(() => {
+                map.setZoom(12);  // City level
+            }, 500);
+            
+            setTimeout(() => {
+                map.setZoom(16);  // Street level with 3D buildings
+                map.setTilt(60);  // Tilt for 3D view
+            }, 1500);
+            
+            // Add marker
+            if (currentMarker) {
+                currentMarker.setMap(null);
+            }
+            
+            currentMarker = new google.maps.Marker({
+                position: { lat, lng },
+                map: map,
+                title: name,
+                icon: {
+                    path: google.maps.SymbolPath.CIRCLE,
+                    scale: 12,
+                    fillColor: "#FFFF00",
+                    fillOpacity: 1,
+                    strokeColor: "#FF8800",
+                    strokeWeight: 3,
+                },
+                animation: google.maps.Animation.DROP,
+            });
+            
+            // Update info panel
+            updateInfoPanel(name, `${country} | ${lat.toFixed(4)}, ${lng.toFixed(4)}`);
+        }
+
+        function updateInfoPanel(name, details) {
+            document.getElementById('location-name').textContent = name;
+            document.getElementById('location-coords').textContent = details;
+        }
+
+        function enterStreetView() {
+            const center = map.getCenter();
+            const streetView = map.getStreetView();
+            streetView.setPosition(center);
+            streetView.setVisible(true);
+        }
+
+        // Expose functions for Monica integration
+        window.monicaGlobe = {
+            search: searchLocation,
+            zoomIn: () => map.setZoom(map.getZoom() + 3),
+            zoomOut: () => map.setZoom(Math.max(1, map.getZoom() - 3)),
+            reset: resetView,
+            streetView: enterStreetView,
+            setTilt: (tilt) => map.setTilt(tilt),
+            rotate: (heading) => map.setHeading(heading),
+        };
+    </script>
+    
+    <!-- Load Google Maps API -->
+    <!-- IMPORTANT: Set GOOGLE_MAPS_API_KEY in your .env file, then replace YOUR_API_KEY_HERE below -->
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY_HERE&callback=initMap&v=weekly">
+    </script>
+    
+    <!-- Fallback if no API key - use OpenStreetMap -->
+    <script>
+        // Check if Google Maps loaded, otherwise show message
+        setTimeout(() => {
+            if (typeof google === 'undefined') {
+                document.getElementById('map').innerHTML = `
+                    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; background: #111; color: #00ffff;">
+                        <h2>Google Maps API Key Required</h2>
+                        <p style="color: #888; margin-top: 10px;">To enable 3D buildings and street view:</p>
+                        <ol style="color: #aaa; margin-top: 10px; text-align: left;">
+                            <li>Get a Google Maps API key from <a href="https://console.cloud.google.com" style="color: #00ffff;">Google Cloud Console</a></li>
+                            <li>Enable Maps JavaScript API</li>
+                            <li>Replace YOUR_API_KEY in this file</li>
+                        </ol>
+                        <p style="color: #666; margin-top: 20px; font-size: 12px;">The holographic wireframe globe is still available in the camera feed.</p>
+                    </div>
+                `;
+            }
+        }, 3000);
+    </script>
+</body>
+</html>

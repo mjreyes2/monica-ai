@@ -1,0 +1,63 @@
+{
+  "title": "Dialectical Behavior Therapy (DBT)",
+  "description": "Therapy combining CBT with mindfulness, developed for borderline personality disorder",
+  "key_concepts": [
+    "Dialectics",
+    "Mindfulness",
+    "Distress Tolerance",
+    "Emotion Regulation",
+    "Interpersonal Effectiveness"
+  ],
+  "skills": [
+    {
+      "module": "Mindfulness",
+      "skills": [
+        "Observe",
+        "Describe",
+        "Participate",
+        "Non-judgmental",
+        "One-mindfully",
+        "Effectively"
+      ]
+    },
+    {
+      "module": "Distress Tolerance",
+      "skills": [
+        "TIPP",
+        "ACCEPTS",
+        "Self-Soothe",
+        "IMPROVE",
+        "Pros and Cons",
+        "Radical Acceptance"
+      ]
+    },
+    {
+      "module": "Emotion Regulation",
+      "skills": [
+        "ABC PLEASE",
+        "Opposite Action",
+        "Check the Facts",
+        "Problem Solving"
+      ]
+    },
+    {
+      "module": "Interpersonal Effectiveness",
+      "skills": [
+        "DEAR MAN",
+        "GIVE",
+        "FAST"
+      ]
+    }
+  ],
+  "applications": [
+    "BPD",
+    "Self-harm",
+    "Suicidal ideation",
+    "Eating disorders",
+    "Substance abuse"
+  ],
+  "topic": "dbt",
+  "category": "therapy_counseling",
+  "domain": "counseling_modalities",
+  "last_updated": "2025-12-05T06:12:10.977062"
+}

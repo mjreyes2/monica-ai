@@ -1,0 +1,27 @@
+{
+  "num_documents": 5,
+  "indexed_paths": [
+    "D:\\Books PDF\\Addiction Treatment, Homework, Progress\\Sex Addicts on Tuesdays at 9pm.docx",
+    "D:\\Books PDF\\Child Treatment, Homework, and Progress\\ADHD Problem-Solving Exercise.docx",
+    "D:\\Books PDF\\Counseling Reading Essentials\\7976893-A-MATRIX-OF-HUMAN-DEVELOPMENT-THEORIES-Prepared-by-Samuel-B-Batara.docx",
+    "D:\\Books PDF\\Counseling Reading Essentials\\Traumainformation.docx",
+    "D:\\Books PDF\\Counseling Reading Essentials\\LEGO Social Skills Builders.docx"
+  ],
+  "file_types": [
+    ".rtf",
+    ".xml",
+    ".yml",
+    ".html",
+    ".pdf",
+    ".csv",
+    ".js",
+    ".yaml",
+    ".log",
+    ".json",
+    ".docx",
+    ".py",
+    ".md",
+    ".txt",
+    ".doc"
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "title": "Quantum Computing (2024)",
+  "description": "Current state of quantum computing",
+  "status": {
+    "leaders": [
+      "IBM",
+      "Google",
+      "IonQ",
+      "Rigetti",
+      "D-Wave"
+    ],
+    "qubits": "1000+ qubits achieved (IBM Condor)",
+    "applications": [
+      "Cryptography",
+      "Drug discovery",
+      "Optimization",
+      "Financial modeling"
+    ],
+    "challenges": [
+      "Error correction",
+      "Decoherence",
+      "Scalability"
+    ]
+  },
+  "topic": "quantum_computing_2024",
+  "category": "engineering",
+  "domain": "computer_science",
+  "last_updated": "2025-12-05T06:45:12.999782"
+}

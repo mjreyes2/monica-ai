@@ -1,0 +1,136 @@
+# MONICA AI - PROFESSIONAL SYSTEM REQUIREMENTS
+# Complete list of Python dependencies
+# Install all: pip install -r requirements.txt
+# Updated: December 2024
+
+# ============================================
+# CORE DEPENDENCIES
+# ============================================
+opencv-python>=4.8.0
+numpy>=1.24.0
+pandas>=2.0.0
+openpyxl>=3.1.0
+Pillow>=10.0.0
+requests>=2.31.0
+python-dotenv>=1.0.0
+pyyaml>=6.0.0
+tqdm>=4.65.0
+pynput>=1.7.6
+
+# ============================================
+# DEEP LEARNING / AI
+# ============================================
+# PyTorch with CUDA support (install first, before other packages):
+# pip install torch>=2.0.0 torchvision torchaudio --index-url https://download.pytorch.org/whl/cu124
+torch>=2.0.0
+torchvision>=0.15.0
+torchaudio>=2.0.0
+pytorch-lightning>=2.0.0  # Required for NeMo training
+ultralytics>=8.0.0  # YOLOv8 object detection
+timm>=0.9.0  # PyTorch image models
+onnx>=1.14.0
+onnxruntime>=1.15.0
+emotiefflib>=1.0.0  # Emotion recognition
+
+# ============================================
+# VOICE TRAINING & ASR
+# ============================================
+nemo_toolkit[asr]>=1.20.0  # NVIDIA NeMo for voice training
+openai-whisper>=20231117  # Whisper speech recognition
+parso>=0.8.3  # Advanced syntax healing for self-healing system
+
+# ============================================
+# RAG / EMBEDDINGS (MaxOneDrive RAG)
+# ============================================
+# CRITICAL VERSION PINS - DO NOT CHANGE WITHOUT TESTING:
+# transformers==4.44.0 is required because:
+#   - TTS 0.22.0 needs BeamSearchScorer (removed in 4.45+)
+#   - TTS streaming needs torch.isin() with int args (broken in 4.45+)
+#   - peft needs EncoderDecoderCache (added in 4.42.0)
+# numpy>=1.24,<2.0 is required because:
+#   - scipy 1.12+ needs numpy>=1.24
+#   - TTS/gruut/pyctcdecode need numpy<2.0
+# coqpit==0.0.16 is required because:
+#   - 0.0.17 has Python 3.10+ type hint bugs (patched in .venv)
+# NOTE: The following files in .venv are patched for compatibility:
+#   - coqpit/coqpit.py (is_union, _deserialize for Python 3.10+ union types)
+#   - TTS/tts/layers/xtts/stream_generator.py (tensor token IDs for transformers 4.44)
+transformers==4.44.0
+numpy>=1.24.0,<2.0.0
+scipy>=1.12.0
+coqpit==0.0.16
+peft>=0.18.0
+sentence-transformers>=5.1.0
+
+# ============================================
+# VOICE SYNTHESIS
+# ============================================
+elevenlabs>=0.2.0  # Premium voice synthesis
+edge-tts>=6.1.0  # Microsoft Edge TTS (free)
+gTTS>=2.5.0  # Google Text-to-Speech (free)
+pyttsx3>=2.90  # Offline TTS
+piper-tts>=2.0.0  # Piper TTS
+
+# ============================================
+# AUDIO PLAYBACK & PROCESSING
+# ============================================
+pygame>=2.5.0
+sounddevice>=0.4.6
+soundfile>=0.12.0
+
+# ============================================
+# SPEECH RECOGNITION & WAKE WORD
+# ============================================
+SpeechRecognition>=3.10.0
+PyAudio>=0.2.13
+pvporcupine>=3.0.0  # Wake word detection
+webrtcvad>=2.0.10  # Voice activity detection
+
+# ============================================
+# UI
+# ============================================
+customtkinter>=5.2.0
+
+# ============================================
+# VISUAL / AR OUTPUT
+# ============================================
+pyvirtualcam>=0.11.0  # OBS Virtual Camera
+SpoutGL>=0.1.0  # Spout for AR/hologram output
+spout-python>=0.0.5
+pyopengl>=3.1.6
+pyopengl-accelerate>=3.1.6
+
+# ============================================
+# AI MODEL APIS (Optional)
+# ============================================
+groq>=0.4.0
+anthropic>=0.7.0
+google-generativeai>=0.3.0
+ollama>=0.1.0
+
+# ============================================
+# SCIENTIFIC COMPUTING
+# ============================================
+scipy>=1.10.0
+scikit-learn>=1.3.0
+
+# ============================================
+# TESTING & QUALITY
+# ============================================
+pytest>=7.4.0
+hypothesis>=6.99.0
+
+# ============================================
+# INSTALLATION NOTES
+# ============================================
+# STEP 1: Install PyTorch with CUDA support first:
+#   pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu124
+#
+# STEP 2: Install all other requirements:
+#   pip install -r requirements.txt
+#
+# STEP 3: For voice training specifically:
+#   pip install nemo_toolkit[asr]
+#
+# For Talk-to-Edit image editing, the models are in Talk-to-Edit/download/pretrained_models/
+# OneDrive integration is automatic if OneDrive is installed

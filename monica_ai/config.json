@@ -1,0 +1,51 @@
+{
+    "audio": {
+        "sample_rate": 16000,
+        "channels": 1,
+        "chunk_size": 1024,
+        "format": "float32",
+        "input_device_index": null,
+        "input_device_name": "USB"
+    },
+    "video": {
+        "camera_index": 0,
+        "width": 1280,
+        "height": 720,
+        "fps": 30
+    },
+    "tts": {
+        "engine": "xtts",
+        "voice_model": "en_US-amy-medium",
+        "speed": 1.0,
+        "pitch": 1.0
+    },
+    "stt": {
+        "engine": "speechbrain",
+        "language": "en",
+        "energy_threshold": 0.01,
+        "pause_threshold": 2.0,
+        "phrase_time_limit": 30.0
+    },
+    "wake_word": {
+        "enabled": true,
+        "word": "monica initialize",
+        "sensitivity": 0.8835294117647059
+    },
+    "ui": {
+        "theme": "dark",
+        "font_family": "Segoe UI",
+        "font_size": 11,
+        "window_width": 1280,
+        "window_height": 800
+    },
+    "ai": {
+        "backend": "ollama",
+        "model": "llama3.2",
+        "temperature": 0.7,
+        "max_tokens": 2048
+    },
+    "spout": {
+        "enabled": false,
+        "name": "Monica AI"
+    }
+}

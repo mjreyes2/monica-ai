@@ -1,0 +1,29 @@
+{
+  "voice_user_001": {
+    "first_met": "2025-12-04T03:33:32.956547",
+    "interactions": 4,
+    "preferences": {},
+    "conversation_topics": [
+      "general"
+    ],
+    "notes": [
+      {
+        "note": "Discussed general",
+        "timestamp": "2025-12-04T03:33:32.956547"
+      },
+      {
+        "note": "Discussed general",
+        "timestamp": "2025-12-04T03:34:27.042363"
+      },
+      {
+        "note": "Discussed general",
+        "timestamp": "2025-12-04T03:55:36.818024"
+      },
+      {
+        "note": "Discussed general",
+        "timestamp": "2025-12-04T03:56:12.567189"
+      }
+    ],
+    "last_seen": "2025-12-04T03:56:12.567189"
+  }
+}

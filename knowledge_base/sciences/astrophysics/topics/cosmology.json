@@ -1,0 +1,39 @@
+{
+  "title": "Cosmology",
+  "description": "Study of the origin, evolution, and fate of the universe",
+  "key_concepts": [
+    "Big Bang Theory",
+    "Cosmic Microwave Background",
+    "Dark Matter",
+    "Dark Energy",
+    "Expansion of Universe",
+    "Hubble's Law",
+    "Cosmic Inflation"
+  ],
+  "timeline": [
+    {
+      "event": "Big Bang",
+      "time": "13.8 billion years ago"
+    },
+    {
+      "event": "First Stars",
+      "time": "~400 million years after Big Bang"
+    },
+    {
+      "event": "Galaxy Formation",
+      "time": "~1 billion years after Big Bang"
+    },
+    {
+      "event": "Solar System Formation",
+      "time": "4.6 billion years ago"
+    },
+    {
+      "event": "Earth Formation",
+      "time": "4.5 billion years ago"
+    }
+  ],
+  "topic": "cosmology",
+  "category": "sciences",
+  "domain": "astrophysics",
+  "last_updated": "2025-12-05T06:13:34.217162"
+}

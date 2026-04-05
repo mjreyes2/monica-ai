@@ -1,0 +1,34 @@
+{
+  "title": "Orthopedic Physical Therapy",
+  "description": "Treatment of musculoskeletal injuries and conditions",
+  "conditions": [
+    "Back Pain",
+    "Neck Pain",
+    "Shoulder Injuries",
+    "Knee Injuries",
+    "Hip Replacement Recovery",
+    "Fracture Rehabilitation",
+    "Arthritis",
+    "Sports Injuries",
+    "Post-surgical Rehabilitation"
+  ],
+  "techniques": [
+    "Manual Therapy",
+    "Therapeutic Exercise",
+    "Joint Mobilization",
+    "Soft Tissue Mobilization",
+    "Stretching",
+    "Strengthening",
+    "Modalities (Heat, Ice, Ultrasound, TENS)"
+  ],
+  "assessments": [
+    "Range of Motion",
+    "Strength Testing",
+    "Gait Analysis",
+    "Posture Assessment"
+  ],
+  "topic": "orthopedic_pt",
+  "category": "therapy_counseling",
+  "domain": "physical_therapy",
+  "last_updated": "2025-12-05T06:13:34.221743"
+}

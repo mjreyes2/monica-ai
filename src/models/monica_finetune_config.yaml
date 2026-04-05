@@ -1,0 +1,282 @@
+# ################################
+
+# Model: wav2vec2 + DNN + CTC for Monica Voice Training
+
+# Based on SpeechBrain LibriSpeech recipe
+
+# Adapted for small dataset fine-tuning
+
+# ################################
+
+
+
+# Seed needs to be set at top of yaml, before objects with parameters are made
+
+seed: 1986
+
+__set_seed: !apply:speechbrain.utils.seed_everything [!ref <seed>]
+
+output_folder: !ref models/monica_finetuned/<seed>
+
+output_wer_folder: !ref <output_folder>/
+
+save_folder: !ref <output_folder>/save
+
+train_log: !ref <output_folder>/train_log.txt
+
+
+
+# URL for pretrained wav2vec2 model
+
+wav2vec2_hub: facebook/wav2vec2-large-960h-lv60-self
+
+wav2vec2_folder: !ref <save_folder>/wav2vec2_checkpoint
+
+
+
+# Data files - Point to Monica's recordings
+
+data_folder: C:/Users/mxz/monica_project/voice_training/recordings/MJP
+
+train_csv: C:/Users/mxz/monica_project/voice_training/recordings/MJP/train.csv
+
+valid_csv: C:/Users/mxz/monica_project/voice_training/recordings/MJP/val.csv
+
+test_csv:
+
+   - C:/Users/mxz/monica_project/voice_training/recordings/MJP/val.csv
+
+skip_prep: True  # We already have our CSVs ready
+
+ckpt_interval_minutes: 10  # Save checkpoint every 10 min
+
+
+
+####################### Training Parameters ####################################
+
+
+
+# Increased epochs for small dataset
+
+number_of_epochs: 50
+
+lr: 0.5  # Learning rate for classifier
+
+lr_wav2vec: 0.00005  # Lower learning rate for fine-tuning wav2vec
+
+sorting: ascending
+
+precision: fp32  # fp32 for compatibility
+
+sample_rate: 16000
+
+
+
+# Small batch size for small dataset and 8GB VRAM
+
+batch_size: 4
+
+test_batch_size: 4
+
+
+
+# Dataloader options
+
+train_dataloader_opts:
+
+   batch_size: !ref <batch_size>
+
+   num_workers: 0  # Windows compatibility
+
+
+
+valid_dataloader_opts:
+
+   batch_size: !ref <batch_size>
+
+   num_workers: 0
+
+
+
+test_dataloader_opts:
+
+   batch_size: !ref <test_batch_size>
+
+   num_workers: 0
+
+
+
+####################### Model Parameters #######################################
+
+activation: !name:torch.nn.LeakyReLU
+
+dnn_layers: 2
+
+dnn_neurons: 1024
+
+freeze_wav2vec: False  # Unfreeze for fine-tuning
+
+
+
+# Outputs
+
+output_neurons: 29  # 26 letters + space + blank + unk
+
+blank_index: 0
+
+
+
+#
+
+# Functions and classes
+
+#
+
+
+
+label_encoder: !new:speechbrain.dataio.encoder.CTCTextEncoder
+
+
+
+epoch_counter: !new:speechbrain.utils.epoch_loop.EpochCounter
+
+   limit: !ref <number_of_epochs>
+
+
+
+enc: !new:speechbrain.lobes.models.VanillaNN.VanillaNN
+
+   input_shape: [null, null, 1024]
+
+   activation: !ref <activation>
+
+   dnn_blocks: !ref <dnn_layers>
+
+   dnn_neurons: !ref <dnn_neurons>
+
+
+
+wav2vec2: !new:speechbrain.integrations.huggingface.wav2vec2.Wav2Vec2
+
+   source: !ref <wav2vec2_hub>
+
+   output_norm: True
+
+   freeze: !ref <freeze_wav2vec>
+
+   save_path: !ref <wav2vec2_folder>
+
+
+
+ctc_lin: !new:speechbrain.nnet.linear.Linear
+
+   input_size: !ref <dnn_neurons>
+
+   n_neurons: !ref <output_neurons>
+
+
+
+log_softmax: !new:speechbrain.nnet.activations.Softmax
+
+   apply_log: True
+
+
+
+ctc_cost: !name:speechbrain.nnet.losses.ctc_loss
+
+   blank_index: !ref <blank_index>
+
+
+
+modules:
+
+   wav2vec2: !ref <wav2vec2>
+
+   enc: !ref <enc>
+
+   ctc_lin: !ref <ctc_lin>
+
+
+
+model: !new:torch.nn.ModuleList
+
+   - [!ref <enc>, !ref <ctc_lin>]
+
+
+
+# Optimizer
+
+adam_opt_class: !name:torch.optim.Adam
+
+   lr: !ref <lr>
+
+
+
+wav2vec_opt_class: !name:torch.optim.Adam
+
+   lr: !ref <lr_wav2vec>
+
+
+
+# Learning rate annealing
+
+lr_annealing: !new:speechbrain.nnet.schedulers.NewBobScheduler
+
+   initial_value: !ref <lr>
+
+   improvement_threshold: 0.0025
+
+   annealing_factor: 0.8
+
+   patient: 0
+
+
+
+lr_annealing_wav2vec: !new:speechbrain.nnet.schedulers.NewBobScheduler
+
+   initial_value: !ref <lr_wav2vec>
+
+   improvement_threshold: 0.0025
+
+   annealing_factor: 0.9
+
+
+
+# Checkpointer
+
+checkpointer: !new:speechbrain.utils.checkpoints.Checkpointer
+
+   checkpoints_dir: !ref <save_folder>
+
+   recoverables:
+
+      wav2vec2: !ref <wav2vec2>
+
+      model: !ref <model>
+
+      lr_annealing: !ref <lr_annealing>
+
+      lr_annealing_wav2vec: !ref <lr_annealing_wav2vec>
+
+      counter: !ref <epoch_counter>
+
+
+
+# Greedy search for validation
+
+greedy_searcher: !new:speechbrain.decoders.ctc.CTCGreedyDecode
+
+   blank_id: !ref <blank_index>
+
+
+
+# Error rate
+
+error_rate_computer: !name:speechbrain.utils.metric_stats.ErrorRateStats
+
+
+
+cer_computer: !name:speechbrain.utils.metric_stats.ErrorRateStats
+
+   split_tokens: True
+

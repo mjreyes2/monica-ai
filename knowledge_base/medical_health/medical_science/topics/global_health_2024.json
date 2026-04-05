@@ -1,0 +1,30 @@
+{
+  "title": "Global Health Priorities (2024)",
+  "description": "Current global health challenges and responses",
+  "priorities": [
+    {
+      "issue": "Antimicrobial Resistance",
+      "status": "Critical threat, new antibiotics needed"
+    },
+    {
+      "issue": "Mental Health Crisis",
+      "status": "1 in 4 people affected globally"
+    },
+    {
+      "issue": "Climate-Health Nexus",
+      "status": "Heat-related deaths increasing"
+    },
+    {
+      "issue": "Long COVID",
+      "status": "Affecting 10-30% of COVID survivors"
+    },
+    {
+      "issue": "Aging Population",
+      "status": "Dementia cases expected to triple by 2050"
+    }
+  ],
+  "topic": "global_health_2024",
+  "category": "medical_health",
+  "domain": "medical_science",
+  "last_updated": "2025-12-05T06:45:12.998269"
+}

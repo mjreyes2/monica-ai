@@ -1,0 +1,18 @@
+START
+librosa OK: 0.11.0 in 0.0s
+TTS FAIL: cannot import name 'isin_mps_friendly' from 'transformers.pytorch_utils' (C:\Monica\new\lib\site-packages\transformers\pytorch_utils.py)
+Traceback (most recent call last):
+  File "C:\Monica\tts_import_test.py", line 14, in <module>
+    from TTS.config.shared_configs import BaseDatasetConfig
+  File "C:\Monica\new\lib\site-packages\TTS\__init__.py", line 35, in <module>
+    from TTS.tts.configs.xtts_config import XttsConfig
+  File "C:\Monica\new\lib\site-packages\TTS\tts\configs\xtts_config.py", line 4, in <module>
+    from TTS.tts.models.xtts import XttsArgs, XttsAudioConfig
+  File "C:\Monica\new\lib\site-packages\TTS\tts\models\xtts.py", line 15, in <module>
+    from TTS.tts.layers.xtts.gpt import GPT
+  File "C:\Monica\new\lib\site-packages\TTS\tts\layers\xtts\gpt.py", line 10, in <module>
+    from TTS.tts.layers.tortoise.autoregressive import (
+  File "C:\Monica\new\lib\site-packages\TTS\tts\layers\tortoise\autoregressive.py", line 12, in <module>
+    from transformers.pytorch_utils import isin_mps_friendly as isin
+ImportError: cannot import name 'isin_mps_friendly' from 'transformers.pytorch_utils' (C:\Monica\new\lib\site-packages\transformers\pytorch_utils.py)
+

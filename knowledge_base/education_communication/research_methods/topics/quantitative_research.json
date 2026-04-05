@@ -1,0 +1,44 @@
+{
+  "title": "Quantitative Research",
+  "description": "Research using numerical data and statistical analysis",
+  "designs": [
+    {
+      "name": "Experimental",
+      "description": "Manipulation of variables with control group"
+    },
+    {
+      "name": "Quasi-experimental",
+      "description": "No random assignment"
+    },
+    {
+      "name": "Correlational",
+      "description": "Examining relationships between variables"
+    },
+    {
+      "name": "Survey",
+      "description": "Collecting data through questionnaires"
+    },
+    {
+      "name": "Longitudinal",
+      "description": "Data collected over time"
+    }
+  ],
+  "sampling_methods": [
+    "Random",
+    "Stratified",
+    "Cluster",
+    "Convenience",
+    "Purposive"
+  ],
+  "analysis": [
+    "Descriptive Statistics",
+    "t-tests",
+    "ANOVA",
+    "Regression",
+    "Factor Analysis"
+  ],
+  "topic": "quantitative_research",
+  "category": "education_communication",
+  "domain": "research_methods",
+  "last_updated": "2025-12-05T06:13:34.226731"
+}

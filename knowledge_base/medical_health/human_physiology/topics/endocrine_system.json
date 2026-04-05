@@ -1,0 +1,56 @@
+{
+  "title": "Endocrine System",
+  "description": "System of glands that produce hormones",
+  "glands": [
+    {
+      "name": "Pituitary",
+      "hormones": [
+        "Growth Hormone",
+        "TSH",
+        "ACTH",
+        "FSH",
+        "LH"
+      ],
+      "function": "Master gland"
+    },
+    {
+      "name": "Thyroid",
+      "hormones": [
+        "T3",
+        "T4",
+        "Calcitonin"
+      ],
+      "function": "Metabolism regulation"
+    },
+    {
+      "name": "Adrenal",
+      "hormones": [
+        "Cortisol",
+        "Adrenaline",
+        "Aldosterone"
+      ],
+      "function": "Stress response"
+    },
+    {
+      "name": "Pancreas",
+      "hormones": [
+        "Insulin",
+        "Glucagon"
+      ],
+      "function": "Blood sugar regulation"
+    },
+    {
+      "name": "Gonads",
+      "hormones": [
+        "Testosterone",
+        "Estrogen",
+        "Progesterone"
+      ],
+      "function": "Reproduction"
+    }
+  ],
+  "topic": "endocrine_system",
+  "category": "medical_health",
+  "domain": "human_physiology",
+  "last_updated": "2025-12-05T06:13:34.220217"
+}

@@ -1,0 +1,24 @@
+{
+  "title": "Sexual Health",
+  "description": "Physical, emotional, mental, and social well-being related to sexuality",
+  "components": [
+    "Physical health and safety",
+    "Emotional well-being",
+    "Healthy relationships",
+    "Consent and communication",
+    "STI prevention and testing",
+    "Contraception options"
+  ],
+  "education_topics": [
+    "Anatomy and physiology",
+    "Puberty and development",
+    "Consent and boundaries",
+    "Healthy relationships",
+    "Communication skills",
+    "Risk reduction"
+  ],
+  "topic": "sexual_health",
+  "category": "therapy_counseling",
+  "domain": "human_sexuality",
+  "last_updated": "2025-12-05T06:13:34.229831"
+}

@@ -1,0 +1,34 @@
+"""Test loading the custom trained Monica model"""
+import sys
+import os
+_test_dir = os.path.dirname(os.path.abspath(__file__))
+_project_root = os.path.dirname(_test_dir)
+sys.path.insert(0, os.path.join(_project_root, 'src'))
+sys.path.insert(0, _project_root)
+
+try:
+    from audio.speechbrain_final import FinalSpeechBrainRecognizer
+except ImportError:
+    # Fallback: try from monica_ai/src location
+    sys.path.insert(0, os.path.join(_project_root, 'monica_ai', 'src'))
+    from audio.speechbrain_final import FinalSpeechBrainRecognizer
+import time
+
+print('Creating recognizer...')
+r = FinalSpeechBrainRecognizer()
+
+print('Waiting 120s for model to load...')
+time.sleep(120)
+
+print('\n=== FINAL RESULTS ===')
+print(f'Status: {r.get_loading_status()}')
+print(f'Is loaded: {r.is_loaded}')
+if hasattr(r, 'last_load_error') and r.last_load_error:
+    print(f'Error: {r.last_load_error}')
+else:
+    print('No errors!')
+
+if r.is_loaded:
+    print('\n SUCCESS! Custom model loaded!')
+else:
+    print('\n FAILED to load model')

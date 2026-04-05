@@ -1,0 +1,18 @@
+{
+  "primary_user": {
+    "user_id": "primary_user",
+    "name": "Marvin",
+    "nickname": "MJP",
+    "voice_signature": "",
+    "first_seen": "2025-12-06T03:44:56.954608",
+    "last_seen": "2025-12-07T11:25:00.000000",
+    "interaction_count": 1169,
+    "preferences": {},
+    "facts": ["Date of birth: April 20th, 1985"],
+    "topics_discussed": [],
+    "common_emotions": {},
+    "typical_mood": "",
+    "body_language_notes": [],
+    "appearance_notes": []
+  }
+}

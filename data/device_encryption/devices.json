@@ -1,0 +1,13 @@
+{
+  "devices": {
+    "a9e457ac7279484d": {
+      "device_name": "Main PC",
+      "is_main": true,
+      "registered": "2025-12-04T03:32:42.835351",
+      "encryption_enabled": false,
+      "last_sync": null,
+      "encrypted_files": 0
+    }
+  },
+  "last_updated": "2025-12-04T03:32:42.835351"
+}

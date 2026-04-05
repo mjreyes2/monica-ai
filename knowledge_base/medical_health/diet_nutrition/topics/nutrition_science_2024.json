@@ -1,0 +1,56 @@
+{
+  "title": "Nutrition Science (2024)",
+  "description": "Latest nutritional research and recommendations",
+  "key_findings": [
+    {
+      "topic": "Gut Microbiome",
+      "finding": "Diverse gut bacteria linked to better health outcomes",
+      "recommendations": [
+        "Fiber-rich foods",
+        "Fermented foods",
+        "Limit processed foods"
+      ]
+    },
+    {
+      "topic": "Intermittent Fasting",
+      "finding": "Benefits for metabolic health, weight management",
+      "methods": [
+        "16:8",
+        "5:2",
+        "Time-restricted eating"
+      ]
+    },
+    {
+      "topic": "Ultra-Processed Foods",
+      "finding": "Linked to obesity, heart disease, cancer",
+      "recommendation": "Minimize consumption"
+    },
+    {
+      "topic": "Personalized Nutrition",
+      "finding": "Individual responses to foods vary significantly",
+      "approach": "DNA-based and microbiome-based recommendations"
+    }
+  ],
+  "dietary_patterns": [
+    {
+      "name": "Mediterranean Diet",
+      "benefits": "Heart health, longevity, cognitive function"
+    },
+    {
+      "name": "DASH Diet",
+      "benefits": "Blood pressure, heart health"
+    },
+    {
+      "name": "Plant-Based",
+      "benefits": "Environmental, weight management, chronic disease prevention"
+    },
+    {
+      "name": "MIND Diet",
+      "benefits": "Cognitive health, dementia prevention"
+    }
+  ],
+  "topic": "nutrition_science_2024",
+  "category": "medical_health",
+  "domain": "diet_nutrition",
+  "last_updated": "2025-12-05T06:45:13.005767"
+}

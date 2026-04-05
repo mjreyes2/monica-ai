@@ -1,0 +1,454 @@
+"""
+Camera Manager for Monica AI.
+Handles camera capture, processing, and Spout output for OBS integration.
+"""
+import cv2
+import numpy as np
+import threading
+import time
+from typing import Optional, Callable, List, Dict, Any, Tuple
+from dataclasses import dataclass
+
+# Try to import Spout
+try:
+    import SpoutGL
+    SPOUT_AVAILABLE = True
+except ImportError:
+    SPOUT_AVAILABLE = False
+    print("SpoutGL not available. OBS Spout output will be disabled.")
+
+
+@dataclass
+class CameraInfo:
+    """Information about a camera device."""
+    index: int
+    name: str
+    width: int
+    height: int
+    fps: float
+    backend: str
+
+
+class CameraManager:
+    """
+    Manages camera capture and video processing for Monica AI.
+    
+    Features:
+    - Multiple camera support
+    - Resolution and FPS control
+    - Frame callbacks for processing
+    - Spout output for OBS integration
+    - Thread-safe frame access
+    """
+    
+    def __init__(self, config):
+        """
+        Initialize the camera manager.
+        
+        Args:
+            config: Application configuration object
+        """
+        self.config = config
+        
+        # Camera state
+        self.camera = None
+        self.camera_index = config.CAMERA_INDEX
+        self.width = config.CAMERA_WIDTH
+        self.height = config.CAMERA_HEIGHT
+        self.target_fps = config.TARGET_FPS
+        
+        # Frame storage
+        self.current_frame = None
+        self.frame_lock = threading.Lock()
+        self.frame_count = 0
+        self.actual_fps = 0.0
+        
+        # Capture thread
+        self.is_running = False
+        self.stop_event = threading.Event()
+        self.capture_thread = None
+        
+        # Callbacks
+        self.frame_callbacks: List[Callable[[np.ndarray], None]] = []
+        
+        # Spout output
+        self.spout_enabled = config.SPOUT_ENABLED and SPOUT_AVAILABLE
+        self.spout_sender = None
+        self.spout_name = config.SPOUT_NAME
+        
+        if self.spout_enabled:
+            self._init_spout()
+    
+    def _init_spout(self):
+        """Initialize Spout sender for OBS integration."""
+        if not SPOUT_AVAILABLE:
+            return
+        
+        try:
+            self.spout_sender = SpoutGL.SpoutSender()
+            self.spout_sender.setSenderName(self.spout_name)
+            print(f"Spout sender initialized: {self.spout_name}")
+        except Exception as e:
+            print(f"Error initializing Spout: {e}")
+            self.spout_enabled = False
+    
+    # ==================== Camera Control ====================
+    
+    def start(self) -> bool:
+        """Start camera capture in background to prevent UI freeze."""
+        if self.is_running:
+            return True
+        
+        # Start camera initialization in a separate thread to prevent UI freeze
+        def _start_camera_async():
+            # Open camera
+            if not self._open_camera():
+                return
+            
+            # Quick warm-up: just grab a few frames without delay
+            try:
+                for _ in range(5):  # Reduced warm-up frames
+                    if not self.camera.grab():
+                        break
+                    _ = self.camera.retrieve()
+                print("[CAMERA] Warm-up complete")
+            except Exception as e:
+                print(f"[CAMERA] Warm-up warning: {e}")
+            
+            # Start capture thread
+            self.is_running = True
+            self.stop_event.clear()
+            
+            self.capture_thread = threading.Thread(
+                target=self._capture_loop,
+                daemon=True
+            )
+            self.capture_thread.start()
+            
+            print(f"[CAMERA] Started: {self.width}x{self.height} @ {self.target_fps}fps")
+        
+        # Run camera startup in background thread
+        threading.Thread(target=_start_camera_async, daemon=True).start()
+        return True
+    
+    def stop(self):
+        """Stop camera capture."""
+        if not self.is_running:
+            return
+        
+        self.is_running = False
+        self.stop_event.set()
+        
+        # Wait for thread to finish
+        if self.capture_thread and self.capture_thread.is_alive():
+            self.capture_thread.join(timeout=2.0)
+        
+        # Release camera
+        if self.camera:
+            self.camera.release()
+            self.camera = None
+        
+        # Release Spout
+        if self.spout_sender:
+            self.spout_sender.releaseSender()
+            self.spout_sender = None
+        
+        print("Camera stopped")
+    
+    def _open_camera(self) -> bool:
+        """Open the camera device with optimized settings."""
+        try:
+            print(f"[CAMERA] Opening camera {self.camera_index}...")
+            start_time = time.time()
+            
+            # Use DirectShow on Windows - MUCH faster than MSMF
+            # CAP_DSHOW avoids the slow MSMF initialization (can take minutes!)
+            self.camera = cv2.VideoCapture(self.camera_index, cv2.CAP_DSHOW)
+            
+            if not self.camera.isOpened():
+                print("[CAMERA] DirectShow failed, trying default backend...")
+                self.camera = cv2.VideoCapture(self.camera_index)
+            
+            if not self.camera.isOpened():
+                print(f"[CAMERA] Failed to open camera {self.camera_index}")
+                return False
+            
+            print(f"[CAMERA] Camera opened in {time.time() - start_time:.2f}s")
+            
+            # Set camera properties BEFORE reading frames for better performance
+            # Set buffer size FIRST to minimize latency
+            self.camera.set(cv2.CAP_PROP_BUFFERSIZE, 1)
+            
+            # Use MJPG codec for faster frame transfer
+            self.camera.set(cv2.CAP_PROP_FOURCC, cv2.VideoWriter_fourcc(*'MJPG'))
+            
+            # Set resolution and FPS
+            self.camera.set(cv2.CAP_PROP_FRAME_WIDTH, self.width)
+            self.camera.set(cv2.CAP_PROP_FRAME_HEIGHT, self.height)
+            self.camera.set(cv2.CAP_PROP_FPS, self.target_fps)
+            
+            # Get actual settings
+            actual_width = int(self.camera.get(cv2.CAP_PROP_FRAME_WIDTH))
+            actual_height = int(self.camera.get(cv2.CAP_PROP_FRAME_HEIGHT))
+            actual_fps = self.camera.get(cv2.CAP_PROP_FPS)
+            
+            # Update our stored dimensions to match actual
+            self.width = actual_width
+            self.height = actual_height
+            
+            print(f"Camera opened: {actual_width}x{actual_height} @ {actual_fps}fps")
+            
+            return True
+            
+        except Exception as e:
+            print(f"Error opening camera: {e}")
+            return False
+    
+    def _capture_loop(self):
+        """Main capture loop."""
+        last_time = time.time()
+        frame_times = []
+        
+        while not self.stop_event.is_set():
+            try:
+                # Capture frame (grab + retrieve for better performance)
+                grabbed = False
+                try:
+                    grabbed = self.camera.grab()
+                except Exception:
+                    time.sleep(0.05)
+                    continue
+                    
+                if not grabbed:
+                    time.sleep(0.01)
+                    continue
+                
+                ret, frame = None, None
+                try:
+                    ret, frame = self.camera.retrieve()
+                except Exception:
+                    time.sleep(0.05)
+                    continue
+                
+                if not ret or frame is None:
+                    time.sleep(0.01)
+                    continue
+                
+                # Convert BGR to RGB - wrap in try/except to handle GIL issues
+                try:
+                    frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+                except Exception:
+                    time.sleep(0.01)
+                    continue
+                
+                # Store frame
+                with self.frame_lock:
+                    self.current_frame = frame_rgb
+                    self.frame_count += 1
+                
+                # Calculate FPS
+                current_time = time.time()
+                frame_times.append(current_time - last_time)
+                last_time = current_time
+                
+                # Keep only last 30 frame times
+                if len(frame_times) > 30:
+                    frame_times.pop(0)
+                
+                if frame_times:
+                    self.actual_fps = 1.0 / (sum(frame_times) / len(frame_times))
+                
+                # Send to Spout
+                if self.spout_enabled and self.spout_sender:
+                    self._send_to_spout(frame)
+                
+                # Notify callbacks - OPTIMIZED: Process every frame for no lag
+                if self.frame_callbacks:
+                    for callback in self.frame_callbacks:
+                        try:
+                            callback(frame_rgb)
+                        except Exception as e:
+                            print(f"Error in frame callback: {e}")
+                
+                # Don't sleep - capture as fast as camera allows
+                
+            except Exception as e:
+                print(f"Error in capture loop: {e}")
+                time.sleep(0.1)
+    
+    def _send_to_spout(self, frame: np.ndarray):
+        """Send frame to Spout for OBS."""
+        try:
+            # Spout expects BGRA format
+            if frame.shape[2] == 3:
+                frame_bgra = cv2.cvtColor(frame, cv2.COLOR_BGR2BGRA)
+            else:
+                frame_bgra = frame
+            
+            # Send frame
+            self.spout_sender.sendImage(
+                frame_bgra,
+                frame_bgra.shape[1],
+                frame_bgra.shape[0],
+                SpoutGL.GL_BGRA,
+                False
+            )
+            
+        except Exception as e:
+            print(f"Spout send error: {e}")
+    
+    # ==================== Frame Access ====================
+    
+    def get_frame(self) -> Optional[np.ndarray]:
+        """Get the current camera frame (RGB format)."""
+        with self.frame_lock:
+            if self.current_frame is not None:
+                return self.current_frame.copy()
+            return None
+    
+    def get_frame_bgr(self) -> Optional[np.ndarray]:
+        """Get the current camera frame in BGR format."""
+        frame = self.get_frame()
+        if frame is not None:
+            return cv2.cvtColor(frame, cv2.COLOR_RGB2BGR)
+        return None
+    
+    def get_fps(self) -> float:
+        """Get actual capture FPS."""
+        return self.actual_fps
+    
+    def get_frame_count(self) -> int:
+        """Get total frames captured."""
+        return self.frame_count
+    
+    # ==================== Camera Settings ====================
+    
+    def set_camera(self, camera_index: int) -> bool:
+        """Change the camera device."""
+        was_running = self.is_running
+        
+        if was_running:
+            self.stop()
+        
+        self.camera_index = camera_index
+        
+        if was_running:
+            return self.start()
+        
+        return True
+    
+    def set_resolution(self, width: int, height: int) -> bool:
+        """Set camera resolution."""
+        was_running = self.is_running
+        
+        if was_running:
+            self.stop()
+        
+        self.width = width
+        self.height = height
+        
+        if was_running:
+            return self.start()
+        
+        return True
+    
+    def set_fps(self, fps: int):
+        """Set target FPS."""
+        self.target_fps = fps
+        
+        if self.camera:
+            self.camera.set(cv2.CAP_PROP_FPS, fps)
+    
+    # ==================== Device Enumeration ====================
+    
+    def list_cameras(self) -> List[CameraInfo]:
+        """List available camera devices."""
+        cameras = []
+        
+        # Known camera names (Windows device names)
+        # We'll try to get the actual name if possible
+        
+        # Check multiple indices
+        for i in range(10):
+            cap = cv2.VideoCapture(i, cv2.CAP_DSHOW)
+            
+            if cap.isOpened():
+                # Try to set HD resolution to see if camera supports it
+                cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1920)
+                cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 1080)
+                
+                width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
+                height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+                fps = cap.get(cv2.CAP_PROP_FPS)
+                
+                # Determine camera type based on capabilities
+                if width >= 1920:
+                    name = f"Camera {i} (HD 1080p)"
+                elif width >= 1280:
+                    name = f"Camera {i} (HD 720p)"
+                else:
+                    name = f"Camera {i} (SD {width}x{height})"
+                
+                cameras.append(CameraInfo(
+                    index=i,
+                    name=name,
+                    width=width,
+                    height=height,
+                    fps=fps,
+                    backend="DirectShow"
+                ))
+                
+                cap.release()
+        
+        return cameras
+    
+    def get_supported_resolutions(self) -> List[Tuple[int, int]]:
+        """Get list of common supported resolutions."""
+        return [
+            (640, 480),
+            (800, 600),
+            (1280, 720),
+            (1920, 1080),
+            (2560, 1440),
+            (3840, 2160)
+        ]
+    
+    # ==================== Spout Control ====================
+    
+    def enable_spout(self, name: str = None) -> bool:
+        """Enable Spout output for OBS."""
+        if not SPOUT_AVAILABLE:
+            print("Spout not available")
+            return False
+        
+        if name:
+            self.spout_name = name
+        
+        self._init_spout()
+        self.spout_enabled = self.spout_sender is not None
+        
+        return self.spout_enabled
+    
+    def disable_spout(self):
+        """Disable Spout output."""
+        if self.spout_sender:
+            self.spout_sender.releaseSender()
+            self.spout_sender = None
+        
+        self.spout_enabled = False
+    
+    def is_spout_enabled(self) -> bool:
+        """Check if Spout is enabled."""
+        return self.spout_enabled
+    
+    # ==================== Callbacks ====================
+    
+    def register_callback(self, callback: Callable[[np.ndarray], None]):
+        """Register callback for new frames."""
+        if callback not in self.frame_callbacks:
+            self.frame_callbacks.append(callback)
+    
+    def unregister_callback(self, callback: Callable[[np.ndarray], None]):
+        """Unregister frame callback."""
+        if callback in self.frame_callbacks:
+            self.frame_callbacks.remove(callback)

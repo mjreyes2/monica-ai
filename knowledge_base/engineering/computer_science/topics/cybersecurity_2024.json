@@ -1,0 +1,22 @@
+{
+  "title": "Cybersecurity Trends (2024)",
+  "description": "Current cybersecurity landscape",
+  "threats": [
+    "AI-powered attacks",
+    "Ransomware-as-a-Service",
+    "Supply chain attacks",
+    "Deepfake social engineering",
+    "IoT vulnerabilities"
+  ],
+  "defenses": [
+    "Zero Trust Architecture",
+    "AI-powered threat detection",
+    "Passwordless authentication",
+    "Extended Detection and Response (XDR)",
+    "Security Orchestration (SOAR)"
+  ],
+  "topic": "cybersecurity_2024",
+  "category": "engineering",
+  "domain": "computer_science",
+  "last_updated": "2025-12-05T06:45:13.001320"
+}

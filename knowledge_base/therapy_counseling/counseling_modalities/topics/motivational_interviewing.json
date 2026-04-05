@@ -1,0 +1,44 @@
+{
+  "title": "Motivational Interviewing (MI)",
+  "description": "Client-centered approach to enhance motivation for change",
+  "spirit": [
+    "Partnership",
+    "Acceptance",
+    "Compassion",
+    "Evocation"
+  ],
+  "core_skills": [
+    {
+      "skill": "Open Questions",
+      "description": "Questions that encourage elaboration"
+    },
+    {
+      "skill": "Affirmations",
+      "description": "Statements recognizing client strengths"
+    },
+    {
+      "skill": "Reflections",
+      "description": "Mirroring client statements to deepen understanding"
+    },
+    {
+      "skill": "Summaries",
+      "description": "Collecting and linking client statements"
+    }
+  ],
+  "processes": [
+    "Engaging",
+    "Focusing",
+    "Evoking",
+    "Planning"
+  ],
+  "applications": [
+    "Addiction",
+    "Health behavior change",
+    "Medication adherence",
+    "Diet/exercise"
+  ],
+  "topic": "motivational_interviewing",
+  "category": "therapy_counseling",
+  "domain": "counseling_modalities",
+  "last_updated": "2025-12-05T06:12:10.978173"
+}

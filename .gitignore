@@ -1,0 +1,184 @@
+# Environment variables (API keys)
+.env
+.env.local
+.env.*.local
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments (exclude completely from Git)
+venv/
+ENV/
+env/
+.venv/
+monica_310_env/
+monica_311_env/
+monica_fresh_env/
+nemo_train_clean/
+nemo_train_env/
+new/
+mkenv/
+
+# HuggingFace model caches (large binary blobs - downloaded on demand)
+**/hf_cache/
+**/.cache/huggingface/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+logs/
+
+# Smoke test and debug output files
+smoke_out.txt
+smoke_err.txt
+tts_import_log.txt
+xtts_stdout.txt
+xtts_stderr.txt
+tts_test*.py
+tts_test*.txt
+commit_out.txt
+test_xtts_import.py
+
+# Temp files
+*.tmp
+*.temp
+temp/
+
+# Models (large files - backed up separately via OneDrive)
+*.onnx
+*.pb
+*.h5
+*.tflite
+*.pth
+*.pt
+*.ckpt
+models/monica_finetuned/*/save/
+models/monica_finetuned/*/results/
+
+# SpeechBrain training outputs (large)
+models/monica_finetuned/*/train_log.txt
+models/monica_finetuned/*/dataio_prepare.pkl
+
+# Audio recordings
+recordings/
+*.wav
+*.mp3
+
+# Screenshots
+screenshots/
+
+# Manim video outputs (large - can regenerate)
+monica_ai/ar_teaching/visualizations/media/
+*.mp4
+*.mov
+*.avi
+
+# PyVista/VTK cache
+*.vtu
+*.vtp
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Windows reserved filenames
+nul
+NUL
+CON
+PRN
+AUX
+com[1-9]
+lpt[1-9]
+
+# Model checkpoints and large binary files
+monica_ai/model_checkpoints/
+monica_ai/models/vosk/
+data/model_checkpoints/
+data/knowledge_index/
+data/english_*.bin
+models/english_lm.bin
+*.safetensors
+models/wav2vec2*/
+models/monica_wav2vec2*/
+models/monica_finetuned/
+models/monica_personal*/
+models/wav2vec2_*/
+models/wav2vec2-*/
+monica_ai/models/
+
+# Installer/binary executables
+archive/*.exe
+*.msi
+
+# Embedded git repos (not submodules)
+CSS_FOG_ANIMATION/
+clouds-animation-code/
+src/ui/clouds-animation-code/
+data/kenlm/
+
+# Git submodules (exclude)
+speechbrain_repo/
+
+# Temporary review files
+temp_review/
+
+# Large data directories (stored on D:\Monica_Datasets, not git)
+data/datasets/
+data/Monica_Knowledge_Base/
+data/training/
+data/memory/
+backups/
+monica_memory_advanced/
+
+# Debug/temp test files
+tts_import_log.txt
+tts_test*.py
+tts_test*.txt
+test_xtts_import.py
+xtts_stdout.txt
+xtts_stderr.txt
+test_out.txt
+test_err.txt
+git_status*.txt
+git_log.txt
+path_check.txt
+kb_check.txt
+crash_log.txt
+import_test.txt
+
+# Database files
+*.db
+
+# Test artifacts
+pytest_*.txt
+_test_*.txt
+
+# Misc junk
+_ul
+_path_refs.txt
+=0.8.3

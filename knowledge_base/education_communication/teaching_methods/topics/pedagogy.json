@@ -1,0 +1,38 @@
+{
+  "title": "Pedagogy",
+  "description": "Art and science of teaching children",
+  "theories": [
+    {
+      "name": "Behaviorism",
+      "key_figure": "Skinner",
+      "principle": "Learning through reinforcement"
+    },
+    {
+      "name": "Cognitivism",
+      "key_figure": "Piaget",
+      "principle": "Learning through mental processes"
+    },
+    {
+      "name": "Constructivism",
+      "key_figure": "Vygotsky",
+      "principle": "Learning through experience and social interaction"
+    },
+    {
+      "name": "Humanism",
+      "key_figure": "Rogers",
+      "principle": "Learning through self-actualization"
+    }
+  ],
+  "strategies": [
+    "Direct Instruction",
+    "Inquiry-Based Learning",
+    "Cooperative Learning",
+    "Differentiated Instruction",
+    "Scaffolding",
+    "Formative Assessment"
+  ],
+  "topic": "pedagogy",
+  "category": "education_communication",
+  "domain": "teaching_methods",
+  "last_updated": "2025-12-05T06:12:10.981211"
+}

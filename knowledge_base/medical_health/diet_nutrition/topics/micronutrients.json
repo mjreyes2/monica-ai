@@ -1,0 +1,67 @@
+{
+  "title": "Micronutrients",
+  "description": "Vitamins and minerals needed in small amounts",
+  "vitamins": [
+    {
+      "name": "Vitamin A",
+      "function": "Vision, immune function",
+      "sources": "Carrots, sweet potato, liver"
+    },
+    {
+      "name": "Vitamin C",
+      "function": "Immune function, collagen",
+      "sources": "Citrus, peppers, broccoli"
+    },
+    {
+      "name": "Vitamin D",
+      "function": "Bone health, immune function",
+      "sources": "Sunlight, fatty fish, fortified foods"
+    },
+    {
+      "name": "Vitamin E",
+      "function": "Antioxidant",
+      "sources": "Nuts, seeds, vegetable oils"
+    },
+    {
+      "name": "Vitamin K",
+      "function": "Blood clotting, bone health",
+      "sources": "Leafy greens, broccoli"
+    },
+    {
+      "name": "B Vitamins",
+      "function": "Energy metabolism, nerve function",
+      "sources": "Whole grains, meat, eggs"
+    }
+  ],
+  "minerals": [
+    {
+      "name": "Calcium",
+      "function": "Bone health, muscle function",
+      "sources": "Dairy, leafy greens"
+    },
+    {
+      "name": "Iron",
+      "function": "Oxygen transport",
+      "sources": "Red meat, beans, spinach"
+    },
+    {
+      "name": "Magnesium",
+      "function": "Muscle and nerve function",
+      "sources": "Nuts, seeds, whole grains"
+    },
+    {
+      "name": "Zinc",
+      "function": "Immune function, wound healing",
+      "sources": "Meat, shellfish, legumes"
+    },
+    {
+      "name": "Potassium",
+      "function": "Fluid balance, nerve function",
+      "sources": "Bananas, potatoes, beans"
+    }
+  ],
+  "topic": "micronutrients",
+  "category": "medical_health",
+  "domain": "diet_nutrition",
+  "last_updated": "2025-12-05T06:13:34.225724"
+}

@@ -1,0 +1,58 @@
+To: marvinjr18@hotmail.com
+From: monica-crash-reporter@localhost
+Subject: Monica AI Crash Report - 2025-12-12 08:10:20
+
+================================================================================
+MONICA AI - CRASH REPORT
+================================================================================
+Date/Time: 2025-12-12 08:10:20.887624
+Error Type: SpeechBrain Initialization Failed
+
+--------------------------------------------------------------------------------
+ERROR MESSAGE:
+--------------------------------------------------------------------------------
+[WinError 5] Access is denied: 'personal_voice_model'
+
+--------------------------------------------------------------------------------
+STACK TRACE:
+--------------------------------------------------------------------------------
+Traceback (most recent call last):
+  File "c:\Users\mxz\monica_project\monica_ai\src\audio\audio_manager.py", line 86, in __init__
+    self.speech_recognizer = FinalMonicaAudio(self.config)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\mxz\monica_project\monica_ai\src\audio\speechbrain_final.py", line 332, in __init__
+    self.recognizer = FinalSpeechBrainRecognizer()
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\mxz\monica_project\monica_ai\src\audio\speechbrain_final.py", line 38, in __init__
+    self.model_dir.mkdir(exist_ok=True)
+  File "C:\Users\mxz\AppData\Local\Programs\Python\Python311\Lib\pathlib.py", line 1116, in mkdir
+    os.mkdir(self, mode)
+PermissionError: [WinError 5] Access is denied: 'personal_voice_model'
+
+
+--------------------------------------------------------------------------------
+CONTEXT:
+--------------------------------------------------------------------------------
+component: AudioManager
+action: Initialize FinalMonicaAudio
+input_device: default
+
+--------------------------------------------------------------------------------
+SYSTEM INFORMATION:
+--------------------------------------------------------------------------------
+Python: 3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]
+Platform: Windows-10-10.0.26200-SP0
+Machine: AMD64
+Processor: AMD64 Family 25 Model 33 Stepping 2, AuthenticAMD
+
+PyTorch: 2.6.0+cu124
+SpeechBrain: 1.0.3
+PyAudio: 0.2.14
+
+================================================================================
+END OF REPORT
+================================================================================
+
+---
+This is an automatic crash report from Monica AI.
+Report saved to: c:\Users\mxz\monica_project\crash_reports\crash_report_20251212_081020.txt

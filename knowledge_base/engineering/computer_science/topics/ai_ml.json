@@ -1,0 +1,61 @@
+{
+  "title": "Artificial Intelligence & Machine Learning",
+  "description": "Systems that learn from data and make decisions",
+  "ml_types": [
+    {
+      "name": "Supervised Learning",
+      "examples": [
+        "Classification",
+        "Regression"
+      ]
+    },
+    {
+      "name": "Unsupervised Learning",
+      "examples": [
+        "Clustering",
+        "Dimensionality Reduction"
+      ]
+    },
+    {
+      "name": "Reinforcement Learning",
+      "examples": [
+        "Q-Learning",
+        "Policy Gradient"
+      ]
+    }
+  ],
+  "algorithms": [
+    "Linear Regression",
+    "Logistic Regression",
+    "Decision Trees",
+    "Random Forest",
+    "SVM",
+    "K-Means",
+    "Neural Networks",
+    "CNN",
+    "RNN",
+    "Transformers"
+  ],
+  "deep_learning": {
+    "architectures": [
+      "MLP",
+      "CNN",
+      "RNN",
+      "LSTM",
+      "GAN",
+      "Transformer",
+      "BERT",
+      "GPT"
+    ],
+    "frameworks": [
+      "TensorFlow",
+      "PyTorch",
+      "Keras",
+      "JAX"
+    ]
+  },
+  "topic": "ai_ml",
+  "category": "engineering",
+  "domain": "computer_science",
+  "last_updated": "2025-12-05T06:13:34.229285"
+}

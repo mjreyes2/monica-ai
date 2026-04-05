@@ -1,0 +1,18 @@
+{
+  "model_type": "opencv_dnn_emotion",
+  "emotions": [
+    "angry",
+    "disgust",
+    "fear",
+    "happy",
+    "sad",
+    "surprise",
+    "neutral"
+  ],
+  "input_size": [
+    48,
+    48
+  ],
+  "normalize": true,
+  "note": "Use DeepFace or FER library for best accuracy. This config is for reference."
+}

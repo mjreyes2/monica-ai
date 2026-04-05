@@ -1,0 +1,26 @@
+{
+  "title": "Language Disorders",
+  "description": "Treatment of receptive and expressive language difficulties",
+  "types": {
+    "receptive": "Difficulty understanding language",
+    "expressive": "Difficulty producing language",
+    "mixed": "Both receptive and expressive difficulties"
+  },
+  "areas": [
+    "Vocabulary",
+    "Grammar",
+    "Syntax",
+    "Pragmatics",
+    "Narrative Skills"
+  ],
+  "approaches": [
+    "Milieu Teaching",
+    "Focused Stimulation",
+    "Script Training",
+    "Social Stories"
+  ],
+  "topic": "language_disorders",
+  "category": "therapy_counseling",
+  "domain": "speech_therapy",
+  "last_updated": "2025-12-05T06:13:34.224202"
+}

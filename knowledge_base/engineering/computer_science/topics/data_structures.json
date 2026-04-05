@@ -1,0 +1,47 @@
+{
+  "title": "Data Structures",
+  "description": "Ways of organizing and storing data",
+  "linear": [
+    {
+      "name": "Array",
+      "operations": "Access O(1), Search O(n), Insert O(n)"
+    },
+    {
+      "name": "Linked List",
+      "operations": "Access O(n), Insert O(1)"
+    },
+    {
+      "name": "Stack",
+      "operations": "LIFO, Push/Pop O(1)"
+    },
+    {
+      "name": "Queue",
+      "operations": "FIFO, Enqueue/Dequeue O(1)"
+    }
+  ],
+  "non_linear": [
+    {
+      "name": "Binary Tree",
+      "operations": "Search/Insert O(log n) average"
+    },
+    {
+      "name": "Hash Table",
+      "operations": "Search/Insert O(1) average"
+    },
+    {
+      "name": "Graph",
+      "representations": [
+        "Adjacency Matrix",
+        "Adjacency List"
+      ]
+    },
+    {
+      "name": "Heap",
+      "operations": "Insert O(log n), Extract-Min O(log n)"
+    }
+  ],
+  "topic": "data_structures",
+  "category": "engineering",
+  "domain": "computer_science",
+  "last_updated": "2025-12-05T06:13:34.228761"
+}

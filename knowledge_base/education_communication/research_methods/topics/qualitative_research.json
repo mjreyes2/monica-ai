@@ -1,0 +1,42 @@
+{
+  "title": "Qualitative Research",
+  "description": "Research exploring meanings, experiences, and perspectives",
+  "approaches": [
+    {
+      "name": "Phenomenology",
+      "focus": "Lived experiences"
+    },
+    {
+      "name": "Grounded Theory",
+      "focus": "Theory development from data"
+    },
+    {
+      "name": "Ethnography",
+      "focus": "Cultural groups and practices"
+    },
+    {
+      "name": "Case Study",
+      "focus": "In-depth analysis of specific cases"
+    },
+    {
+      "name": "Narrative",
+      "focus": "Stories and personal accounts"
+    }
+  ],
+  "data_collection": [
+    "Interviews",
+    "Focus Groups",
+    "Observation",
+    "Document Analysis"
+  ],
+  "analysis": [
+    "Thematic Analysis",
+    "Content Analysis",
+    "Discourse Analysis",
+    "Coding"
+  ],
+  "topic": "qualitative_research",
+  "category": "education_communication",
+  "domain": "research_methods",
+  "last_updated": "2025-12-05T06:13:34.227239"
+}

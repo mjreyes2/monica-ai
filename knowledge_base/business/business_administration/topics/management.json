@@ -1,0 +1,58 @@
+{
+  "title": "Management Principles",
+  "description": "Planning, organizing, leading, and controlling organizational resources",
+  "functions": [
+    {
+      "name": "Planning",
+      "description": "Setting goals and determining actions"
+    },
+    {
+      "name": "Organizing",
+      "description": "Arranging resources and tasks"
+    },
+    {
+      "name": "Leading",
+      "description": "Motivating and directing people"
+    },
+    {
+      "name": "Controlling",
+      "description": "Monitoring and correcting performance"
+    }
+  ],
+  "theories": [
+    {
+      "name": "Scientific Management",
+      "theorist": "Taylor",
+      "focus": "Efficiency through standardization"
+    },
+    {
+      "name": "Administrative Theory",
+      "theorist": "Fayol",
+      "focus": "Principles of management"
+    },
+    {
+      "name": "Bureaucratic Management",
+      "theorist": "Weber",
+      "focus": "Formal rules and hierarchy"
+    },
+    {
+      "name": "Human Relations",
+      "theorist": "Mayo",
+      "focus": "Social factors in productivity"
+    },
+    {
+      "name": "Systems Theory",
+      "theorist": "Bertalanffy",
+      "focus": "Organization as interconnected system"
+    },
+    {
+      "name": "Contingency Theory",
+      "theorist": "Various",
+      "focus": "No one best way to manage"
+    }
+  ],
+  "topic": "management",
+  "category": "business",
+  "domain": "business_administration",
+  "last_updated": "2025-12-05T06:12:10.982734"
+}

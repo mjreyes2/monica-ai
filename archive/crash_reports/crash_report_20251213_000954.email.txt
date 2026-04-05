@@ -1,0 +1,46 @@
+To: marvinjr18@hotmail.com
+From: monica-crash-reporter@localhost
+Subject: Monica AI Crash Report - 2025-12-13 00:09:55
+
+================================================================================
+MONICA AI - CRASH REPORT
+================================================================================
+Date/Time: 2025-12-13 00:09:54.355376
+Error Type: Training Process Failed
+
+--------------------------------------------------------------------------------
+ERROR MESSAGE:
+--------------------------------------------------------------------------------
+Training process exited with non-zero exit code: 1
+
+This usually indicates an error during model training.
+Check the console output above for details.
+
+--------------------------------------------------------------------------------
+CONTEXT:
+--------------------------------------------------------------------------------
+component: Voice Training
+exit_code: 1
+total_recordings: 1113
+current_epoch: 0
+python_exe: C:\Users\mxz\monica_project\.venv\Scripts\python.exe
+
+--------------------------------------------------------------------------------
+SYSTEM INFORMATION:
+--------------------------------------------------------------------------------
+Python: 3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]
+Platform: Windows-10-10.0.26200-SP0
+Machine: AMD64
+Processor: AMD64 Family 25 Model 33 Stepping 2, AuthenticAMD
+
+PyTorch: 2.6.0+cu124
+SpeechBrain: 1.0.3
+PyAudio: 0.2.14
+
+================================================================================
+END OF REPORT
+================================================================================
+
+---
+This is an automatic crash report from Monica AI.
+Report saved to: C:\Users\mxz\monica_project\crash_reports\crash_report_20251213_000954.txt

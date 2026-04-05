@@ -1,0 +1,39 @@
+{
+  "title": "Mental Health Landscape (2024)",
+  "description": "Current mental health understanding and treatment",
+  "statistics": {
+    "global_prevalence": "1 in 4 people experience mental health issues",
+    "anxiety_depression": "Most common, affecting 300M+ people",
+    "treatment_gap": "75% in low-income countries don't receive treatment"
+  },
+  "emerging_treatments": [
+    {
+      "treatment": "Ketamine/Esketamine",
+      "for": "Treatment-resistant depression",
+      "status": "FDA approved (Spravato)"
+    },
+    {
+      "treatment": "TMS (Transcranial Magnetic Stimulation)",
+      "for": "Depression, OCD",
+      "status": "FDA approved, expanding use"
+    },
+    {
+      "treatment": "Digital Therapeutics",
+      "for": "Various conditions",
+      "examples": [
+        "Pear Therapeutics",
+        "Akili Interactive"
+      ]
+    }
+  ],
+  "prevention_focus": [
+    "Workplace mental health programs",
+    "School-based interventions",
+    "Community support systems",
+    "Stigma reduction campaigns"
+  ],
+  "topic": "mental_health_2024",
+  "category": "medical_health",
+  "domain": "mental_health",
+  "last_updated": "2025-12-05T06:45:13.005262"
+}

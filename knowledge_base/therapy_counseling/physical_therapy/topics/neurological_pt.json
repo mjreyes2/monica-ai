@@ -1,0 +1,24 @@
+{
+  "title": "Neurological Physical Therapy",
+  "description": "Treatment of movement disorders from neurological conditions",
+  "conditions": [
+    "Stroke",
+    "Parkinson's Disease",
+    "Multiple Sclerosis",
+    "Spinal Cord Injury",
+    "Traumatic Brain Injury",
+    "Cerebral Palsy",
+    "Vestibular Disorders"
+  ],
+  "approaches": [
+    "Neurodevelopmental Treatment (NDT)",
+    "Proprioceptive Neuromuscular Facilitation (PNF)",
+    "Task-Oriented Training",
+    "Balance Training",
+    "Gait Training"
+  ],
+  "topic": "neurological_pt",
+  "category": "therapy_counseling",
+  "domain": "physical_therapy",
+  "last_updated": "2025-12-05T06:13:34.221743"
+}

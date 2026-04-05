@@ -1,0 +1,46 @@
+{
+  "title": "Cognitive Behavioral Therapy (CBT)",
+  "description": "Evidence-based therapy focusing on changing negative thought patterns and behaviors",
+  "key_concepts": [
+    "Cognitive Distortions",
+    "Automatic Thoughts",
+    "Core Beliefs",
+    "Behavioral Activation",
+    "Exposure Therapy",
+    "Thought Records"
+  ],
+  "techniques": [
+    {
+      "name": "Cognitive Restructuring",
+      "description": "Identifying and challenging negative thoughts"
+    },
+    {
+      "name": "Behavioral Experiments",
+      "description": "Testing beliefs through real-world experiments"
+    },
+    {
+      "name": "Socratic Questioning",
+      "description": "Guided discovery through questions"
+    },
+    {
+      "name": "Activity Scheduling",
+      "description": "Planning pleasurable and mastery activities"
+    },
+    {
+      "name": "Graded Exposure",
+      "description": "Gradual confrontation of feared situations"
+    }
+  ],
+  "applications": [
+    "Depression",
+    "Anxiety",
+    "PTSD",
+    "OCD",
+    "Phobias",
+    "Insomnia"
+  ],
+  "topic": "cbt",
+  "category": "therapy_counseling",
+  "domain": "counseling_modalities",
+  "last_updated": "2025-12-05T06:12:10.976545"
+}

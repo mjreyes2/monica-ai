@@ -1,0 +1,31 @@
+{
+  "primary_user": {
+    "user_id": "primary_user",
+    "name": "MJP",
+    "nickname": "MJP",
+    "voice_signature": "",
+    "first_seen": "2025-12-06T03:44:56.954608",
+    "last_seen": "2025-12-25T13:43:08.973040",
+    "interaction_count": 2529,
+    "preferences": {
+      "favorites": [
+        "bird"
+      ],
+      "avoids": [
+        "said anything"
+      ]
+    },
+    "facts": [
+      "Date of birth: April 20th, 1985",
+      "I don't watch sports",
+      "I don't have a",
+      "REAL NAME IS MJP",
+      "you were born twenty five."
+    ],
+    "topics_discussed": [],
+    "common_emotions": {},
+    "typical_mood": "",
+    "body_language_notes": [],
+    "appearance_notes": []
+  }
+}

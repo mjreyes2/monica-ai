@@ -1,0 +1,40 @@
+{
+  "title": "Ancient History",
+  "description": "Study of civilizations from earliest records to fall of Western Roman Empire (476 CE)",
+  "civilizations": [
+    {
+      "name": "Mesopotamia",
+      "period": "3500-539 BCE",
+      "contributions": "Writing, law codes, astronomy"
+    },
+    {
+      "name": "Ancient Egypt",
+      "period": "3100-30 BCE",
+      "contributions": "Pyramids, hieroglyphics, medicine"
+    },
+    {
+      "name": "Ancient Greece",
+      "period": "800-31 BCE",
+      "contributions": "Democracy, philosophy, Olympics"
+    },
+    {
+      "name": "Ancient Rome",
+      "period": "753 BCE-476 CE",
+      "contributions": "Law, engineering, governance"
+    },
+    {
+      "name": "Ancient China",
+      "period": "2070 BCE-220 CE",
+      "contributions": "Paper, compass, silk"
+    },
+    {
+      "name": "Ancient India",
+      "period": "2600 BCE-500 CE",
+      "contributions": "Mathematics, Buddhism, Hinduism"
+    }
+  ],
+  "topic": "ancient_history",
+  "category": "humanities",
+  "domain": "history",
+  "last_updated": "2025-12-05T06:12:10.982734"
+}

@@ -1,0 +1,39 @@
+{
+  "title": "African History",
+  "description": "History of the African continent and its peoples",
+  "periods": [
+    {
+      "era": "Ancient Africa",
+      "events": "Egyptian civilization, Nubian kingdoms, Axum Empire"
+    },
+    {
+      "era": "Medieval Africa",
+      "events": "Ghana Empire, Mali Empire, Songhai Empire, Great Zimbabwe"
+    },
+    {
+      "era": "Colonial Period",
+      "events": "Scramble for Africa, resistance movements"
+    },
+    {
+      "era": "Independence Era",
+      "events": "Decolonization, Pan-Africanism, nation building"
+    },
+    {
+      "era": "Modern Africa",
+      "events": "Economic development, regional integration, challenges and progress"
+    }
+  ],
+  "key_figures": [
+    "Mansa Musa",
+    "Shaka Zulu",
+    "Haile Selassie",
+    "Kwame Nkrumah",
+    "Nelson Mandela",
+    "Patrice Lumumba",
+    "Jomo Kenyatta"
+  ],
+  "topic": "african_history",
+  "category": "humanities",
+  "domain": "african_studies",
+  "last_updated": "2025-12-05T06:12:10.983742"
+}

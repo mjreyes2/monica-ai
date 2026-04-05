@@ -1,0 +1,21 @@
+{
+  "_comment": "Twilio SMS Configuration - Copy this to twilio_config.json and add your credentials",
+  "_instructions": [
+    "1. Sign up for free Twilio trial at https://www.twilio.com/try-twilio",
+    "2. Get your Account SID from the Twilio Console",
+    "3. Get your Auth Token from the Twilio Console",
+    "4. Get your Twilio phone number (provided during signup)",
+    "5. Copy this file to 'twilio_config.json' and fill in your values",
+    "6. DO NOT commit twilio_config.json to version control!"
+  ],
+
+  "account_sid": "ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+  "auth_token": "your_auth_token_here",
+  "phone_number": "+15551234567",
+
+  "_notes": {
+    "free_tier": "Trial credits allow testing SMS functionality",
+    "alternative": "Set environment variables instead: TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_PHONE_NUMBER",
+    "fallback": "Monica uses free Textbelt if Twilio is not configured"
+  }
+}

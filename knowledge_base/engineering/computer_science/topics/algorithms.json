@@ -1,0 +1,64 @@
+{
+  "title": "Algorithms",
+  "description": "Step-by-step procedures for solving computational problems",
+  "complexity": {
+    "time_complexity": [
+      "O(1)",
+      "O(log n)",
+      "O(n)",
+      "O(n log n)",
+      "O(n²)",
+      "O(2ⁿ)"
+    ],
+    "space_complexity": "Memory usage as function of input size"
+  },
+  "types": [
+    {
+      "name": "Sorting",
+      "examples": [
+        "QuickSort",
+        "MergeSort",
+        "HeapSort",
+        "BubbleSort"
+      ]
+    },
+    {
+      "name": "Searching",
+      "examples": [
+        "Binary Search",
+        "Linear Search",
+        "DFS",
+        "BFS"
+      ]
+    },
+    {
+      "name": "Graph",
+      "examples": [
+        "Dijkstra's",
+        "A*",
+        "Bellman-Ford",
+        "Floyd-Warshall"
+      ]
+    },
+    {
+      "name": "Dynamic Programming",
+      "examples": [
+        "Fibonacci",
+        "Knapsack",
+        "LCS"
+      ]
+    },
+    {
+      "name": "Greedy",
+      "examples": [
+        "Huffman Coding",
+        "Kruskal's",
+        "Prim's"
+      ]
+    }
+  ],
+  "topic": "algorithms",
+  "category": "engineering",
+  "domain": "computer_science",
+  "last_updated": "2025-12-05T06:13:34.227239"
+}

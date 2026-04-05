@@ -1,0 +1,44 @@
+{
+  "entries": [
+    {
+      "type": "spoken",
+      "source": "User told me on 2026-04-04 08:41",
+      "title": "My name is Marvin. But only refer to me as MJP. Didn't I program you to remember this?",
+      "num_chunks": 1,
+      "total_chars": 86,
+      "learned_at": "2026-04-04T08:41:17.207132",
+      "chunks": [
+        "My name is Marvin. But only refer to me as MJP. Didn't I program you to remember this?"
+      ]
+    },
+    {
+      "type": "spoken",
+      "source": "User told me on 2026-04-04 08:42",
+      "title": "give me the name of the folder where you store this",
+      "num_chunks": 1,
+      "total_chars": 51,
+      "learned_at": "2026-04-04T08:42:37.843306",
+      "chunks": [
+        "give me the name of the folder where you store this"
+      ]
+    }
+  ],
+  "urls_read": [],
+  "spoken_facts": [
+    {
+      "type": "spoken",
+      "content": "My name is Marvin. But only refer to me as MJP. Didn't I program you to remember this?",
+      "topic": null,
+      "learned_at": "2026-04-04T08:41:17.204524",
+      "char_count": 86
+    },
+    {
+      "type": "spoken",
+      "content": "give me the name of the folder where you store this",
+      "topic": null,
+      "learned_at": "2026-04-04T08:42:37.843306",
+      "char_count": 51
+    }
+  ],
+  "created_at": "2026-04-04T07:58:53.415278"
+}

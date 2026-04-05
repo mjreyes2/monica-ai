@@ -1,0 +1,28 @@
+{
+  "title": "Islam",
+  "description": "Abrahamic monotheistic religion based on Quran and teachings of Prophet Muhammad",
+  "branches": [
+    "Sunni",
+    "Shia",
+    "Sufi"
+  ],
+  "five_pillars": [
+    "Shahada (Faith)",
+    "Salat (Prayer)",
+    "Zakat (Charity)",
+    "Sawm (Fasting)",
+    "Hajj (Pilgrimage)"
+  ],
+  "core_beliefs": [
+    "Oneness of God",
+    "Prophets",
+    "Holy Books",
+    "Angels",
+    "Day of Judgment"
+  ],
+  "adherents": "1.9 billion worldwide",
+  "topic": "islam",
+  "category": "humanities",
+  "domain": "cultural_religions",
+  "last_updated": "2025-12-05T06:12:10.985830"
+}

@@ -1,0 +1,58 @@
+
+# SpeechBrain ASR Training Config for Monica
+# Seed for reproducibility
+seed: 2024
+__set_seed: !apply:torch.manual_seed [!ref <seed>]
+
+# Data files
+data_folder: C:/Users/mxz/monica_project/voice_training/recordings/MJP
+train_csv: C:/Users/mxz/monica_project/voice_training/recordings/MJP/train.csv
+valid_csv: C:/Users/mxz/monica_project/voice_training/recordings/MJP/val.csv
+skip_prep: True
+
+# Output folder
+output_folder: C:/Users/mxz/monica_project/models/speechbrain_personal
+save_folder: !ref <output_folder>/save
+train_log: !ref <output_folder>/train_log.txt
+
+# Training parameters
+number_of_epochs: 50
+batch_size: 4
+lr: 0.0001
+sorting: ascending
+
+# Feature extraction
+sample_rate: 16000
+n_fft: 400
+n_mels: 80
+
+# Model architecture - using CRDNN (Convolutional RNN DNN)
+activation: !name:torch.nn.LeakyReLU
+dropout: 0.15
+cnn_blocks: 2
+cnn_channels: (64, 128)
+rnn_layers: 4
+rnn_neurons: 512
+rnn_bidirectional: True
+dnn_blocks: 2
+dnn_neurons: 512
+
+# Dataloader options
+train_dataloader_opts:
+    batch_size: !ref <batch_size>
+    shuffle: True
+
+valid_dataloader_opts:
+    batch_size: !ref <batch_size>
+
+# Optimizer
+opt_class: !name:torch.optim.Adam
+    lr: !ref <lr>
+
+# Checkpointer
+checkpointer: !new:speechbrain.utils.checkpoints.Checkpointer
+    checkpoints_dir: !ref <save_folder>
+    recoverables:
+        model: !ref <model>
+        scheduler: !ref <lr_annealing>
+        counter: !ref <epoch_counter>

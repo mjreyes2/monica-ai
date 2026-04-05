@@ -1,0 +1,85 @@
+
+# Seed
+seed: 1234
+__set_seed: !apply:torch.manual_seed [!ref <seed>]
+
+# Data files
+data_folder: C:/Users/mxz/monica_project/monica_ai/voice_training/voice_training/recordings/MJP
+train_csv: C:/Users/mxz/monica_project/monica_ai/voice_training/voice_training/recordings/MJP/train.csv
+valid_csv: C:/Users/mxz/monica_project/monica_ai/voice_training/voice_training/recordings/MJP/val.csv
+output_folder: C:/Users/mxz/monica_project/monica_ai/voice_training/models/speechbrain_finetuned
+save_folder: !ref <output_folder>/save
+
+# Training parameters
+number_of_epochs: 30
+batch_size: 4
+lr: 0.0001
+sorting: ascending
+
+# Feature extraction
+sample_rate: 16000
+n_fft: 400
+n_mels: 80
+
+# Model from pretrained
+pretrained_path: models/speechbrain_pretrained
+
+# Feature computation
+compute_features: !new:speechbrain.lobes.features.Fbank
+    n_mels: !ref <n_mels>
+
+# Normalization
+normalize: !new:speechbrain.processing.features.InputNormalization
+    norm_type: global
+
+# Model modules (loaded from pretrained)
+encoder: !new:speechbrain.nnet.containers.Sequential
+    input_shape: [null, null, !ref <n_mels>]
+    cnn_blocks: 2
+    cnn_channels: [128, 256]
+    cnn_kernelsize: (3, 3)
+    time_pooling: True
+    rnn_layers: 4
+    rnn_neurons: 512
+    rnn_bidirectional: True
+    dnn_blocks: 2
+    dnn_neurons: 512
+
+ctc_lin: !new:speechbrain.nnet.linear.Linear
+    input_size: 512
+    n_neurons: 29  # Blank + 28 characters
+
+log_softmax: !new:speechbrain.nnet.activations.Softmax
+    apply_log: True
+
+# Loss
+ctc_cost: !name:speechbrain.nnet.losses.ctc_loss
+    blank_index: 0
+
+# Optimizer
+opt_class: !name:torch.optim.Adam
+    lr: !ref <lr>
+
+# Learning rate annealing
+lr_annealing: !new:speechbrain.nnet.schedulers.NewBobScheduler
+    initial_value: !ref <lr>
+    improvement_threshold: 0.0025
+    annealing_factor: 0.8
+    patient: 0
+
+# Metrics
+ctc_stats: !name:speechbrain.utils.metric_stats.MetricStats
+    metric: !name:speechbrain.nnet.losses.ctc_loss
+        blank_index: 0
+
+# Checkpointer
+checkpointer: !new:speechbrain.utils.checkpoints.Checkpointer
+    checkpoints_dir: !ref <save_folder>
+    recoverables:
+        encoder: !ref <encoder>
+        ctc_lin: !ref <ctc_lin>
+        normalize: !ref <normalize>
+        lr_annealing: !ref <lr_annealing>
+
+# Character index
+blank_index: 0

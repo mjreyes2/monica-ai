@@ -1,0 +1,129 @@
+# Quick test training config (5 epochs) - for testing before full run
+# Based on hparams_monica.yaml but faster
+
+seed: 1986
+__set_seed: !apply:speechbrain.utils.seed_everything [!ref <seed>]
+output_folder: !ref models/monica_test/<seed>
+output_wer_folder: !ref <output_folder>/
+save_folder: !ref <output_folder>/save
+train_log: !ref <output_folder>/train_log.txt
+
+wav2vec2_hub: facebook/wav2vec2-large-960h-lv60-self
+wav2vec2_folder: !ref <save_folder>/wav2vec2_checkpoint
+
+data_folder: voice_training/recordings/MJP
+train_splits: []
+dev_splits: []
+test_splits: []
+skip_prep: True
+ckpt_interval_minutes: 10
+
+train_csv: voice_training/recordings/MJP/train.csv
+valid_csv: voice_training/recordings/MJP/val.csv
+test_csv:
+   - voice_training/recordings/MJP/val.csv
+
+####################### Training Parameters ####################################
+number_of_epochs: 5  # Quick test - only 5 epochs
+lr: 0.5
+lr_wav2vec: 0.00005
+sorting: ascending
+precision: fp32
+sample_rate: 16000
+
+batch_size: 1
+test_batch_size: 1
+
+train_dataloader_opts:
+   batch_size: !ref <batch_size>
+   num_workers: 0
+
+valid_dataloader_opts:
+   batch_size: !ref <batch_size>
+   num_workers: 0
+
+test_dataloader_opts:
+   batch_size: !ref <test_batch_size>
+   num_workers: 0
+
+####################### Model Parameters #######################################
+activation: !name:torch.nn.LeakyReLU
+dnn_layers: 2
+dnn_neurons: 512
+freeze_wav2vec: False
+
+output_neurons: 29
+blank_index: 0
+
+label_encoder: !new:speechbrain.dataio.encoder.CTCTextEncoder
+
+epoch_counter: !new:speechbrain.utils.epoch_loop.EpochCounter
+   limit: !ref <number_of_epochs>
+
+enc: !new:speechbrain.lobes.models.VanillaNN.VanillaNN
+   input_shape: [null, null, 1024]
+   activation: !ref <activation>
+   dnn_blocks: !ref <dnn_layers>
+   dnn_neurons: !ref <dnn_neurons>
+
+wav2vec2: !new:speechbrain.lobes.models.huggingface_transformers.wav2vec2.Wav2Vec2
+   source: !ref <wav2vec2_hub>
+   output_norm: True
+   freeze: !ref <freeze_wav2vec>
+   save_path: !ref <wav2vec2_folder>
+
+ctc_lin: !new:speechbrain.nnet.linear.Linear
+   input_size: !ref <dnn_neurons>
+   n_neurons: !ref <output_neurons>
+
+log_softmax: !new:speechbrain.nnet.activations.Softmax
+   apply_log: True
+
+ctc_cost: !name:speechbrain.nnet.losses.ctc_loss
+   blank_index: !ref <blank_index>
+
+modules:
+   wav2vec2: !ref <wav2vec2>
+   enc: !ref <enc>
+   ctc_lin: !ref <ctc_lin>
+
+model: !new:torch.nn.ModuleList
+   - [!ref <enc>, !ref <ctc_lin>]
+
+model_opt_class: !name:torch.optim.Adadelta
+   lr: !ref <lr>
+   rho: 0.95
+   eps: 1.e-8
+
+wav2vec_opt_class: !name:torch.optim.Adam
+   lr: !ref <lr_wav2vec>
+
+lr_annealing_model: !new:speechbrain.nnet.schedulers.NewBobScheduler
+   initial_value: !ref <lr>
+   improvement_threshold: 0.0025
+   annealing_factor: 0.8
+   patient: 0
+
+lr_annealing_wav2vec: !new:speechbrain.nnet.schedulers.NewBobScheduler
+   initial_value: !ref <lr_wav2vec>
+   improvement_threshold: 0.0025
+   annealing_factor: 0.9
+   patient: 0
+
+checkpointer: !new:speechbrain.utils.checkpoints.Checkpointer
+   checkpoints_dir: !ref <save_folder>
+   recoverables:
+      wav2vec2: !ref <wav2vec2>
+      model: !ref <model>
+      scheduler_model: !ref <lr_annealing_model>
+      scheduler_wav2vec: !ref <lr_annealing_wav2vec>
+      counter: !ref <epoch_counter>
+      tokenizer: !ref <label_encoder>
+
+train_logger: !new:speechbrain.utils.train_logger.FileTrainLogger
+   save_file: !ref <train_log>
+
+error_rate_computer: !name:speechbrain.utils.metric_stats.ErrorRateStats
+
+cer_computer: !name:speechbrain.utils.metric_stats.ErrorRateStats
+   split_tokens: True

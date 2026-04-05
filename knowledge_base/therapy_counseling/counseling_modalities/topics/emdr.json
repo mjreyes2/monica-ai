@@ -1,0 +1,57 @@
+{
+  "title": "Eye Movement Desensitization and Reprocessing (EMDR)",
+  "description": "Therapy using bilateral stimulation to process traumatic memories",
+  "phases": [
+    {
+      "phase": 1,
+      "name": "History Taking",
+      "description": "Gather client history and identify targets"
+    },
+    {
+      "phase": 2,
+      "name": "Preparation",
+      "description": "Establish safety and teach coping skills"
+    },
+    {
+      "phase": 3,
+      "name": "Assessment",
+      "description": "Identify target memory and associated elements"
+    },
+    {
+      "phase": 4,
+      "name": "Desensitization",
+      "description": "Process memory with bilateral stimulation"
+    },
+    {
+      "phase": 5,
+      "name": "Installation",
+      "description": "Strengthen positive cognition"
+    },
+    {
+      "phase": 6,
+      "name": "Body Scan",
+      "description": "Check for residual physical sensations"
+    },
+    {
+      "phase": 7,
+      "name": "Closure",
+      "description": "Return to equilibrium"
+    },
+    {
+      "phase": 8,
+      "name": "Reevaluation",
+      "description": "Assess treatment effects"
+    }
+  ],
+  "applications": [
+    "PTSD",
+    "Trauma",
+    "Anxiety",
+    "Phobias",
+    "Grief"
+  ],
+  "topic": "emdr",
+  "category": "therapy_counseling",
+  "domain": "counseling_modalities",
+  "last_updated": "2025-12-05T06:12:10.978173"
+}

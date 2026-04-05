@@ -1,0 +1,39 @@
+{
+  "title": "Quantum Physics",
+  "description": "Study of matter and energy at atomic and subatomic scales",
+  "key_concepts": [
+    "Wave-Particle Duality",
+    "Heisenberg Uncertainty Principle",
+    "Schrödinger Equation",
+    "Quantum Entanglement",
+    "Superposition",
+    "Quantum Tunneling"
+  ],
+  "formulas": [
+    {
+      "name": "Planck's Equation",
+      "formula": "E = hf",
+      "description": "Energy of a photon"
+    },
+    {
+      "name": "de Broglie Wavelength",
+      "formula": "λ = h/p",
+      "description": "Matter wave wavelength"
+    },
+    {
+      "name": "Uncertainty Principle",
+      "formula": "ΔxΔp ≥ ℏ/2",
+      "description": "Heisenberg's principle"
+    }
+  ],
+  "applications": [
+    "Quantum Computing",
+    "Semiconductors",
+    "Lasers",
+    "MRI Imaging"
+  ],
+  "topic": "quantum_physics",
+  "category": "sciences",
+  "domain": "physics",
+  "last_updated": "2025-12-05T06:12:10.974978"
+}

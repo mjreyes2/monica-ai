@@ -1,0 +1,47 @@
+================================================================================
+MONICA AI - CRASH REPORT
+================================================================================
+Date/Time: 2025-12-13 11:14:39.256728
+Error Type: Start Voice Recognition Failed
+
+--------------------------------------------------------------------------------
+ERROR MESSAGE:
+--------------------------------------------------------------------------------
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2713' in position 14: character maps to <undefined>
+
+--------------------------------------------------------------------------------
+STACK TRACE:
+--------------------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\mxz\OneDrive\monica_project\monica_ai\src\audio\audio_manager.py", line 241, in start_speech_recognition
+    self.speech_recognizer.start_listening()
+  File "C:\Users\mxz\OneDrive\monica_project\monica_ai\src\audio\speechbrain_final.py", line 521, in start_listening
+    raise RuntimeError(self.last_error or "Failed to open audio input stream")
+RuntimeError: UnicodeEncodeError: 'charmap' codec can't encode character '\u2713' in position 14: character maps to <undefined>
+
+
+--------------------------------------------------------------------------------
+CONTEXT:
+--------------------------------------------------------------------------------
+component: AudioManager
+action: start_speech_recognition
+input_device: None
+sample_rate: 16000
+chunk_size: 1024
+details: RuntimeError: UnicodeEncodeError: 'charmap' codec can't encode character '\u2713' in position 14: character maps to <undefined>
+
+--------------------------------------------------------------------------------
+SYSTEM INFORMATION:
+--------------------------------------------------------------------------------
+Python: 3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]
+Platform: Windows-10-10.0.26200-SP0
+Machine: AMD64
+Processor: AMD64 Family 25 Model 33 Stepping 2, AuthenticAMD
+
+PyTorch: 2.6.0+cu124
+SpeechBrain: 1.0.3
+PyAudio: 0.2.14
+
+================================================================================
+END OF REPORT
+================================================================================

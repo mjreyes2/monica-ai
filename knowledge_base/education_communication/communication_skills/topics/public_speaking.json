@@ -1,0 +1,49 @@
+{
+  "title": "Public Speaking",
+  "description": "Art of effective oral communication to an audience",
+  "key_elements": [
+    "Content Organization",
+    "Delivery Techniques",
+    "Audience Analysis",
+    "Visual Aids",
+    "Managing Nervousness",
+    "Q&A Handling"
+  ],
+  "techniques": [
+    {
+      "name": "Hook Opening",
+      "description": "Start with attention-grabbing statement"
+    },
+    {
+      "name": "Rule of Three",
+      "description": "Present ideas in groups of three"
+    },
+    {
+      "name": "Storytelling",
+      "description": "Use narratives to engage audience"
+    },
+    {
+      "name": "Pausing",
+      "description": "Strategic silence for emphasis"
+    },
+    {
+      "name": "Eye Contact",
+      "description": "Connect with audience members"
+    },
+    {
+      "name": "Vocal Variety",
+      "description": "Vary pitch, pace, and volume"
+    }
+  ],
+  "speech_structures": [
+    "Problem-Solution",
+    "Chronological",
+    "Topical",
+    "Cause-Effect",
+    "Monroe's Motivated Sequence"
+  ],
+  "topic": "public_speaking",
+  "category": "education_communication",
+  "domain": "communication_skills",
+  "last_updated": "2025-12-05T06:12:10.981211"
+}

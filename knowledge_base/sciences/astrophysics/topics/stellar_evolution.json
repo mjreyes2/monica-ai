@@ -1,0 +1,42 @@
+{
+  "title": "Stellar Evolution",
+  "description": "Life cycle of stars from formation to death",
+  "stages": [
+    {
+      "stage": "Nebula",
+      "description": "Cloud of gas and dust"
+    },
+    {
+      "stage": "Protostar",
+      "description": "Collapsing cloud, heating up"
+    },
+    {
+      "stage": "Main Sequence",
+      "description": "Stable hydrogen fusion"
+    },
+    {
+      "stage": "Red Giant",
+      "description": "Expanded, cooler outer layers"
+    },
+    {
+      "stage": "Planetary Nebula/Supernova",
+      "description": "Outer layers expelled"
+    },
+    {
+      "stage": "White Dwarf/Neutron Star/Black Hole",
+      "description": "Final remnant"
+    }
+  ],
+  "star_types": [
+    "Red Dwarf",
+    "Yellow Dwarf",
+    "Blue Giant",
+    "Red Supergiant",
+    "Neutron Star",
+    "Black Hole"
+  ],
+  "topic": "stellar_evolution",
+  "category": "sciences",
+  "domain": "astrophysics",
+  "last_updated": "2025-12-05T06:13:34.218689"
+}

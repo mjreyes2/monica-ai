@@ -1,0 +1,36 @@
+{
+  "title": "Business Trends (2024)",
+  "description": "Current business and economic trends",
+  "trends": [
+    {
+      "trend": "AI Integration",
+      "description": "AI adoption across all business functions",
+      "impact": "30-40% productivity gains in some sectors"
+    },
+    {
+      "trend": "Remote/Hybrid Work",
+      "description": "Permanent shift in work patterns",
+      "statistics": "30% of workforce hybrid, 15% fully remote"
+    },
+    {
+      "trend": "ESG Investing",
+      "description": "Environmental, Social, Governance criteria",
+      "market_size": "$30+ trillion in ESG assets"
+    },
+    {
+      "trend": "Creator Economy",
+      "description": "Individual content creators as businesses",
+      "market_size": "$250+ billion"
+    },
+    {
+      "trend": "Subscription Economy",
+      "description": "Shift from ownership to access",
+      "growth": "Growing 5x faster than S&P 500"
+    }
+  ],
+  "updated": "2024",
+  "topic": "business_trends_2024",
+  "category": "business",
+  "domain": "business_administration",
+  "last_updated": "2025-12-05T06:45:13.003730"
+}

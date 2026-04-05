@@ -1,0 +1,48 @@
+{
+  "title": "Nervous System",
+  "description": "Network of nerves and cells that transmit signals between body parts",
+  "divisions": {
+    "central": [
+      "Brain",
+      "Spinal Cord"
+    ],
+    "peripheral": [
+      "Somatic Nervous System",
+      "Autonomic Nervous System"
+    ],
+    "autonomic": [
+      "Sympathetic (fight or flight)",
+      "Parasympathetic (rest and digest)"
+    ]
+  },
+  "brain_regions": [
+    {
+      "region": "Frontal Lobe",
+      "function": "Executive function, motor control, speech"
+    },
+    {
+      "region": "Parietal Lobe",
+      "function": "Sensory processing, spatial awareness"
+    },
+    {
+      "region": "Temporal Lobe",
+      "function": "Hearing, memory, language"
+    },
+    {
+      "region": "Occipital Lobe",
+      "function": "Vision processing"
+    },
+    {
+      "region": "Cerebellum",
+      "function": "Balance, coordination"
+    },
+    {
+      "region": "Brainstem",
+      "function": "Vital functions (breathing, heart rate)"
+    }
+  ],
+  "topic": "nervous_system",
+  "category": "medical_health",
+  "domain": "human_physiology",
+  "last_updated": "2025-12-05T06:13:34.220217"
+}

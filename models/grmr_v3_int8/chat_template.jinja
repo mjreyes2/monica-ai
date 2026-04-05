@@ -1,0 +1,17 @@
+{%- for message in messages %}
+{%- if message.role == "user" %}
+{{- '<|text_start|>
+' + message.content + '<|text_end|>
+' }}
+{%- elif message.role == "assistant" %}
+{{- '<|corrected_start|>
+' + message.content + '<|corrected_end|>
+' }}
+{%- else %}
+{{- raise('Unknown role: ' + message.role) }}
+{%- endif %}
+{%- endfor %}
+{%- if add_generation_prompt %}
+{{- '<|corrected_start|>
+' }}
+{%- endif %}

@@ -1,0 +1,38 @@
+# Monica AI Requirements
+# Core
+numpy>=1.21.0
+opencv-python>=4.5.0
+pillow>=9.0.0
+
+# Audio
+sounddevice>=0.4.6
+pyaudio>=0.2.13
+pygame>=2.0.0
+
+# TTS - Piper
+piper-tts>=2.0.0
+
+# Speech Recognition - Whisper
+openai-whisper>=20231117
+torch>=2.0.0
+torchaudio>=2.0.0
+
+# Wake Word Detection
+pvporcupine>=3.0.0
+webrtcvad>=2.0.10
+
+# UI
+customtkinter>=5.2.0
+
+# OBS/Spout Integration
+spout-python>=0.0.5
+pyopengl>=3.1.6
+pyopengl-accelerate>=3.1.6
+
+# Utilities
+python-dotenv>=1.0.0
+requests>=2.26.0
+pynput>=1.7.6
+
+# AI Backend (optional)
+ollama>=0.1.0

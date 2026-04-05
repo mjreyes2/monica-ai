@@ -1,0 +1,28 @@
+{
+  "title": "Fluency Therapy (Stuttering)",
+  "description": "Treatment of stuttering and other fluency disorders",
+  "types_of_disfluency": [
+    "Repetitions (sound, syllable, word)",
+    "Prolongations",
+    "Blocks",
+    "Interjections"
+  ],
+  "treatment_approaches": [
+    "Fluency Shaping",
+    "Stuttering Modification",
+    "Integrated Approaches",
+    "Lidcombe Program (for children)"
+  ],
+  "techniques": [
+    "Easy Onset",
+    "Light Contact",
+    "Prolonged Speech",
+    "Cancellation",
+    "Pull-out",
+    "Preparatory Set"
+  ],
+  "topic": "fluency",
+  "category": "therapy_counseling",
+  "domain": "speech_therapy",
+  "last_updated": "2025-12-05T06:13:34.224202"
+}

@@ -1,0 +1,4 @@
+step1: starting
+soxr OK
+librosa OK: 0.11.0
+done

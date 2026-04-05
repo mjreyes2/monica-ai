@@ -1,0 +1,14 @@
+[
+  {
+    "session_id": "20260216_031205",
+    "started_at": "2026-02-16T03:12:05.736094",
+    "ended_at": "2026-02-16T03:12:05.736094",
+    "duration_minutes": 0.0,
+    "message_count": 3,
+    "topics": [
+      "technology"
+    ],
+    "summary": "Topics: technology. Started with: 'Hey Monica'. Ended with: 'Tell me about programming'",
+    "user_mood": ""
+  }
+]

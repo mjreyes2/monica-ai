@@ -1,0 +1,10 @@
+The cache for model files in Transformers v4.22.0 has been updated. Migrating your old cache. This is a one-time only operation. You can interrupt this and resume the migration later on by calling `transformers.utils.move_cache()`.
+0it [00:00, ?it/s]0it [00:00, ?it/s]
+Traceback (most recent call last):
+  File "C:\Monica\run_tts_test.py", line 21, in <module>
+    exec(compile(code, test_script, 'exec'), {'__file__': test_script, '__name__': '__main__'})
+  File "C:\Monica\data\training\monica_tts_training\test_coqui_trainer.py", line 16, in <module>
+    from TTS.config.shared_configs import BaseDatasetConfig
+  File "C:\Monica\new\lib\site-packages\TTS\__init__.py", line 3, in <module>
+    from transformers.utils.import_utils import (
+ImportError: cannot import name 'is_torch_greater_or_equal' from 'transformers.utils.import_utils' (C:\Monica\new\lib\site-packages\transformers\utils\import_utils.py)

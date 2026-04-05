@@ -1,0 +1,58 @@
+{
+  "title": "Modern Therapy Approaches (2024)",
+  "description": "Latest evidence-based therapeutic approaches",
+  "approaches": [
+    {
+      "name": "Digital CBT (dCBT)",
+      "description": "App-based cognitive behavioral therapy",
+      "effectiveness": "Comparable to in-person for mild-moderate depression/anxiety",
+      "platforms": [
+        "Woebot",
+        "Wysa",
+        "Headspace"
+      ]
+    },
+    {
+      "name": "Psychedelic-Assisted Therapy",
+      "description": "FDA breakthrough therapy for treatment-resistant depression",
+      "substances": [
+        "Psilocybin",
+        "MDMA",
+        "Ketamine"
+      ],
+      "status": "Phase 3 trials, some FDA approvals expected 2024-2025"
+    },
+    {
+      "name": "Neurofeedback Therapy",
+      "description": "Real-time brain activity training",
+      "applications": [
+        "ADHD",
+        "Anxiety",
+        "PTSD",
+        "Peak performance"
+      ]
+    },
+    {
+      "name": "Virtual Reality Exposure Therapy (VRET)",
+      "description": "VR-based treatment for phobias and PTSD",
+      "effectiveness": "85% success rate for specific phobias"
+    },
+    {
+      "name": "Acceptance and Commitment Therapy (ACT)",
+      "description": "Third-wave CBT focusing on psychological flexibility",
+      "key_processes": [
+        "Acceptance",
+        "Defusion",
+        "Present moment",
+        "Self-as-context",
+        "Values",
+        "Committed action"
+      ]
+    }
+  ],
+  "updated": "2024",
+  "topic": "modern_therapy_approaches_2024",
+  "category": "therapy_counseling",
+  "domain": "psychology",
+  "last_updated": "2025-12-05T06:45:12.993990"
+}

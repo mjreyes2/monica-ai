@@ -1,0 +1,30 @@
+{
+  "word_confusion": {
+    "rule": "word_confusion",
+    "category": "word_choice",
+    "examples": [
+      "could of"
+    ],
+    "corrections": [
+      "could have"
+    ],
+    "occurrence_count": 3,
+    "first_seen": "2025-12-07T14:37:28.108799",
+    "last_seen": "2025-12-07T14:37:52.528770",
+    "is_mastered": false
+  },
+  "unknown": {
+    "rule": "unknown",
+    "category": "TYPOS",
+    "examples": [
+      "Your the b"
+    ],
+    "corrections": [
+      "You're"
+    ],
+    "occurrence_count": 1,
+    "first_seen": "2025-12-07T14:38:40.215966",
+    "last_seen": "2025-12-07T14:38:40.215966",
+    "is_mastered": false
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "title": "Algebra",
+  "description": "Branch of mathematics dealing with symbols and rules for manipulating them",
+  "topics": [
+    "Linear Equations",
+    "Quadratic Equations",
+    "Polynomials",
+    "Factoring",
+    "Systems of Equations",
+    "Inequalities",
+    "Functions",
+    "Logarithms",
+    "Exponents"
+  ],
+  "key_formulas": [
+    {
+      "name": "Quadratic Formula",
+      "formula": "x = (-b ± √(b²-4ac)) / 2a"
+    },
+    {
+      "name": "Difference of Squares",
+      "formula": "a² - b² = (a+b)(a-b)"
+    },
+    {
+      "name": "Perfect Square Trinomial",
+      "formula": "a² ± 2ab + b² = (a ± b)²"
+    }
+  ],
+  "topic": "algebra",
+  "category": "sciences",
+  "domain": "mathematics",
+  "last_updated": "2025-12-05T06:13:34.216148"
+}

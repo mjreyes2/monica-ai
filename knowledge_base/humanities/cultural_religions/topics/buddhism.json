@@ -1,0 +1,30 @@
+{
+  "title": "Buddhism",
+  "description": "Religion based on teachings of Siddhartha Gautama (Buddha)",
+  "branches": [
+    "Theravada",
+    "Mahayana",
+    "Vajrayana"
+  ],
+  "four_noble_truths": [
+    "Life involves suffering",
+    "Suffering arises from attachment",
+    "Suffering can end",
+    "Path to end suffering"
+  ],
+  "eightfold_path": [
+    "Right View",
+    "Right Intention",
+    "Right Speech",
+    "Right Action",
+    "Right Livelihood",
+    "Right Effort",
+    "Right Mindfulness",
+    "Right Concentration"
+  ],
+  "adherents": "500 million worldwide",
+  "topic": "buddhism",
+  "category": "humanities",
+  "domain": "cultural_religions",
+  "last_updated": "2025-12-05T06:12:10.986885"
+}

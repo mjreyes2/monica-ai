@@ -1,0 +1,60 @@
+{
+  "title": "AI & Machine Learning (2024)",
+  "description": "Latest developments in artificial intelligence",
+  "developments": [
+    {
+      "area": "Large Language Models",
+      "models": [
+        "GPT-4",
+        "Claude 3",
+        "Gemini",
+        "Llama 3",
+        "Mistral"
+      ],
+      "capabilities": [
+        "Multimodal understanding",
+        "Code generation",
+        "Reasoning",
+        "Tool use"
+      ],
+      "concerns": [
+        "Hallucinations",
+        "Bias",
+        "Safety alignment"
+      ]
+    },
+    {
+      "area": "Generative AI",
+      "applications": [
+        "Text-to-image (DALL-E 3, Midjourney, Stable Diffusion)",
+        "Text-to-video (Sora, Runway)",
+        "Text-to-music (Suno, Udio)",
+        "Text-to-3D (Point-E, DreamFusion)"
+      ]
+    },
+    {
+      "area": "AI Agents",
+      "description": "Autonomous AI systems that can plan and execute tasks",
+      "examples": [
+        "AutoGPT",
+        "BabyAGI",
+        "CrewAI",
+        "LangChain agents"
+      ]
+    },
+    {
+      "area": "Edge AI",
+      "description": "AI running on local devices",
+      "applications": [
+        "Smartphones",
+        "IoT devices",
+        "Autonomous vehicles"
+      ]
+    }
+  ],
+  "updated": "2024",
+  "topic": "ai_developments_2024",
+  "category": "engineering",
+  "domain": "computer_science",
+  "last_updated": "2025-12-05T06:45:12.999782"
+}

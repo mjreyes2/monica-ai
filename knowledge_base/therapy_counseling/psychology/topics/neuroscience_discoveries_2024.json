@@ -1,0 +1,30 @@
+{
+  "title": "Neuroscience Discoveries (2024)",
+  "description": "Latest brain research findings",
+  "discoveries": [
+    {
+      "finding": "Glymphatic System",
+      "description": "Brain's waste clearance system active during sleep",
+      "implications": "Sleep crucial for preventing neurodegenerative diseases"
+    },
+    {
+      "finding": "Neuroplasticity in Adults",
+      "description": "Brain continues to form new neural connections throughout life",
+      "applications": "Stroke recovery, learning, habit change"
+    },
+    {
+      "finding": "Gut-Brain Axis",
+      "description": "Bidirectional communication between gut microbiome and brain",
+      "implications": "Diet affects mental health, probiotics for depression"
+    },
+    {
+      "finding": "Default Mode Network",
+      "description": "Brain network active during rest and self-reflection",
+      "relevance": "Meditation, mindfulness, depression research"
+    }
+  ],
+  "topic": "neuroscience_discoveries_2024",
+  "category": "therapy_counseling",
+  "domain": "psychology",
+  "last_updated": "2025-12-05T06:45:12.996541"
+}

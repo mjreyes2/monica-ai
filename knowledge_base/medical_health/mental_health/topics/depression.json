@@ -1,0 +1,40 @@
+{
+  "title": "Depression",
+  "description": "Mood disorder characterized by persistent sadness and loss of interest",
+  "dsm5_criteria": [
+    "Depressed mood most of the day",
+    "Diminished interest or pleasure",
+    "Significant weight change or appetite change",
+    "Insomnia or hypersomnia",
+    "Psychomotor agitation or retardation",
+    "Fatigue or loss of energy",
+    "Feelings of worthlessness or excessive guilt",
+    "Diminished concentration",
+    "Recurrent thoughts of death or suicidal ideation"
+  ],
+  "types": [
+    "Major Depressive Disorder",
+    "Persistent Depressive Disorder",
+    "Seasonal Affective Disorder",
+    "Postpartum Depression"
+  ],
+  "treatments": [
+    "CBT",
+    "Medication (SSRIs, SNRIs)",
+    "Behavioral Activation",
+    "ECT",
+    "TMS",
+    "Light Therapy"
+  ],
+  "risk_factors": [
+    "Genetics",
+    "Trauma",
+    "Chronic illness",
+    "Substance abuse",
+    "Social isolation"
+  ],
+  "topic": "depression",
+  "category": "medical_health",
+  "domain": "mental_health",
+  "last_updated": "2025-12-05T06:12:10.979181"
+}

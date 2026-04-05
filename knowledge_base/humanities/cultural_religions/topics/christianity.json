@@ -1,0 +1,29 @@
+{
+  "title": "Christianity",
+  "description": "Abrahamic monotheistic religion based on life and teachings of Jesus Christ",
+  "denominations": [
+    "Catholic",
+    "Orthodox",
+    "Protestant",
+    "Anglican",
+    "Pentecostal"
+  ],
+  "core_beliefs": [
+    "Trinity",
+    "Salvation through Christ",
+    "Resurrection",
+    "Bible as scripture"
+  ],
+  "practices": [
+    "Baptism",
+    "Communion",
+    "Prayer",
+    "Worship",
+    "Charity"
+  ],
+  "adherents": "2.4 billion worldwide",
+  "topic": "christianity",
+  "category": "humanities",
+  "domain": "cultural_religions",
+  "last_updated": "2025-12-05T06:12:10.984249"
+}

@@ -1,0 +1,45 @@
+{
+  "title": "Anxiety Disorders",
+  "description": "Group of disorders characterized by excessive fear and worry",
+  "types": [
+    {
+      "name": "Generalized Anxiety Disorder",
+      "features": "Excessive worry about multiple areas"
+    },
+    {
+      "name": "Panic Disorder",
+      "features": "Recurrent unexpected panic attacks"
+    },
+    {
+      "name": "Social Anxiety Disorder",
+      "features": "Fear of social situations"
+    },
+    {
+      "name": "Specific Phobias",
+      "features": "Fear of specific objects or situations"
+    },
+    {
+      "name": "Agoraphobia",
+      "features": "Fear of situations where escape is difficult"
+    }
+  ],
+  "symptoms": [
+    "Restlessness",
+    "Fatigue",
+    "Difficulty concentrating",
+    "Irritability",
+    "Muscle tension",
+    "Sleep disturbance"
+  ],
+  "treatments": [
+    "CBT",
+    "Exposure therapy",
+    "Medication (SSRIs, benzodiazepines)",
+    "Relaxation techniques",
+    "Mindfulness"
+  ],
+  "topic": "anxiety",
+  "category": "medical_health",
+  "domain": "mental_health",
+  "last_updated": "2025-12-05T06:12:10.979687"
+}

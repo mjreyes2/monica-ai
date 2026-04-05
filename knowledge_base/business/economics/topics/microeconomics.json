@@ -1,0 +1,34 @@
+{
+  "title": "Microeconomics",
+  "description": "Study of individual economic agents and markets",
+  "concepts": [
+    "Supply and Demand",
+    "Elasticity",
+    "Consumer Choice",
+    "Production and Costs",
+    "Market Structures",
+    "Game Theory"
+  ],
+  "market_structures": [
+    {
+      "type": "Perfect Competition",
+      "characteristics": "Many firms, identical products, free entry"
+    },
+    {
+      "type": "Monopoly",
+      "characteristics": "Single seller, unique product, barriers to entry"
+    },
+    {
+      "type": "Oligopoly",
+      "characteristics": "Few large firms, interdependent decisions"
+    },
+    {
+      "type": "Monopolistic Competition",
+      "characteristics": "Many firms, differentiated products"
+    }
+  ],
+  "topic": "microeconomics",
+  "category": "business",
+  "domain": "economics",
+  "last_updated": "2025-12-05T06:13:34.229831"
+}

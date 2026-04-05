@@ -1,0 +1,23 @@
+{
+  "primary_user": {
+    "user_id": "primary_user",
+    "name": "",
+    "nickname": "",
+    "voice_signature": "",
+    "first_seen": "2026-02-16T05:51:31.961130",
+    "last_seen": "2026-02-16T05:51:31.961130",
+    "interaction_count": 0,
+    "preferences": {},
+    "facts": [],
+    "topics_discussed": [],
+    "common_emotions": {},
+    "typical_mood": "",
+    "body_language_notes": [],
+    "appearance_notes": [
+      "skin tone: olive",
+      "skin tone: dark",
+      "skin tone: brown",
+      "skin tone: medium"
+    ]
+  }
+}

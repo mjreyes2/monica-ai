@@ -1,0 +1,36 @@
+{
+  "title": "Gender Identity",
+  "description": "Personal sense of one's own gender",
+  "concepts": [
+    {
+      "term": "Cisgender",
+      "definition": "Gender identity matches sex assigned at birth"
+    },
+    {
+      "term": "Transgender",
+      "definition": "Gender identity differs from sex assigned at birth"
+    },
+    {
+      "term": "Non-binary",
+      "definition": "Gender identity outside male/female binary"
+    },
+    {
+      "term": "Gender fluid",
+      "definition": "Gender identity that changes over time"
+    },
+    {
+      "term": "Agender",
+      "definition": "Lack of gender identity"
+    }
+  ],
+  "support": [
+    "Affirming care",
+    "Using correct pronouns",
+    "Mental health support",
+    "Community resources"
+  ],
+  "topic": "gender_identity",
+  "category": "therapy_counseling",
+  "domain": "human_sexuality",
+  "last_updated": "2025-12-05T06:13:34.229831"
+}

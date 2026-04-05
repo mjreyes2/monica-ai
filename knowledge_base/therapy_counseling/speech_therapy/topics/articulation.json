@@ -1,0 +1,42 @@
+{
+  "title": "Articulation Therapy",
+  "description": "Treatment of speech sound disorders",
+  "common_errors": [
+    "Substitutions",
+    "Omissions",
+    "Distortions",
+    "Additions"
+  ],
+  "approaches": [
+    "Traditional Articulation Therapy",
+    "Phonological Approaches",
+    "Motor-Based Approaches",
+    "Cycles Approach"
+  ],
+  "developmental_norms": [
+    {
+      "age": "2-3 years",
+      "sounds": "p, b, m, n, h, w"
+    },
+    {
+      "age": "3-4 years",
+      "sounds": "t, d, k, g, f, y"
+    },
+    {
+      "age": "4-5 years",
+      "sounds": "s, z, v, l, sh, ch, j"
+    },
+    {
+      "age": "5-6 years",
+      "sounds": "r, th"
+    },
+    {
+      "age": "6-7 years",
+      "sounds": "All sounds mastered"
+    }
+  ],
+  "topic": "articulation",
+  "category": "therapy_counseling",
+  "domain": "speech_therapy",
+  "last_updated": "2025-12-05T06:13:34.223678"
+}
