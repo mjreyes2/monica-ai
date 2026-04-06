@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyDescriptionAttribute("GPU-accelerated WPF frontend for Monica AI")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bcafb4f6458964ed302c179f56a85f204780815d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d4c57fab376003d586c4aa72d642036fa05cd417")]
 [assembly: System.Reflection.AssemblyProductAttribute("MonicaWPF")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MonicaWPF")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
