@@ -69,7 +69,7 @@ test_xtts_import.py
 *.temp
 temp/
 
-# Models (large files - backed up separately via OneDrive)
+# Models (large files - backed up separately on D:\Monica_Datasets)
 *.onnx
 *.pb
 *.h5
