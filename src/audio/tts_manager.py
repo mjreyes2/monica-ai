@@ -1099,7 +1099,7 @@ class TTSManager:
             
             # Set orb speaking indicator (yellow glow)
             try:
-                from opencv_window_manager import set_orb_speaking
+                from utils.opencv_window_manager import set_orb_speaking
                 set_orb_speaking(True)
             except Exception:
                 pass
@@ -1146,7 +1146,7 @@ class TTSManager:
                 
                 # Turn off orb speaking indicator
                 try:
-                    from opencv_window_manager import set_orb_speaking
+                    from utils.opencv_window_manager import set_orb_speaking
                     set_orb_speaking(False)
                 except Exception:
                     pass
@@ -2189,3 +2189,4 @@ class TTSManager:
         """Unregister audio callback."""
         if callback in self.audio_callbacks:
             self.audio_callbacks.remove(callback)
+

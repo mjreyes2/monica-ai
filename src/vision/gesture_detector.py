@@ -14,7 +14,7 @@ from dataclasses import dataclass
 
 # Try to import hand detector
 try:
-    from hand_detector import HandDetector, Hand, get_hand_detector
+    from vision.hand_detector import HandDetector, Hand, get_hand_detector
     HAS_HAND_DETECTOR = True
 except ImportError:
     HAS_HAND_DETECTOR = False
@@ -284,4 +284,5 @@ if __name__ == "__main__":
     cap.release()
     cv2.destroyAllWindows()
     
-    print("[OK] Gesture Detector test complete!")
+    print("✅ Gesture Detector test complete!")
+

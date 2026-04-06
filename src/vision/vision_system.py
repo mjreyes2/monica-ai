@@ -97,7 +97,7 @@ def _load_hand_detector():
     global _hand_detector_class, HAS_HAND
     if HAS_HAND is None:
         try:
-            from hand_detector import HandDetector
+            from vision.hand_detector import HandDetector
             _hand_detector_class = HandDetector
             HAS_HAND = True
             print("[OK] Hand detector loaded")
@@ -112,7 +112,7 @@ def _load_gesture_detector():
     global _gesture_detector_class, HAS_GESTURE_DETECTOR
     if HAS_GESTURE_DETECTOR is None:
         try:
-            from gesture_detector import GestureDetector
+            from vision.gesture_detector import GestureDetector
             _gesture_detector_class = GestureDetector
             HAS_GESTURE_DETECTOR = True
             print("[OK] Gesture detector (finger counting) loaded")
@@ -1220,3 +1220,4 @@ def get_vision_system() -> MonicaVisionSystem:
     if _vision_system is None:
         _vision_system = MonicaVisionSystem()
     return _vision_system
+

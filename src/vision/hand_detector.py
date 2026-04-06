@@ -536,4 +536,4 @@ if __name__ == "__main__":
     cv2.destroyAllWindows()
     detector.close()
     
-    print("[OK] Hand Detector test complete!")
+    print("✅ Hand Detector test complete!")
