@@ -87,7 +87,7 @@ def clean_csv(csv_path: Path):
 
 
 if __name__ == "__main__":
-    recordings_dir = Path("data/training/voice_training/recordings/MJP")
+    recordings_dir = Path("data/training/recordings/wake_phrases")
 
     # Clean manifest
     manifest_file = recordings_dir / "manifest.json"

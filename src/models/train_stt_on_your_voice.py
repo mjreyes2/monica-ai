@@ -3,7 +3,7 @@
 Train STT Model on YOUR 4,217 Voice Recordings
 ===============================================
 This script fine-tunes wav2vec2 on your actual voice recordings
-located in: voice_training/recordings/MJP/
+located in: data/training/recordings/wake_phrases/
 
 Your recordings have transcripts embedded in filenames like:
   0001_The_quick_brown_fox_jumps_over_the_lazy_dog.wav
@@ -33,7 +33,7 @@ print("=" * 70)
 # Paths
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 TRAINING_ROOT = PROJECT_ROOT / "data" / "training"
-RECORDINGS_DIR = TRAINING_ROOT / "voice_training" / "recordings" / "MJP"
+RECORDINGS_DIR = TRAINING_ROOT / "recordings" / "wake_phrases"
 BASE_MODEL = PROJECT_ROOT / "models" / "wav2vec2_final" / "final_model"
 OUTPUT_DIR = PROJECT_ROOT / "models" / "wav2vec2_your_voice"
 

@@ -5,9 +5,9 @@ seed: 2024
 __set_seed: !apply:torch.manual_seed [!ref <seed>]
 
 # Data files
-data_folder: C:/Users/mxz/monica_project/voice_training/recordings/MJP
-train_csv: C:/Users/mxz/monica_project/voice_training/recordings/MJP/train.csv
-valid_csv: C:/Users/mxz/monica_project/voice_training/recordings/MJP/val.csv
+data_folder: C:/Users/mxz/monica_project/data/training/recordings/wake_phrases
+train_csv: C:/Users/mxz/monica_project/data/training/recordings/wake_phrases/train.csv
+valid_csv: C:/Users/mxz/monica_project/data/training/recordings/wake_phrases/val.csv
 skip_prep: True
 
 # Output folder

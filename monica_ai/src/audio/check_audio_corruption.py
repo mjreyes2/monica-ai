@@ -33,7 +33,7 @@ def check_wav_file(file_path):
         }
 
 def main():
-    recordings_dir = Path("data/training/voice_training/recordings/MJP")
+    recordings_dir = Path("data/training/recordings/wake_phrases")
 
     if not recordings_dir.exists():
         print(f"❌ Directory not found: {recordings_dir}")

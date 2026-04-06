@@ -2,7 +2,7 @@ import os
 import soundfile as sf
 import numpy as np
 
-OUTPUT_DIR = "voice_recordings/training_phrases"
+OUTPUT_DIR = "data/training/recordings/training_phrases"
 
 # Load phrases
 with open("phrases.txt", "r", encoding="utf-8") as f:

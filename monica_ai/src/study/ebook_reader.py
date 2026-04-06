@@ -1,6 +1,6 @@
 """
 Monica Ebook Reader
-Reads and searches through ebooks on local drives (Maxone Drive D:, OneDrive, etc.)
+Reads and searches through ebooks on local drives (Maxone Drive D:, external drive, etc.)
 Supports PDF, EPUB, TXT, and other common ebook formats.
 
 Author: Monica AI
@@ -109,8 +109,6 @@ class EbookReader:
             "D:/ebooks",
             "D:/Books",
             "D:/Documents",
-            os.path.expanduser("~/OneDrive/Books"),
-            os.path.expanduser("~/OneDrive/Documents"),
             os.path.expanduser("~/Documents/Books"),
             os.path.expanduser("~/Documents/ebooks"),
         ]

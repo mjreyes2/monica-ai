@@ -504,21 +504,33 @@ class FinalSpeechBrainRecognizer:
     def recognize_file(self, audio_file_path: str) -> str:
         """
         Recognize speech from audio file
-        Based on research: use persistent caching and proper error handling
         """
         try:
-            if not self.is_loaded or self.asr_model is None:
+            # Check if models are loaded and ready
+            if not self.is_loaded or (self.asr_model is None and not getattr(self, 'use_enhanced', False)):
                 if self.loading_failed:
                     return ""
-                # Model still loading
                 print("[FINAL-SPEECHBRAIN] Model still loading...")
                 return ""
             
-            # Speech recognition (tested and working)
-            print(f"[FINAL-SPEECHBRAIN] Recognizing: {audio_file_path}")
-            transcription = self.asr_model.transcribe_file(audio_file_path)
-            print(f"[FINAL-SPEECHBRAIN] Raw result: '{transcription}'")
+            # Read audio file and convert to tensor
+            # Assume 16kHz mono WAV for now, as that's what TTS generates
+            audio_tensor, sample_rate = torchaudio.load(audio_file_path)
             
+            # Resample if necessary (recognizer expects 16kHz)
+            if sample_rate != 16000:
+                resampler = torchaudio.transforms.Resample(sample_rate, 16000)
+                audio_tensor = resampler(audio_tensor)
+            
+            # Ensure mono (recognize_tensor expects 1D tensor)
+            if audio_tensor.shape[0] > 1:
+                audio_tensor = audio_tensor.mean(dim=0)
+            else:
+                audio_tensor = audio_tensor.squeeze(0) # Ensure 1D
+
+            # Call recognize_tensor
+            transcription = self.recognize_tensor(audio_tensor)
+
             if transcription and transcription.strip():
                 # Apply vocabulary correction
                 corrected = self._correct_with_vocabulary(transcription.strip())
@@ -1310,7 +1322,7 @@ def test_final_system():
         final_audio.start_listening()
         
         # Test with a file
-        test_file = "voice_recordings/phrase_00_Monica_initialize.wav"
+        test_file = "data/training/recordings/training_phrases/phrase_00_Monica_initialize.wav"
         if Path(test_file).exists():
             print(f"\n[Mic] Testing with: {test_file}")
             test_start = time.time()

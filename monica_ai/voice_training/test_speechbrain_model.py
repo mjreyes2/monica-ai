@@ -13,7 +13,7 @@ print("TESTING SPEECHBRAIN ASR ON MONICA'S VOICE")
 print("="*60)
 
 # Load recordings
-recordings_dir = Path("voice_training/recordings/MJP")
+recordings_dir = Path("data/training/recordings/wake_phrases")
 manifest_file = recordings_dir / "manifest.json"
 
 entries = []

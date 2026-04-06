@@ -38,7 +38,8 @@ import queue
 os.environ['HF_HUB_DISABLE_SYMLINKS_WARNING'] = '1'
 
 _PROJECT_ROOT = Path(__file__).resolve().parents[3]  # monica_ai/src/audio -> monica_ai/src -> monica_ai -> monica_project
-_HF_CACHE_ROOT = _PROJECT_ROOT / "personal_voice_model" / "hf_cache"
+_TRAINING_ROOT = _PROJECT_ROOT / "data" / "training"
+_HF_CACHE_ROOT = _TRAINING_ROOT / "cache" / "hf_cache"
 try:
     _HF_CACHE_ROOT.mkdir(parents=True, exist_ok=True)
 except Exception:
@@ -114,7 +115,7 @@ class FinalSpeechBrainRecognizer:
     
     def __init__(self):
         project_root = _PROJECT_ROOT
-        self.model_dir = project_root / "personal_voice_model"
+        self.model_dir = _TRAINING_ROOT / "cache"
         self.model_dir.mkdir(parents=True, exist_ok=True)
         
         # Persistent cache directories (from SpeechBrain docs)
@@ -205,7 +206,7 @@ class FinalSpeechBrainRecognizer:
                 # ===================================================================
                 # LOAD YOUR TRAINED MODEL (wav2vec2_final - WORKS CORRECTLY)
                 # ===================================================================
-                # self.model_dir = monica_project/personal_voice_model
+                # self.model_dir = data/training/cache
                 # So parent = monica_project (correct project root)
                 project_root = self.model_dir.parent  # monica_project
                 
@@ -1288,7 +1289,7 @@ def test_final_system():
         final_audio.start_listening()
         
         # Test with a file
-        test_file = "voice_recordings/phrase_00_Monica_initialize.wav"
+        test_file = "data/training/recordings/training_phrases/phrase_00_Monica_initialize.wav"
         if Path(test_file).exists():
             print(f"\n[Mic] Testing with: {test_file}")
             test_start = time.time()

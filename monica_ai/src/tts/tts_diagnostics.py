@@ -309,10 +309,10 @@ class TTSDiagnostics:
             solutions.append({
                 'issue': 'Monica TTS Not Loading',
                 'steps': [
-                    '1. Check that trained XTTS models exist in monica_tts_training/models/',
+                    '1. Check that trained XTTS models exist in models/tts/',
                     '2. Verify GPU/CUDA is available (XTTS requires significant compute)',
                     '3. Check for error messages during MonicaTTS initialization',
-                    '4. Ensure reference WAV files exist in voice_training/recordings/MJP/',
+                    '4. Ensure reference WAV files exist in data/training/recordings/wake_phrases/',
                     '5. Try running: MONICA_TTS_DEBUG=1 to see detailed loading errors'
                 ]
             })

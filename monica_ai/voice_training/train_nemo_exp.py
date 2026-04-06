@@ -15,7 +15,7 @@ print("MONICA VOICE TRAINING - NeMo ASR (Experimental Manager)")
 print("="*60)
 
 # Paths
-recordings_dir = Path("voice_training/recordings/MJP")
+recordings_dir = Path("data/training/recordings/wake_phrases")
 manifest_file = recordings_dir / "manifest.json"
 model_dir = Path("models/nemo_personal")
 model_dir.mkdir(parents=True, exist_ok=True)

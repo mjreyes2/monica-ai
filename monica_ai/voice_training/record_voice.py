@@ -95,7 +95,7 @@ except Exception as e:
 class VoiceRecorder:
     """Record voice samples for training with noise reduction."""
     
-    def __init__(self, output_dir: str = "voice_training/recordings", user_id: str = "mjp"):
+    def __init__(self, output_dir: str = "data/training/recordings/wake_phrases", user_id: str = "mjp"):
         self.user_id = user_id
         # Resolve output directory relative to project root for stability
         out_path = Path(output_dir)
@@ -116,7 +116,7 @@ class VoiceRecorder:
         if not out_path.is_absolute():
             out_path = base_root / out_path
             
-        self.output_dir = out_path / user_id  # User-specific folder
+        self.output_dir = out_path  # User-specific folder has been consolidated
         self.output_dir.mkdir(parents=True, exist_ok=True)
         
         # Audio settings - Using NVIDIA Broadcast devices
@@ -494,7 +494,7 @@ class VoiceRecorder:
             self.recorded_phrases = set()
     
     def save_recorded_phrases(self):
-        """Save set of recorded phrases with retry logic for OneDrive sync issues."""
+        """Save set of recorded phrases with retry logic for file sync issues."""
         max_retries = 3
         retry_delay = 0.5  # seconds
         
@@ -511,7 +511,7 @@ class VoiceRecorder:
                 with open(temp_file, 'w', encoding='utf-8') as f:
                     json.dump(data, f, indent=2)
                 
-                # Replace original with temp (handles OneDrive locks better)
+                # Replace original with temp (handles file locks better)
                 import shutil
                 shutil.move(str(temp_file), str(self.recorded_phrases_file))
                 return  # Success

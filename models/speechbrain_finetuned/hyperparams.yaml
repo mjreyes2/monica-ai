@@ -11,9 +11,9 @@ n_fft: 400
 n_mels: 80
 
 # Data files
-data_folder: C:/Users/mxz/monica_project/voice_training/recordings/MJP
-train_annotation: C:/Users/mxz/monica_project/voice_training/recordings/MJP/train.csv
-valid_annotation: C:/Users/mxz/monica_project/voice_training/recordings/MJP/val.csv
+data_folder: C:/Users/mxz/monica_project/data/training/recordings/wake_phrases
+train_annotation: C:/Users/mxz/monica_project/data/training/recordings/wake_phrases/train.csv
+valid_annotation: C:/Users/mxz/monica_project/data/training/recordings/wake_phrases/val.csv
 skip_prep: True
 
 # Output

@@ -1,6 +1,6 @@
 """
 Monica's Comprehensive Knowledge Base System
-Uses OneDrive cloud storage for large datasets to avoid overloading local PC
+Uses local storage for large datasets to avoid overloading local PC
 Supports 50+ academic and professional domains
 """
 
@@ -183,7 +183,7 @@ KNOWLEDGE_DOMAINS = {
 
 class MonicaKnowledgeBase:
     """
-    Comprehensive knowledge base system with OneDrive cloud storage support.
+    Comprehensive knowledge base system with local storage support.
     Manages 50+ academic and professional domains.
     """
     
@@ -202,7 +202,7 @@ class MonicaKnowledgeBase:
         else:
             self.knowledge_path = self.local_cache_path
             self.storage_type = "local"
-            print(f"⚠️ OneDrive not found, using local storage: {self.local_cache_path}")
+            print(f"⚠️ Knowledge base path not found, using local storage: {self.local_cache_path}")
         
         # Create directory structure
         self._initialize_storage()
@@ -225,28 +225,8 @@ class MonicaKnowledgeBase:
         print(f"   Topics: {self.stats['total_topics']}")
     
     def _find_onedrive_path(self) -> Optional[str]:
-        """Auto-detect OneDrive path on Windows"""
-        possible_paths = [
-            os.path.expanduser("~/OneDrive"),
-            os.path.expanduser("~/OneDrive - Personal"),
-            "C:/Users/{}/OneDrive".format(os.getenv("USERNAME", "")),
-            os.path.join(os.environ.get("USERPROFILE", ""), "OneDrive"),
-        ]
-        
-        for path in possible_paths:
-            if os.path.exists(path):
-                return path
-        
-        # Check registry for OneDrive path (Windows)
-        try:
-            import winreg
-            key = winreg.OpenKey(winreg.HKEY_CURRENT_USER, 
-                               r"Software\Microsoft\OneDrive")
-            path, _ = winreg.QueryValueEx(key, "UserFolder")
-            if os.path.exists(path):
-                return path
-        except:
-            pass
+        """Legacy method — OneDrive no longer used. Returns None."""
+        return None
         
         return None
     

@@ -18,7 +18,7 @@ wav2vec2_hub: facebook/wav2vec2-base-960h
 wav2vec2_folder: !ref <save_folder>/wav2vec2_checkpoint
 
 # Data files - pointing to Monica's recordings
-data_folder: voice_training/recordings/MJP
+data_folder: data/training/recordings/wake_phrases
 train_splits: []  # Not used for custom data
 dev_splits: []    # Not used for custom data
 test_splits: []   # Not used for custom data
@@ -26,10 +26,10 @@ skip_prep: True   # We already have our CSVs ready
 ckpt_interval_minutes: 10  # save checkpoint every 10 min
 
 # CSV files for training
-train_csv: voice_training/recordings/MJP/train.csv
-valid_csv: voice_training/recordings/MJP/val.csv
+train_csv: data/training/recordings/wake_phrases/train.csv
+valid_csv: data/training/recordings/wake_phrases/val.csv
 test_csv:
-   - voice_training/recordings/MJP/val.csv
+   - data/training/recordings/wake_phrases/val.csv
 
 ####################### Training Parameters ####################################
 

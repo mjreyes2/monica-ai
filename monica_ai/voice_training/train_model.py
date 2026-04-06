@@ -22,7 +22,7 @@ import torch
 class VoiceModelTrainer:
     """Train a personalized ASR model using NeMo."""
     
-    def __init__(self, recordings_dir: str = "voice_training/recordings/MJP"):
+    def __init__(self, recordings_dir: str = "data/training/recordings/wake_phrases"):
         """Initialize trainer.
 
         Default recordings_dir now points at the user-specific folder used by

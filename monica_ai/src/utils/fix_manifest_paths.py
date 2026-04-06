@@ -4,7 +4,7 @@ Fix manifest.json paths to use correct case (MJP not mjp)
 import json
 from pathlib import Path
 
-manifest_file = Path("data/training/voice_training/recordings/MJP/manifest.json")
+manifest_file = Path("data/training/recordings/wake_phrases/manifest.json")
 print(f"Fixing paths in: {manifest_file}")
 
 # Read all entries

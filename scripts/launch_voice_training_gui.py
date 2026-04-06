@@ -27,7 +27,7 @@ if sys.platform == 'win32':
 
 def main():
     # Add monica_ai to Python path
-    monica_ai_path = Path(__file__).parent / "monica_ai"
+    monica_ai_path = Path(__file__).parents[1] / "monica_ai"
     if monica_ai_path.exists():
         sys.path.insert(0, str(monica_ai_path))
 

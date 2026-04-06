@@ -31,7 +31,7 @@ print('=' * 65)
 
 # === 1. Desktop Shortcut ===
 print('\n--- Desktop Shortcut ---')
-desktop = os.path.join(os.environ.get('USERPROFILE', ''), 'OneDrive', 'Desktop')
+desktop = os.path.join(os.environ.get('USERPROFILE', ''), 'Desktop')
 shortcut_lnk = os.path.join(desktop, 'Monica AI.lnk')
 shortcut_bat = os.path.join(desktop, 'Launch Monica AI.bat')
 bat = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'Launch_Monica.bat')

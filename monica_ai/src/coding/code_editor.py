@@ -257,9 +257,9 @@ class MonicaCodeEditor:
     def __init__(self, parent=None, ai_manager=None, onedrive_path: str = None):
         self.parent = parent
         self.ai_manager = ai_manager
-        self.onedrive_path = onedrive_path or os.path.expanduser("~/OneDrive/MonicaCode")
+        self.onedrive_path = onedrive_path or str(Path(r"D:\Monica_Datasets\code"))
         
-        # Ensure OneDrive folder exists
+        # Ensure code folder exists
         Path(self.onedrive_path).mkdir(parents=True, exist_ok=True)
         
         # Current file state
@@ -378,8 +378,8 @@ class MonicaCodeEditor:
         ttk.Button(toolbar, text="[Tool] Fix Errors", command=self._ai_fix_errors, style='Toolbar.TButton').pack(side=tk.LEFT, padx=2)
         ttk.Button(toolbar, text="[Search] Search", command=self._search_online, style='Toolbar.TButton').pack(side=tk.LEFT, padx=2)
         
-        # OneDrive status
-        ttk.Label(toolbar, text="[*] OneDrive", style='Dark.TLabel').pack(side=tk.RIGHT, padx=10)
+        # Local storage status
+        ttk.Label(toolbar, text="[*] Local", style='Dark.TLabel').pack(side=tk.RIGHT, padx=10)
     
     def _create_main_area(self):
         """Create main editing area with panels."""
@@ -497,7 +497,7 @@ class MonicaCodeEditor:
         self.window.bind('<F9>', lambda e: self._debug_code())
     
     def _populate_file_tree(self):
-        """Populate file tree with OneDrive folder."""
+        """Populate file tree with local code folder."""
         self.file_tree.delete(*self.file_tree.get_children())
         
         root_node = self.file_tree.insert('', 'end', text='[Folder] MonicaCode', open=True)

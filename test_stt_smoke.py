@@ -30,7 +30,7 @@ print("=" * 60)
 # ─── Step 1: Import Vosk ─────────────────────────────────────
 print("\n[1/5] Importing Vosk...")
 t0 = time.time()
-from vosk import Model, KaldiRecognizer, SetLogLevel
+from vosk import Model, KaldiRecognizer, SetLogLevel  # type: ignore
 SetLogLevel(-1)
 print(f"      OK — import in {time.time() - t0:.2f}s")
 

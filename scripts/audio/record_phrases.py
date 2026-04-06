@@ -5,7 +5,7 @@ import numpy as np
 
 # Output directory - UNIFIED with Monica GUI recordings
 # All recordings go to the same location for training
-OUTPUT_DIR = "voice_training/recordings/MJP"
+OUTPUT_DIR = "data/training/recordings/wake_phrases"
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 # Sample rate

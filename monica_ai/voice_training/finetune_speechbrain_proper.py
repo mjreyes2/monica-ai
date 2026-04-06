@@ -17,7 +17,7 @@ print("MONICA VOICE FINE-TUNING - SpeechBrain (Proper Training)")
 print("="*60)
 
 # Setup paths
-data_folder = Path("voice_training/recordings/MJP")
+data_folder = Path("data/training/recordings/wake_phrases")
 output_folder = Path("models/speechbrain_finetuned")
 output_folder.mkdir(parents=True, exist_ok=True)
 

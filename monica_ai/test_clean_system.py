@@ -43,7 +43,7 @@ def test_clean_system():
         print("✅ SpeechBrain is ready!")
         
         # Test recognition
-        test_file = "voice_recordings/phrase_00_Monica_initialize.wav"
+        test_file = "data/training/recordings/training_phrases/phrase_00_Monica_initialize.wav"
         if Path(test_file).exists():
             result = audio_manager.recognize_file(test_file)
             print(f"🎤 Recognition result: '{result}'")

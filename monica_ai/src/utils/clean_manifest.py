@@ -4,7 +4,7 @@ Clean manifest.json - remove entries for files that don't exist
 import json
 from pathlib import Path
 
-manifest_file = Path("data/training/voice_training/recordings/MJP/manifest.json")
+manifest_file = Path("data/training/recordings/wake_phrases/manifest.json")
 print(f"Cleaning manifest: {manifest_file}")
 
 # Read all entries

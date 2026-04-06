@@ -89,8 +89,8 @@ try:
 except Exception as e:
     check(f"Config: {e}", False)
 
-# 4. OneDrive data access
-print("\n--- OneDrive Data Access ---")
+# 4. Local data access
+print("\n--- Local Data Access ---")
 try:
     data_training = os.path.join(base, 'data', 'training')
     check("data/training/ exists", os.path.isdir(data_training))
@@ -108,7 +108,7 @@ try:
     mem_adv = os.path.join(base, 'monica_memory_advanced')
     check("monica_memory_advanced/ exists", os.path.isdir(mem_adv))
 except Exception as e:
-    check(f"OneDrive data: {e}", False)
+    check(f"Local data: {e}", False)
 
 # 5. Models directory
 print("\n--- Models Directory ---")

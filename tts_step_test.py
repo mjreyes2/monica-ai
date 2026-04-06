@@ -19,8 +19,13 @@ log(f'torch OK: {torch.__version__}')
 log('Importing TTS.config.shared_configs directly...')
 # Import the submodule directly, bypassing TTS/__init__.py
 import importlib
+import importlib.util
 spec = importlib.util.find_spec('TTS.config.shared_configs')
 log(f'found spec: {spec}')
+if spec is None or spec.loader is None:
+    log('FAIL: TTS.config.shared_configs spec not found')
+    f.close()
+    sys.exit(1)
 module = importlib.util.module_from_spec(spec)
 sys.modules['TTS.config.shared_configs'] = module
 try:

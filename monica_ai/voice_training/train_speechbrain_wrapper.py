@@ -18,7 +18,7 @@ import soundfile as sf
 class SpeechBrainTrainer:
     """Train a personalized ASR model using SpeechBrain wav2vec2."""
 
-    def __init__(self, recordings_dir: str = "voice_training/recordings/MJP"):
+    def __init__(self, recordings_dir: str = "data/training/recordings/wake_phrases"):
         """Initialize SpeechBrain trainer.
 
         Args:

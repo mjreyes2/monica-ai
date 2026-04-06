@@ -126,7 +126,7 @@ def load_audio(row):
     """Load and resample audio to 16kHz"""
     wav_path = row["wav"]
     if not os.path.exists(wav_path):
-        # Try OneDrive path
+        # Try relative path from project root
         wav_path = wav_path.replace("C:/Monica", str(PROJECT_ROOT))
     
     waveform, sample_rate = torchaudio.load(wav_path)

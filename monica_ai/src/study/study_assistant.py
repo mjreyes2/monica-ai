@@ -474,7 +474,7 @@ class StudyAssistant:
         except Exception as e:
             print(f"[STUDY] Adobe trainer not available: {e}")
         
-        # Ebook reader (Maxone Drive D:, OneDrive, etc.)
+        # Ebook reader (Maxone Drive D:, external drive, etc.)
         self.ebook_reader = None
         try:
             from .ebook_reader import get_ebook_reader
