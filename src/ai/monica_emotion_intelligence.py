@@ -25,7 +25,7 @@ import os
 # Will use OpenCV-based emotion detection instead
 HAS_EMOTIEFF = False
 EmotiEffLibRecognizer = None
-print("[INFO] Using OpenCV-based emotion detection (EmotiEffLib disabled for compatibility)")
+print("ℹ️ Using OpenCV-based emotion detection (EmotiEffLib disabled for compatibility)")
 
 # Comprehensive emotion taxonomy based on psychological research
 EMOTION_TAXONOMY = {
@@ -276,9 +276,9 @@ class MonicaEmotionIntelligence:
         if HAS_EMOTIEFF and EmotiEffLibRecognizer is not None:
             try:
                 self.emotion_recognizer = EmotiEffLibRecognizer()
-                print("[OK] EmotiEffLib emotion recognizer initialized (8 emotions)")
+                print("✅ EmotiEffLib emotion recognizer initialized (8 emotions)")
             except Exception as e:
-                print(f"[WARN] EmotiEffLib initialization failed: {e}")
+                print(f"⚠️ EmotiEffLib initialization failed: {e}")
         
         # Face detection fallback
         self.face_cascade = cv2.CascadeClassifier(
@@ -291,12 +291,12 @@ class MonicaEmotionIntelligence:
         self.voice_cues = VOICE_EMOTION_CUES
         self.text_patterns = TEXT_EMOTION_PATTERNS
         
-        print("[OK] Monica Emotion Intelligence initialized")
-        print(f"   [CHART] {len(EMOTION_TAXONOMY['primary'])} primary emotions")
-        print(f"   [CHART] {len(EMOTION_TAXONOMY['secondary'])} secondary emotions")
-        print(f"   [CHART] Body language analysis enabled")
-        print(f"   [CHART] Voice tone analysis enabled")
-        print(f"   [CHART] Text sentiment analysis enabled")
+        print("✅ Monica Emotion Intelligence initialized")
+        print(f"   📊 {len(EMOTION_TAXONOMY['primary'])} primary emotions")
+        print(f"   📊 {len(EMOTION_TAXONOMY['secondary'])} secondary emotions")
+        print(f"   📊 Body language analysis enabled")
+        print(f"   📊 Voice tone analysis enabled")
+        print(f"   📊 Text sentiment analysis enabled")
     
     def detect_emotion_from_face(self, frame: np.ndarray) -> Dict[str, Any]:
         """
@@ -377,7 +377,7 @@ class MonicaEmotionIntelligence:
         except Exception as e:
             # Suppress repeated errors - only log once
             if not hasattr(self, '_error_logged'):
-                print(f"[WARN] Emotion detection using fallback mode")
+                print(f"⚠️ Emotion detection using fallback mode")
                 self._error_logged = True
         
         return result
@@ -655,8 +655,8 @@ if __name__ == "__main__":
         suggestions = ei.get_emotion_response_suggestions(emotion)
         print(f"\nWhen someone is {emotion}:")
         for s in suggestions[:2]:
-            print(f"  - {s}")
+            print(f"  • {s}")
     
     print("\n" + "=" * 60)
-    print("[OK] Emotion Intelligence test complete!")
+    print("✅ Emotion Intelligence test complete!")
     print("=" * 60)

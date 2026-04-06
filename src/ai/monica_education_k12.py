@@ -485,8 +485,8 @@ class K12EducationSystem:
     def __init__(self):
         self.curriculum = K12_CURRICULUM
         self.grade_levels = list(K12_CURRICULUM.keys())
-        print(f"[OK] K-12 Education System initialized")
-        print(f"   [BOOK] {len(self.grade_levels)} grade levels (K-12)")
+        print(f"✅ K-12 Education System initialized")
+        print(f"   📚 {len(self.grade_levels)} grade levels (K-12)")
     
     def get_grade_curriculum(self, grade: str) -> Dict:
         """Get curriculum for a specific grade"""
@@ -549,7 +549,7 @@ if __name__ == "__main__":
     print("\n--- Grade 10 Geometry ---")
     geo = k12.get_subject("10", "geometry")
     for skill in geo.get("skills", [])[:5]:
-        print(f"  - {skill}")
+        print(f"  • {skill}")
     
     print("\n--- Search: 'fractions' ---")
     results = k12.search_topic("fractions")

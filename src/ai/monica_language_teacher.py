@@ -536,9 +536,9 @@ class MonicaLanguageTeacher:
         self.current_language = "english"
         self.user_progress = {}
         
-        print(f"[OK] Language Teacher initialized")
-        print(f"   [BOOK] {len(self.languages)} languages available")
-        print(f"   [?] Speaking, Listening, Writing, Teaching modes")
+        print(f"✅ Language Teacher initialized")
+        print(f"   📚 {len(self.languages)} languages available")
+        print(f"   🗣️ Speaking, Listening, Writing, Teaching modes")
     
     def get_language_info(self, language: str) -> Optional[Dict]:
         """Get detailed information about a language"""
@@ -744,7 +744,7 @@ if __name__ == "__main__":
     print("\n--- African Languages ---")
     african = teacher.get_african_languages()
     for lang in african:
-        print(f"  - {lang['name']} ({lang['native_name']}): {lang['speakers']} speakers")
+        print(f"  • {lang['name']} ({lang['native_name']}): {lang['speakers']} speakers")
     
     # Show a lesson
     print("\n--- Sample Lesson: Swahili ---")
@@ -763,4 +763,4 @@ if __name__ == "__main__":
         for lang, text in translations.items():
             print(f"    {lang}: {text}")
     
-    print("\n[OK] Language Teacher test complete!")
+    print("\n✅ Language Teacher test complete!")

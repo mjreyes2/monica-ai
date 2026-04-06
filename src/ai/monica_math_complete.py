@@ -568,8 +568,8 @@ class CompleteMathSystem:
     def __init__(self):
         self.knowledge = MATHEMATICS_KNOWLEDGE
         self.subjects = list(MATHEMATICS_KNOWLEDGE.keys())
-        print(f"[OK] Complete Math System initialized")
-        print(f"   [MATH] {len(self.subjects)} major areas")
+        print(f"✅ Complete Math System initialized")
+        print(f"   📐 {len(self.subjects)} major areas")
     
     def get_subject(self, subject: str) -> Dict:
         return self.knowledge.get(subject, {})

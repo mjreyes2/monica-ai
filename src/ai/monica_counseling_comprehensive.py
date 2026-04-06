@@ -702,8 +702,8 @@ class AcademicResearchHelper:
     
     def __init__(self):
         self.sources = ACADEMIC_SOURCES
-        print("[OK] Academic Research Helper initialized")
-        print(f"   [BOOK] {len(self.sources)} free academic sources available")
+        print("✅ Academic Research Helper initialized")
+        print(f"   📚 {len(self.sources)} free academic sources available")
     
     def search_pubmed(self, query: str, max_results: int = 10) -> List[Dict]:
         """
@@ -812,10 +812,10 @@ class ComprehensiveCounselingSystem:
         self.conditions = MENTAL_HEALTH_CONDITIONS
         self.research_helper = AcademicResearchHelper()
         
-        print("[OK] Comprehensive Counseling System initialized")
-        print(f"   [BRAIN] {len(self.modalities)} therapeutic modalities")
-        print(f"   [LIST] {len(self.conditions)} mental health conditions")
-        print("   [BOOK] Academic research integration enabled")
+        print("✅ Comprehensive Counseling System initialized")
+        print(f"   🧠 {len(self.modalities)} therapeutic modalities")
+        print(f"   📋 {len(self.conditions)} mental health conditions")
+        print("   📚 Academic research integration enabled")
     
     def get_modality(self, modality: str) -> Optional[Dict]:
         """Get detailed information about a therapy modality."""
@@ -957,14 +957,14 @@ if __name__ == "__main__":
     if research['pubmed_results']:
         print(f"PubMed results: {len(research['pubmed_results'])}")
         for r in research['pubmed_results'][:2]:
-            print(f"  - {r['title'][:60]}... ({r['year']})")
+            print(f"  • {r['title'][:60]}... ({r['year']})")
     
     # List academic sources
     print("\n--- Free Academic Sources ---")
     sources = system.research_helper.list_sources()
     for s in sources[:5]:
-        print(f"  [BOOK] {s['name']}: {s['url']}")
+        print(f"  📚 {s['name']}: {s['url']}")
     
     print("\n" + "=" * 70)
-    print("[OK] Counseling System test complete!")
+    print("✅ Counseling System test complete!")
     print("=" * 70)

@@ -108,7 +108,7 @@ class MonicaLegalKnowledge:
         Returns:
             Legal information response
         """
-        disclaimer = " DISCLAIMER: This is general legal information only, not legal advice. Consult a licensed attorney for your specific situation.\n\n"
+        disclaimer = "⚖️ DISCLAIMER: This is general legal information only, not legal advice. Consult a licensed attorney for your specific situation.\n\n"
         
         # Use Ollama to generate response based on jurisdiction and topic
         prompt = f"""
@@ -218,7 +218,7 @@ class MonicaSciencesKnowledge:
         Be accurate and cite current scientific understanding.
         """
         
-        return f" {domain.upper()} - {topic}\n\n[Scientific explanation at {level} level]"
+        return f"🔬 {domain.upper()} - {topic}\n\n[Scientific explanation at {level} level]"
 
 
 class MonicaEducationKnowledge:
@@ -278,7 +278,7 @@ class MonicaEducationKnowledge:
         Returns:
             University information
         """
-        return f"[GRAD] University Information: {university}\n\n[Details about programs, admissions, etc.]"
+        return f"🎓 University Information: {university}\n\n[Details about programs, admissions, etc.]"
 
 
 class MonicaSocialEngineering:

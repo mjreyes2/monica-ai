@@ -112,7 +112,7 @@ class MonicaIntelligence:
         Returns:
             Dictionary with reasoning process and solution
         """
-        print(f"\n[THINK] Monica is thinking about: '{request}'")
+        print(f"\n🤔 Monica is thinking about: '{request}'")
 
         result = {
             "request": request,
@@ -140,11 +140,11 @@ class MonicaIntelligence:
 
         # Step 3: Identify what we don't know
         if existing.get("known", False):
-            print("[OK] I already know how to do this!")
+            print("✅ I already know how to do this!")
             result["solution"] = existing.get("solution")
             result["success"] = True
         else:
-            print("[?] This is new to me. Let me research...")
+            print("❓ This is new to me. Let me research...")
 
             # Step 4: Research
             research = self._research_concept(understanding)
@@ -300,7 +300,7 @@ Respond in JSON format:
             "code_examples": []
         }
 
-        print(f"[SEARCH] Researching: {', '.join(concepts)}")
+        print(f"🔍 Researching: {', '.join(concepts)}")
 
         # Use DuckDuckGo for web research
         try:
@@ -320,7 +320,7 @@ Respond in JSON format:
                         })
 
         except ImportError:
-            print("[WARN] DuckDuckGo search not available. Install: pip install duckduckgo-search")
+            print("⚠️ DuckDuckGo search not available. Install: pip install duckduckgo-search")
         except Exception as e:
             print(f"Search error: {e}")
 
@@ -550,7 +550,7 @@ Usage:
         }
 
         self._save_knowledge()
-        print(f"[DISK] Learned and stored: '{concept_key}'")
+        print(f"💾 Learned and stored: '{concept_key}'")
 
     def execute_generated_code(self, code: str, safe_mode: bool = True) -> Dict:
         """
@@ -622,20 +622,20 @@ class TransparentBackgroundExample:
         })
 
         # Show reasoning process
-        print("\n[LIST] Monica's Reasoning Process:")
+        print("\n📋 Monica's Reasoning Process:")
         for i, step in enumerate(result["reasoning_steps"], 1):
             print(f"\n  Step {i}: {step['step']}")
             print(f"  Output: {json.dumps(step['output'], indent=4)[:200]}...")
 
         # Show solution
         if result.get("code_generated"):
-            print("\n[IDEA] Monica Generated This Code:")
+            print("\n💡 Monica Generated This Code:")
             print("-" * 60)
             print(result["code_generated"].get("code", ""))
             print("-" * 60)
 
         # Next time, she'll remember
-        print("\n[BRAIN] Next time you ask, Monica will remember!")
+        print("\n🧠 Next time you ask, Monica will remember!")
 
         return result
 
@@ -658,7 +658,7 @@ def test_intelligence():
 
     result = TransparentBackgroundExample.demonstrate()
 
-    print("\n[OK] Intelligence system test complete!")
+    print("\n✅ Intelligence system test complete!")
     print(f"\nResult success: {result.get('success')}")
     print(f"Learned: {result.get('learned')}")
 

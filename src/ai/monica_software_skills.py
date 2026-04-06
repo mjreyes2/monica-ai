@@ -451,10 +451,10 @@ class SoftwareSkillsSystem:
         self.programming = PROGRAMMING_LANGUAGES
         self.software_3d = SOFTWARE_3D
         self.computer_building = COMPUTER_BUILDING
-        print("[OK] Software Skills System initialized")
-        print(f"   - {len(self.adobe)} Adobe apps")
-        print(f"   - {len(self.programming)} programming languages")
-        print(f"   - {len(self.software_3d)} 3D/game engines")
+        print("✅ Software Skills System initialized")
+        print(f"   🎨 {len(self.adobe)} Adobe apps")
+        print(f"   💻 {len(self.programming)} programming languages")
+        print(f"   🎮 {len(self.software_3d)} 3D/game engines")
     
     def get_adobe_app(self, app: str) -> Dict:
         return self.adobe.get(app.lower(), {})
